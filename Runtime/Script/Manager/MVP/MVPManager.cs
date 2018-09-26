@@ -4,16 +4,16 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using BlackFireFramework.Game;
-using BlackFireFramework.Pattern;
+using BlackFire.Unity.Game;
+using BlackFire.Unity.Pattern;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// MVP模式管家。

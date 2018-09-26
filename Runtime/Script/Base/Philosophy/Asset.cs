@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 资产(形体)。

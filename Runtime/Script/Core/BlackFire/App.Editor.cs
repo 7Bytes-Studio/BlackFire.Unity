@@ -4,10 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
 #if UNITY_EDITOR
 

@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerIteratorGUI : IDebuggerModuleGUI
     {
@@ -51,7 +51,7 @@ namespace BlackFireFramework.Unity
 
                         BlackFireGUI.ScrollView("Iterator/IteratorNames", id =>
                         {
-                            foreach (var name in BlackFireFramework.Iterator.AllIteratorNames)
+                            foreach (var name in BlackFire.Iterator.AllIteratorNames)
                             {
                                 GUILayout.Label(string.Format("{0} : {1}","Name".HexColor("yellow"),name.HexColor("green")));
                             }

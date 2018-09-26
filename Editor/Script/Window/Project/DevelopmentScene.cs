@@ -9,7 +9,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
 
 	public sealed class DevelopmentScene : ScriptableObject

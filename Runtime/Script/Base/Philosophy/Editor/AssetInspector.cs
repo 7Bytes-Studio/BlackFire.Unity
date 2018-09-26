@@ -4,11 +4,11 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     [CustomEditor(typeof(Asset))]
     [DisallowMultipleComponent]

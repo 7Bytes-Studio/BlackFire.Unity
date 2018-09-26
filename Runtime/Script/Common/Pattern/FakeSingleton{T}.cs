@@ -7,7 +7,7 @@
 
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 仿冒单例抽象类

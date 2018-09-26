@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 本质(原本的形体)。

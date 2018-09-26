@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed partial class ResourceManager
     {

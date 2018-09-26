@@ -7,7 +7,7 @@
 using System;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public abstract class AssetInfoBase
     {

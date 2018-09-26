@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Pattern;
+using BlackFire.Unity.Pattern;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public abstract class Model:ModelBase,IModel
     {

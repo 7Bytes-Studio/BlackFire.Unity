@@ -1,6 +1,6 @@
-using BlackFireFramework.DB;
+using BlackFire.Unity.DB;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public interface IStorageManager:IManager
     {

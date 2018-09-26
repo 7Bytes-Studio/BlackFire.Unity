@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static IResourceManager s_Resource = null;
     public static IResourceManager Resource { get { return s_Resource = (s_Resource ?? GetManager<IResourceManager>()); } }

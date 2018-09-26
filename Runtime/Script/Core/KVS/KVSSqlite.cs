@@ -11,11 +11,11 @@ using System.IO;
 #endif
 using System.Collections.Generic;
 using System.Collections;
-using BlackFireFramework.DB;
+using BlackFire.Unity.DB;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public class KVSSqlite : IKeyValueStorage
     {

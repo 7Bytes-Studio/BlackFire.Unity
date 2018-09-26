@@ -4,11 +4,11 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
+using BlackFire;
 using System;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     /// <summary>
     /// 应用程序退出事件。

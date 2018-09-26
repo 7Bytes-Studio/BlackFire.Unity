@@ -1,4 +1,4 @@
-﻿namespace BlackFireFramework.Unity
+﻿namespace BlackFire.Unity
 {
     public interface IDebuggerManager:IManager
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 游戏轮询委托管家接口。

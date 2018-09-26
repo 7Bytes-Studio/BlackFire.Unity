@@ -11,7 +11,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity 
+namespace BlackFire.Unity 
 {
     /// <summary>
     /// 文件Crc32校验协程指令(主线程)。

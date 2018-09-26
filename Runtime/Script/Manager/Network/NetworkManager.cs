@@ -4,10 +4,10 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Network;
+using BlackFire.Unity.Network;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 网络管家。

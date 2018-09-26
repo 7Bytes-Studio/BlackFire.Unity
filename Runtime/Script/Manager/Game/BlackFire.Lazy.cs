@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static IGameManager s_Game = null;
     public static IGameManager Game { get { return s_Game = (s_Game ?? GetManager<IGameManager>()); } }

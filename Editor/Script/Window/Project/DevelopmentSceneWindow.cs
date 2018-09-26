@@ -6,12 +6,11 @@
 
 // ScriptMainLogicWriter : https://github.com/Yawpp
 
-using BlackFireFramework.Editor;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public sealed class DevelopmentSceneWindow : EditorWindowBase<DevelopmentSceneWindow>
     {

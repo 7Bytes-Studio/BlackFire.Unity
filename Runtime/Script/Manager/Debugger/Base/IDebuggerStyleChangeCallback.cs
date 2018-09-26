@@ -5,7 +5,7 @@
 //----------------------------------------------------
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// Debugger 由Full模式收起到Mini模式的事件接口。

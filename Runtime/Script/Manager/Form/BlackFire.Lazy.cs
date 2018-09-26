@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static IFormManager s_Form = null;
     public static IFormManager Form { get { return s_Form = (s_Form ?? GetManager<IFormManager>()); } }

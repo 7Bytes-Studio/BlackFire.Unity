@@ -4,7 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 调试器管家。
@@ -247,20 +247,20 @@ namespace BlackFireFramework.Unity
         private void InitDebuggerModuleGUI()
         {
   
-            var acfp_types = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp-firstpass", typeof(IDebuggerModuleGUI));
+            var acfp_types = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp-firstpass", typeof(IDebuggerModuleGUI));
 
             for (int i = 0; i < acfp_types.Length; i++)
             {
-                IDebuggerModuleGUI ins = (IDebuggerModuleGUI)BlackFireFramework.Utility.Reflection.New(acfp_types[i]);
+                IDebuggerModuleGUI ins = (IDebuggerModuleGUI)BlackFire.Utility.Reflection.New(acfp_types[i]);
                 m_DebuggerModuleGUIList.Add(ins);
             }
             
             
-            var ac_types = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IDebuggerModuleGUI));
+            var ac_types = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IDebuggerModuleGUI));
 
             for (int i = 0; i < ac_types.Length; i++)
             {
-                IDebuggerModuleGUI ins = (IDebuggerModuleGUI)BlackFireFramework.Utility.Reflection.New(ac_types[i]);
+                IDebuggerModuleGUI ins = (IDebuggerModuleGUI)BlackFire.Utility.Reflection.New(ac_types[i]);
                 m_DebuggerModuleGUIList.Add(ins);
             }
 
@@ -291,19 +291,19 @@ namespace BlackFireFramework.Unity
 
         private void InitDebuggerStyleChange()
         {
-            var acfp_types = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp-firstpass", typeof(IDebuggerStyleChangeCallback));
+            var acfp_types = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp-firstpass", typeof(IDebuggerStyleChangeCallback));
             
             List<IDebuggerStyleChangeCallback> list = new List<IDebuggerStyleChangeCallback>();
             for (int i = 0; i < acfp_types.Length; i++)
             {
-                IDebuggerStyleChangeCallback ins = (IDebuggerStyleChangeCallback)BlackFireFramework.Utility.Reflection.New(acfp_types[i]);
+                IDebuggerStyleChangeCallback ins = (IDebuggerStyleChangeCallback)BlackFire.Utility.Reflection.New(acfp_types[i]);
                 list.Add(ins);
             }
             
-            var ac_types = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IDebuggerStyleChangeCallback));
+            var ac_types = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IDebuggerStyleChangeCallback));
             for (int i = 0; i < ac_types.Length; i++)
             {
-                IDebuggerStyleChangeCallback ins = (IDebuggerStyleChangeCallback)BlackFireFramework.Utility.Reflection.New(ac_types[i]);
+                IDebuggerStyleChangeCallback ins = (IDebuggerStyleChangeCallback)BlackFire.Utility.Reflection.New(ac_types[i]);
                 list.Add(ins);
             }
             

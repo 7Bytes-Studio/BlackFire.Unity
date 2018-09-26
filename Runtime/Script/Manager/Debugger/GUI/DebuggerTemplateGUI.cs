@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerTemplateGUI //: IDebuggerModuleGUI
     {

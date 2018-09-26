@@ -4,14 +4,11 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEngine;
-using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public class KVSText : IKeyValueStorage
     {
@@ -23,7 +20,7 @@ namespace BlackFireFramework.Unity
 
         public KVSText()
         {
-            m_Path = BlackFire.StreamingAssetsPath + "/kvs.txt";
+            m_Path = App.StreamingAssetsPath + "/kvs.txt";
 
             if (!File.Exists(m_Path))
             {
@@ -51,7 +48,7 @@ namespace BlackFireFramework.Unity
                 sr.Close();
             }
 
-            BlackFire.ApplicationQuit += BlackFire_ApplicationQuit;
+            App.ApplicationQuit += BlackFire_ApplicationQuit;
 
         }
 
@@ -66,7 +63,7 @@ namespace BlackFireFramework.Unity
         private void BlackFire_ApplicationQuit()
         {
             SaveAtApplicationQuit();
-            BlackFire.ApplicationQuit -= BlackFire_ApplicationQuit;
+            App.ApplicationQuit -= BlackFire_ApplicationQuit;
         }
 
         private bool m_HasSave = false;

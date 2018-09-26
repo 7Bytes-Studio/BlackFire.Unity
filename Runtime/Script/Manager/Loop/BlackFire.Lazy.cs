@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static ILoopManager s_Loop = null;
     public static ILoopManager Loop { get { return s_Loop = (s_Loop ?? GetManager<ILoopManager>()); } }

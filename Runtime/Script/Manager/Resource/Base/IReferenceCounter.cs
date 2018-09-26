@@ -6,7 +6,7 @@
 
 using System;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 引用计数器接口。

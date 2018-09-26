@@ -10,7 +10,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Analytics;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public static partial class Utility
     {
@@ -70,7 +70,7 @@ namespace BlackFireFramework.Unity
             public static ulong ToJPGFile(string filePath,Texture2D texture2D,Action saveCompleteCallback=null)
             {
                 var data = ToJPG(texture2D);
-                BlackFireFramework.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
+                BlackFire.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
                 return (ulong)data.Length;
             }
             
@@ -84,7 +84,7 @@ namespace BlackFireFramework.Unity
             public static ulong ToPNGFile(string filePath,Texture2D texture2D,Action saveCompleteCallback=null)
             {
                 var data = ToPNG(texture2D);
-                BlackFireFramework.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
+                BlackFire.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
                 return (ulong)data.Length;
             }
             
@@ -98,7 +98,7 @@ namespace BlackFireFramework.Unity
             public static ulong ToEXRFile(string filePath,Texture2D texture2D,Action saveCompleteCallback=null)
             {
                 var data = ToEXR(texture2D);
-                BlackFireFramework.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
+                BlackFire.Utility.IO.SaveFile(filePath,data,saveCompleteCallback);
                 return (ulong)data.Length;
             }
 

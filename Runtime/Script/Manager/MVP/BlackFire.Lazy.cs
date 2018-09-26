@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static IMVPManager s_MVP = null;
     public static IMVPManager MVP { get { return s_MVP = (s_MVP ?? GetManager<IMVPManager>()); } }

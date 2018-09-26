@@ -4,15 +4,15 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
-using BlackFireFramework.Unity;
+using BlackFire;
+using BlackFire.Unity;
 using UnityEngine;
 
 /// <summary>
 /// BlackFireFramework主要程序入口类。
 /// </summary>
 [GameObjectIcon("BlackFire")]
-public sealed partial class BlackFire : MonoBehaviour
+public sealed partial class App : MonoBehaviour
 {
     #region LifeCircle
 
@@ -24,7 +24,7 @@ public sealed partial class BlackFire : MonoBehaviour
     /// <summary>
     /// BlackFire行为类唯一实例。
     /// </summary>
-    private static BlackFire s_Instance = null;
+    private static App s_Instance = null;
 
     /// <summary>
     /// 放到DontDestroyOnLoad场景。
@@ -37,8 +37,8 @@ public sealed partial class BlackFire : MonoBehaviour
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void OnBeforeSceneLoad()
     {
-        BlackFireFramework.Log.SetLogCallback(LogCallback);
-        BlackFireFramework.Event.SetGetEventHandlersCallback(GetEventHandlersCallback);
+        Log.SetLogCallback(LogCallback);
+        BlackFire.Event.SetGetEventHandlersCallback(GetEventHandlersCallback);
         Framework.Born(s_Unity, Time.unscaledDeltaTime, Time.deltaTime);
     }
 

@@ -6,19 +6,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Threading;
-using BlackFireFramework.Unity;
-using Boo.Lang;
+using BlackFire.Unity;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
-    [CustomEditor(typeof(BlackFire))]
-    public sealed class BlackFireInspector : InspectorBase
+    [CustomEditor(typeof(App))]
+    public sealed class AppInspector : InspectorBase
     {
 
         private SerializedProperty m_SP_DontDestroy = null;
@@ -168,48 +164,51 @@ namespace BlackFireFramework.Editor
         private void DrawIoCList()
         {
             BlackFireGUI.ScrollView("BlackFireInspector/IoCView",id=> {
-
-                BlackFireGUI.BoxVerticalLayout(()=> {
-                    for (int i = 0; i < m_SP_IoCRegisters.arraySize; i++)
-                    {
-                        var element = m_SP_IoCRegisters.GetArrayElementAtIndex(i).stringValue;
-                        var selected = m_ImplTypeDic[element];
-                        if (selected) //如果被选择了
-                        {                            
-                            if (!m_SelectedIoCRegisters.Contains(element))
-                            {
-                                m_SelectedIoCRegisters.Add(element);
-                            }
-                            
-                            GUI.backgroundColor = Color.green;
-                            m_ImplTypeDic[element] = EditorGUILayout.ToggleLeft(element, selected);
-                            GUI.backgroundColor = Color.white;
-                        }
-                        else
-                        {
-                            if (m_SelectedIoCRegisters.Contains(element))
-                            {
-                                m_SelectedIoCRegisters.Remove(element);
-                            }
-                            m_ImplTypeDic[element] = EditorGUILayout.ToggleLeft(element, selected);
-                        }
-                    }
-
-                    m_SP_AvailableIoCRegisters.arraySize = m_SelectedIoCRegisters.Count; //设置可用IoC注册数组。
-                    for (int j = 0; j < m_SelectedIoCRegisters.Count; j++)
-                    {
-                        m_SP_AvailableIoCRegisters.GetArrayElementAtIndex(j).stringValue = m_SelectedIoCRegisters[j];
-                    }
+                if(0<m_SelectedIoCRegisters.Count)
+                    BlackFireGUI.BoxVerticalLayout(()=> {
                     
-                });
-
+                        for (int i = 0; i < m_SP_IoCRegisters.arraySize; i++)
+                        {
+                            var element = m_SP_IoCRegisters.GetArrayElementAtIndex(i).stringValue;
+                            var selected = m_ImplTypeDic[element];
+                            if (selected) //如果被选择了
+                            {                            
+                                if (!m_SelectedIoCRegisters.Contains(element))
+                                {
+                                    m_SelectedIoCRegisters.Add(element);
+                                }
+                                
+                                GUI.backgroundColor = Color.green;
+                                m_ImplTypeDic[element] = EditorGUILayout.ToggleLeft(element, selected);
+                                GUI.backgroundColor = Color.white;
+                            }
+                            else
+                            {
+                                if (m_SelectedIoCRegisters.Contains(element))
+                                {
+                                    m_SelectedIoCRegisters.Remove(element);
+                                }
+                                m_ImplTypeDic[element] = EditorGUILayout.ToggleLeft(element, selected);
+                            }
+                        }
+    
+                        m_SP_AvailableIoCRegisters.arraySize = m_SelectedIoCRegisters.Count; //设置可用IoC注册数组。
+                        for (int j = 0; j < m_SelectedIoCRegisters.Count; j++)
+                        {
+                            m_SP_AvailableIoCRegisters.GetArrayElementAtIndex(j).stringValue = m_SelectedIoCRegisters[j];
+                        }
+                    
+                    });
+                else
+                    GUILayout.Label("Empty");
+                
             }, GUILayout.ExpandHeight(false));
         }
         
         private Type[] m_ImplTypes = null;
         private void ReflectIoCRegisterTypesInfo()
         {
-            m_ImplTypes = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IIoCRegister));
+            m_ImplTypes = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(IIoCRegister));
             m_SP_IoCRegisters.arraySize = m_ImplTypes.Length;
 
             for (int i = 0; i < m_ImplTypes.Length; i++)

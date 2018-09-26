@@ -4,7 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public static partial class Utility
     {

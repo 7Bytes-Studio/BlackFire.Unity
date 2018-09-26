@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public class UIBehaviourEx : UIBehaviour 
 	{

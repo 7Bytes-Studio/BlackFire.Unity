@@ -4,10 +4,10 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
+using BlackFire;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     #region Log
 
@@ -43,7 +43,7 @@ public sealed partial class BlackFire
             default:
                 break;
         }
-        BlackFireFramework.Log.EnLogFileQueue(logMessage);
+        BlackFire.Log.EnLogFileQueue(logMessage);
     }
 
 

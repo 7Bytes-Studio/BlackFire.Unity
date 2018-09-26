@@ -4,13 +4,13 @@
 //Website: http://www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     [InitializeOnLoad]
     public static class GameObjectIconHierachy 
@@ -21,7 +21,7 @@ namespace BlackFireFramework.Editor
             s_HiearchyItemCallback = new EditorApplication.HierarchyWindowItemCallback(DrawHierarchyIcon);
             InitHierachyCallBack();
 
-            var implTyps = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp",typeof(Component));
+            var implTyps = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp",typeof(Component));
 
             for (int i = 0; i < implTyps.Length; i++)
             {

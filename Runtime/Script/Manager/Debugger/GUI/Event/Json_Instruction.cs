@@ -5,7 +5,7 @@
 //----------------------------------------------------
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     [System.Serializable]
 	public sealed class Json_Instruction

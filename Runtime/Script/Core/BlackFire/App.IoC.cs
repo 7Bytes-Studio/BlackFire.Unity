@@ -6,13 +6,12 @@
 
 
 using System;
-using BlackFireFramework;
+using BlackFire;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     [SerializeField] private string[] m_IoCRegisters;
     [SerializeField] private string[] m_AvailableIoCRegisters;
@@ -47,7 +46,7 @@ public sealed partial class BlackFire
         
         for (int i = 0; i < tpList.Count; i++)
         {
-            var ins = BlackFireFramework.Utility.Reflection.New(tpList[i]) as IIoCRegister;
+            var ins = BlackFire.Utility.Reflection.New(tpList[i]) as IIoCRegister;
             ins.OnRegister(IoC);
         }
     }

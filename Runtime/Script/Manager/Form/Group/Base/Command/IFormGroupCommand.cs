@@ -4,12 +4,12 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 组命令。
     /// </summary>
-    public interface IFormGroupCommand:BlackFireFramework.Event.IEventHandler
+    public interface IFormGroupCommand:BlackFire.Event.IEventHandler
     {
 
     }

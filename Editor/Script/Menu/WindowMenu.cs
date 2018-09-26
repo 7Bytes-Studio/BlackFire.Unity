@@ -6,7 +6,7 @@
 
 using UnityEditor;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public static class WindowMenu 
 	{

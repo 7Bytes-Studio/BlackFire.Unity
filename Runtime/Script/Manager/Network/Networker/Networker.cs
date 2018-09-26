@@ -9,7 +9,7 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 网络使用者。

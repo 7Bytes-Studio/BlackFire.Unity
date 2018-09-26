@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public class FormGroup : Organize.Group
     {

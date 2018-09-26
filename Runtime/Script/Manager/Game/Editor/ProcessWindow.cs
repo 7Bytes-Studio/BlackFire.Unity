@@ -4,17 +4,13 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using BlackFireFramework.Game;
-using BlackFireFramework.Unity;
-using NUnit.Framework.Constraints;
+using BlackFire.Unity;
+using BlackFire.Unity.Game;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public sealed class ProcessWindow : EditorWindowBase<ProcessWindow>
     {
@@ -97,12 +93,12 @@ namespace BlackFireFramework.Editor
 
             if (EditorApplication.isPlaying) //运行时。
             {
-                if (null!=BlackFire.Game)
+                if (null!=App.Game)
                 {
                     GUILayout.Label(string.Format("ProcessCount : {0}",m_WindowInfoDic.Count-1));
-                    GUILayout.Label(string.Format("CurrentProcess : {0}",BlackFire.Game.CurrentProcess.Name));
-                    GUILayout.Label(string.Format("LastProcess : {0}",null!=BlackFire.Game.LastProcess?BlackFire.Game.LastProcess.Name:"Null"));
-                    GUILayout.Label(string.Format("ModuleWorkingTime : {0:0.00} s",BlackFire.Game.ProcessModuleWorkingTime));
+                    GUILayout.Label(string.Format("CurrentProcess : {0}",App.Game.CurrentProcess.Name));
+                    GUILayout.Label(string.Format("LastProcess : {0}",null!=App.Game.LastProcess?App.Game.LastProcess.Name:"Null"));
+                    GUILayout.Label(string.Format("ModuleWorkingTime : {0:0.00} s",App.Game.ProcessModuleWorkingTime));
                 }
                 else
                 {
@@ -236,9 +232,9 @@ namespace BlackFireFramework.Editor
         {
             if (EditorApplication.isPlaying) //运行时。
             {
-                if (null!=BlackFire.Game)
+                if (null!=App.Game)
                 {
-                    var processes = BlackFire.Game.GetProcesses();
+                    var processes = App.Game.GetProcesses();
                     for (int i = 0; i < processes.Length; i++)
                     {
 //                    Log.Warn(processes[i].Name);

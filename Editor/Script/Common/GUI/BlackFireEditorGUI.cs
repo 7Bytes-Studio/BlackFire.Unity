@@ -9,7 +9,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     /// <summary>
     /// Sparrow 的Editor GUI辅助类。

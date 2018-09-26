@@ -8,7 +8,7 @@
 
 using UnityEditor;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     /// <summary>
     /// Inspector基类。

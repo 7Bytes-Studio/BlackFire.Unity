@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 支持大文件断点续传的下载处理器。

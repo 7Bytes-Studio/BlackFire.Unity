@@ -7,7 +7,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 逻辑化形体(本质是资产和逻辑结合)。

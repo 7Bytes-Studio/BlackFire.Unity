@@ -6,9 +6,9 @@
 
 using System;
 using System.Collections.Generic;
-using BlackFireFramework.Pattern;
+using BlackFire.Unity.Pattern;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
 	public static class IMVPManagerExtension
 	{

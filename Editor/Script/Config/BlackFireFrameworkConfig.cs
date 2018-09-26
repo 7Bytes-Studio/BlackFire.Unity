@@ -7,7 +7,7 @@
 using UnityEngine;
 
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     /// <summary>
     /// 框架配置文件类。

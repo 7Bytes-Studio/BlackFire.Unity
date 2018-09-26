@@ -4,13 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-
-
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
 	public static class StringExtension
     {

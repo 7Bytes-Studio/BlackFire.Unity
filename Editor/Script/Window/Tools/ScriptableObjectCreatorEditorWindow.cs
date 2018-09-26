@@ -12,7 +12,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public class ScriptableObjectCreatorEditorWindow : EditorWindow
     {

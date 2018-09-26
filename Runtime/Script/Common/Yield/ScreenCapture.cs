@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 屏幕截图 (请在一帧的最后调用)。
@@ -28,7 +28,7 @@ namespace BlackFireFramework.Unity
                 captureRect = new Rect(0f,0f,Screen.width,Screen.height);
             }
             
-            m_Photo = BlackFireFramework.Unity.Utility.Screen.ScreenCapture(captureRect.Value,textureFormat);
+            m_Photo = BlackFire.Unity.Utility.Screen.ScreenCapture(captureRect.Value,textureFormat);
             
             if (null == path)
             {
@@ -45,9 +45,9 @@ namespace BlackFireFramework.Unity
                 
                 switch (imageFormat)
                 {
-                    case ImageFormat.JPG : m_FileSize = BlackFireFramework.Unity.Utility.Texture.ToJPGFile(path,m_Photo,callback);break;
-                    case ImageFormat.PNG : m_FileSize = BlackFireFramework.Unity.Utility.Texture.ToPNGFile(path,m_Photo,callback);break;
-                    case ImageFormat.EXR : m_FileSize = BlackFireFramework.Unity.Utility.Texture.ToEXRFile(path,m_Photo,callback);break;
+                    case ImageFormat.JPG : m_FileSize = BlackFire.Unity.Utility.Texture.ToJPGFile(path,m_Photo,callback);break;
+                    case ImageFormat.PNG : m_FileSize = BlackFire.Unity.Utility.Texture.ToPNGFile(path,m_Photo,callback);break;
+                    case ImageFormat.EXR : m_FileSize = BlackFire.Unity.Utility.Texture.ToEXRFile(path,m_Photo,callback);break;
                     default : break;
                 }
             }

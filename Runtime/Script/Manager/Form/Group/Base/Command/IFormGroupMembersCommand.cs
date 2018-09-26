@@ -4,12 +4,12 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 多UI组员命令(算法:调用实现此接口的任何成员)。
     /// </summary>
-    public interface IFormGroupMembersCommand:BlackFireFramework.Event.IEventHandler
+    public interface IFormGroupMembersCommand:BlackFire.Event.IEventHandler
     {
 
     }

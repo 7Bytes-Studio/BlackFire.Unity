@@ -4,11 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-
-
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerResourceGUI : IDebuggerModuleGUI
     {
@@ -37,15 +35,15 @@ namespace BlackFireFramework.Unity
 
         public void OnModuleGUI()
         {
-            if (null==BlackFire.Resource) return;
+            if (null==App.Resource) return;
 
             GUILayout.Box("Ref Count:".HexColor("green"),GUILayout.ExpandWidth(false));
 
-            if(0<BlackFire.Resource.AssetAgencyCount)
+            if(0<App.Resource.AssetAgencyCount)
                 BlackFireGUI.BoxVerticalLayout(()=> {
                     BlackFireGUI.ScrollView("ResourceRefCountScrollView",id=> {
 
-                        BlackFire.Resource.ForeachAssetAgency(current => {
+                        App.Resource.ForeachAssetAgency(current => {
                             var assetAgency = current.Value;
                             BlackFireGUI.HorizontalLayout(() => {
                                 BlackFireGUI.DrawItem(

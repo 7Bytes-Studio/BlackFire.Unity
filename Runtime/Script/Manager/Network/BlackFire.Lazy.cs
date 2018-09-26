@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static INetworkManager s_Network = null;
     public static INetworkManager Network { get { return s_Network = (s_Network ?? GetManager<INetworkManager>()); } }

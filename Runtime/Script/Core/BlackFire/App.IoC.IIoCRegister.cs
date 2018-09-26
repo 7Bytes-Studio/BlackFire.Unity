@@ -5,7 +5,7 @@
 //----------------------------------------------------
 
 
-using BlackFireFramework;
+using BlackFire;
 
 /// <summary>
 /// IoC注册接口。

@@ -7,7 +7,7 @@
 using System;
 using UnityEngine.SceneManagement;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public class SceneInfo
     {

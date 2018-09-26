@@ -1,6 +1,6 @@
-﻿using BlackFireFramework.Game;
+﻿using BlackFire.Unity.Game;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public interface IGameManager:IManager
     {

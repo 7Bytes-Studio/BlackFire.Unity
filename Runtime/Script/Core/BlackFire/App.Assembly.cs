@@ -4,10 +4,10 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
+using BlackFire;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     #region ExportedAssembly
 
@@ -19,7 +19,7 @@ public sealed partial class BlackFire
     public static string[] ExtendedAssemblies { get { return null!=s_Instance?s_Instance.m_AssemblyList:null; } }
     private static IExportedAssemblyManager m_ExportedAssemblyManager = null;
 
-    private static void StartAssemblyManager(BlackFire instance)
+    private static void StartAssemblyManager(App instance)
     {
         m_ExportedAssemblyManager = (IExportedAssemblyManager)EntityTree.GetEntityInChildren(typeof(IExportedAssemblyManager));
         for (int i = 0; i < ExtendedAssemblies.Length; i++)

@@ -4,12 +4,12 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
-using BlackFireFramework.Unity;
+using BlackFire;
+using BlackFire.Unity;
 using System.Collections.Generic;
 
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static LinkedList<IManager> s_ManagerLinkedList = new LinkedList<IManager>();
 
@@ -33,11 +33,11 @@ public sealed partial class BlackFire
         }
     }
 
-    private static void StartUnityManager(BlackFire instance)
+    private static void StartUnityManager(App instance)
     {
         if (null != instance)
         {
-            BlackFireFramework.Unity.Utility.Transform.TraverseChilds(instance.transform, trans =>
+            BlackFire.Unity.Utility.Transform.TraverseChilds(instance.transform, trans =>
             {
                 var manager = trans.GetComponent<IManager>();
                 if (null!=manager && manager.IsWorking)
@@ -48,11 +48,11 @@ public sealed partial class BlackFire
         }
     }
 
-    private static void ShutdownUnityManager(BlackFire instance)
+    private static void ShutdownUnityManager(App instance)
     {
         if (null != instance)
         {
-            BlackFireFramework.Unity.Utility.Transform.TraverseChilds(instance.transform, trans =>
+            BlackFire.Unity.Utility.Transform.TraverseChilds(instance.transform, trans =>
             {
                 var manager = trans.GetComponent<IManager>();
                 if (null != manager && manager.IsWorking)

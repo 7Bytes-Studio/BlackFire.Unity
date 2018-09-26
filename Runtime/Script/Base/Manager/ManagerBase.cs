@@ -4,13 +4,10 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 管家抽象基类。
@@ -30,7 +27,7 @@ namespace BlackFireFramework.Unity
         void IManager.StartManager()
         {
             //注册进BlackFire管家管理模块。
-            BlackFire.RegisterManager(this);
+            App.RegisterManager(this);
             OnStart();
         }
         private void Update()
@@ -40,7 +37,7 @@ namespace BlackFireFramework.Unity
         void IManager.ShutdownManager()
         {
             //注销BlackFire管家管理模块。
-            BlackFire.UnRegisterManager(this);
+            App.UnRegisterManager(this);
             OnShutdown();
             DestroyImmediate(gameObject);
         }
@@ -48,17 +45,17 @@ namespace BlackFireFramework.Unity
 
         protected T GetModule<T>() where T : IModule
         {
-            return BlackFire.ModuleManager.GetModule<T>();
+            return App.ModuleManager.GetModule<T>();
         }
 
         protected void RegisterModule<T>() where T : IModule
         {
-            BlackFire.ModuleManager.Register<T>();
+            App.ModuleManager.Register<T>();
         }
 
         protected void UnRegisterModule<T>() where T : IModule
         {
-            BlackFire.ModuleManager.UnRegister<T>();
+            App.ModuleManager.UnRegister<T>();
         }
 
         /// <summary>

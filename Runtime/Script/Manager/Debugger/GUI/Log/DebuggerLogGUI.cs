@@ -8,11 +8,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System.IO;
 using System;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerLogGUI : IDebuggerModuleGUI
     {
@@ -77,7 +77,7 @@ namespace BlackFireFramework.Unity
 
             KVSInit();
 
-            BlackFireFramework.Utility.Enum.Foreach<LogLevel>(e => {
+            BlackFire.Utility.Enum.Foreach<LogLevel>(e => {
 
                 m_ToggleLogCountDic.Add(e,0);
             });
@@ -92,7 +92,7 @@ namespace BlackFireFramework.Unity
                 BlackFireGUI.HorizontalLayout(() =>
                 {
                     int i = 0;
-                    BlackFireFramework.Utility.Enum.Foreach<LogLevel>(e => {
+                    BlackFire.Utility.Enum.Foreach<LogLevel>(e => {
 
                         m_ToggleLogResDic[e] = GUILayout.Toggle(m_ToggleLogResDic[e], string.Format("{0}".HexColor(m_LogLevelHexColors[i])+"({1})", e , m_ToggleLogCountDic[e].ToString().HexColor(m_LogLevelHexColors[i++])));
 
@@ -122,7 +122,7 @@ namespace BlackFireFramework.Unity
                     {
                         m_LogInfoLinkedList.Clear();
                         m_CurrentSelectedLogInfo = null;
-                        BlackFireFramework.Utility.Enum.Foreach<LogLevel>(e => {
+                        BlackFire.Utility.Enum.Foreach<LogLevel>(e => {
 
                             m_ToggleLogCountDic[e] = 0;
                         });
@@ -322,7 +322,7 @@ namespace BlackFireFramework.Unity
         {
             #region LogOption
 
-            BlackFireFramework.Utility.Enum.Foreach<LogLevel>(e => {
+            BlackFire.Utility.Enum.Foreach<LogLevel>(e => {
 
                 if (KVS.HasKey<KVSPlayerPrefs>(m_LogOptionHead + e))
                 {
@@ -351,7 +351,7 @@ namespace BlackFireFramework.Unity
 
         private void KVSDestroy()
         {
-            BlackFireFramework.Utility.Enum.Foreach<LogLevel>(e => {
+            BlackFire.Utility.Enum.Foreach<LogLevel>(e => {
                 KVS.SetValue<KVSPlayerPrefs>(m_LogOptionHead + e, m_ToggleLogResDic[e].ToString());
             });
         }

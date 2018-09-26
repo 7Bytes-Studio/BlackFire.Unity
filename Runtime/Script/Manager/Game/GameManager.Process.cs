@@ -4,16 +4,16 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
-using BlackFireFramework.Game;
+using BlackFire.Unity.Game;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// GameManager/Process
@@ -106,13 +106,13 @@ namespace BlackFireFramework.Unity
         /// </summary>
         private void CheckAndAddProcess(Type type,string processName)
         {
-            if (BlackFireFramework.Utility.Reflection.HasConstructor(type,typeof(string)))
+            if (BlackFire.Utility.Reflection.HasConstructor(type,typeof(string)))
             {
-                AddProcess(BlackFireFramework.Utility.Reflection.New(type, processName) as ProcessBase);
+                AddProcess(BlackFire.Utility.Reflection.New(type, processName) as ProcessBase);
             }
             else
             {
-                AddProcess(BlackFireFramework.Utility.Reflection.New(type) as ProcessBase);
+                AddProcess(BlackFire.Utility.Reflection.New(type) as ProcessBase);
             }
         }
 

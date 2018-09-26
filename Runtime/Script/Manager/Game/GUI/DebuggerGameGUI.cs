@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerGameGUI : IDebuggerModuleGUI
     {
@@ -32,7 +32,7 @@ namespace BlackFireFramework.Unity
         private int m_ToggleBarSelect;
         public void OnModuleGUI()
         {
-            if (null == BlackFire.Game) return;
+            if (null == App.Game) return;
 
             BlackFireGUI.VerticalLayout(() => {
 
@@ -45,11 +45,11 @@ namespace BlackFireFramework.Unity
                 BlackFireGUI.BoxVerticalLayout(() => {
 
                     BlackFireGUI.HorizontalLayout(() => {
-                        BlackFire.Game.RunInBackground = GUILayout.Toggle(BlackFire.Game.RunInBackground,"RunInBackground");
+                        App.Game.RunInBackground = GUILayout.Toggle(App.Game.RunInBackground,"RunInBackground");
                     });
                     GUILayout.Space(5);
                     BlackFireGUI.HorizontalLayout(() => {
-                        GUILayout.Label(string.Format("Game Speed : {0:0.00}".HexColor("yellow"), BlackFire.Game.GameSpeed));
+                        GUILayout.Label(string.Format("Game Speed : {0:0.00}".HexColor("yellow"), App.Game.GameSpeed));
                     });
                     BlackFireGUI.HorizontalLayout(() => {
                         m_ToggleBarSelect = GUILayout.Toolbar(m_ToggleBarSelect, new string[]
@@ -63,11 +63,11 @@ namespace BlackFireFramework.Unity
                         //Debug.Log(m_ToggleBarSelect);
                         if (0== m_ToggleBarSelect)
                         {
-                            BlackFire.Game.GameSpeed = GUILayout.HorizontalSlider(BlackFire.Game.GameSpeed, 1f, 100f, GUILayout.ExpandWidth(true));
+                            App.Game.GameSpeed = GUILayout.HorizontalSlider(App.Game.GameSpeed, 1f, 100f, GUILayout.ExpandWidth(true));
                         }
                         else 
                         {
-                            BlackFire.Game.GameSpeed = GUILayout.HorizontalSlider(BlackFire.Game.GameSpeed, 0f, 1f, GUILayout.ExpandWidth(true));
+                            App.Game.GameSpeed = GUILayout.HorizontalSlider(App.Game.GameSpeed, 0f, 1f, GUILayout.ExpandWidth(true));
                         }
                     });
 

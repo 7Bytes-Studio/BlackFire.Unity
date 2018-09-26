@@ -6,7 +6,7 @@
 
 using System;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public sealed class HttpDownloaderProgressEventArgs : EventArgs
     {

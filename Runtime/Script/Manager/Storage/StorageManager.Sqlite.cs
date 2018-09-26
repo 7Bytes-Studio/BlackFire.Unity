@@ -4,10 +4,10 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.DB;
+using BlackFire.Unity.DB;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed partial class StorageManager
     {

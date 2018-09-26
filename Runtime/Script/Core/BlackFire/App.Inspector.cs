@@ -6,11 +6,11 @@
 
 
 using System;
-using BlackFireFramework;
+using BlackFire;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
 #if UNITY_EDITOR
 

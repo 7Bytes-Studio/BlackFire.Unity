@@ -7,7 +7,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 虚拟世界形体。

@@ -6,9 +6,9 @@
 
 
 using System.Text;
-using BlackFireFramework.Network;
+using BlackFire.Unity.Network;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public static class TransportEventArgsExtension 
 	{

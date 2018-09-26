@@ -7,7 +7,7 @@
 using System;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 资源管家。

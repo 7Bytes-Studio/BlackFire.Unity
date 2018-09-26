@@ -7,7 +7,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class FormGroupModule:IFormGroupModule
     {

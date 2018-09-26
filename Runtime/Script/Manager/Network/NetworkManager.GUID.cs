@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Net.NetworkInformation;
 using UnityEngine;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed partial class NetworkManager
     {

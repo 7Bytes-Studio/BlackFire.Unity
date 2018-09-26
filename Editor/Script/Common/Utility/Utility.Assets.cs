@@ -4,10 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using UnityEditor;
-using UnityEngine;
-
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public static partial class Utility
     {

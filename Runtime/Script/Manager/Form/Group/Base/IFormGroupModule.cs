@@ -6,7 +6,7 @@
 
 using System.Collections.Generic;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     
     public delegate void FormCommandCallback<T>(T i) where T:Event.IEventHandler;

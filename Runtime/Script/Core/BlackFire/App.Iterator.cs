@@ -7,19 +7,19 @@
 
 using System;
 using System.Collections;
-using BlackFireFramework;
+using BlackFire;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
 
     private static MonoBehaviour m_Mono;
     private static void SetIterator(MonoBehaviour mono)
     {
         m_Mono = mono;
-        BlackFireFramework.Iterator.IteratorStartCallback = BlackFire_IteratorStartCallback;
-        BlackFireFramework.Iterator.IteratorCancelCallback = BlackFire_IteratorCancelCallback;
+        BlackFire.Iterator.IteratorStartCallback = BlackFire_IteratorStartCallback;
+        BlackFire.Iterator.IteratorCancelCallback = BlackFire_IteratorCancelCallback;
     }
 
 

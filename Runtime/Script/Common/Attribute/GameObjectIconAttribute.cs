@@ -7,7 +7,7 @@
 
 using System;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     [AttributeUsage(AttributeTargets.Class,AllowMultiple = false)]
 	public sealed class GameObjectIconAttribute : Attribute 

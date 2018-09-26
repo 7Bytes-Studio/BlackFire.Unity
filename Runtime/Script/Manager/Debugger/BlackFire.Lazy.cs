@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     private static IDebuggerManager s_Debugger = null;
     public static IDebuggerManager Debugger { get { return s_Debugger = (s_Debugger ?? GetManager<IDebuggerManager>()); } }

@@ -4,9 +4,9 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework;
+using BlackFire;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
     #region Module
 
@@ -14,7 +14,7 @@ public sealed partial class BlackFire
 
     public static IModuleManager ModuleManager { get { return s_ModuleManager; } }
 
-    private static void StartModuleManager(BlackFire instance)
+    private static void StartModuleManager(App instance)
     {
         if (null != instance)
         {

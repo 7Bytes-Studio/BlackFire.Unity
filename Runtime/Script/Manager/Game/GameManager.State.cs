@@ -4,14 +4,14 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
 	public sealed partial class GameManager 
 	{

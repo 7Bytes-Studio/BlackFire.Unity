@@ -13,7 +13,7 @@ using UnityEngine.Profiling;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerProfilerGUI : IDebuggerModuleGUI
     {

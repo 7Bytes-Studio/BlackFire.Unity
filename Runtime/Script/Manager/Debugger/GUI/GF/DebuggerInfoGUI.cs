@@ -13,7 +13,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerInfoGUI : IDebuggerModuleGUI
     {

@@ -5,13 +5,10 @@
 //----------------------------------------------------
 
 
-
-using System.IO;
-using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     public static class BlackFireEditor
 	{
@@ -103,15 +100,15 @@ namespace BlackFireFramework.Editor
             var results = AssetDatabase.FindAssets("Custom");
             if (0 == results.Length)
             {
-                BlackFireFramework.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/BlackFireFramework/Custom");
-                BlackFireFramework.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/BlackFireFramework/Custom/Packages");
+	            BlackFire.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/BlackFireFramework/Custom");
+	            BlackFire.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/BlackFireFramework/Custom/Packages");
                 AssetDatabase.Refresh();
             }
         }
         private static void MakeUserTempFolder()
         {
-            BlackFireFramework.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/../Temp/BlackFireFramework.Temp");
-            BlackFireFramework.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/../Temp/BlackFireFramework.Temp/Packages");
+            BlackFire.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/../Temp/BlackFireFramework.Temp");
+            BlackFire.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/../Temp/BlackFireFramework.Temp/Packages");
         }
 
 
@@ -146,13 +143,13 @@ namespace BlackFireFramework.Editor
         private static string DepthMatchingBlackFireFrameworkPath()
         {
 
-            var results = AssetDatabase.FindAssets("BlackFire");
+            var results = AssetDatabase.FindAssets("App");
             foreach (var guid in results)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
                 if (path.Contains("Runtime") && path.Contains("Script")) //匹配第一个
                 {
-                    return path.Replace("/Runtime/Script/BlackFire.cs", string.Empty);
+                    return path.Replace("/Runtime/Script/App.cs", string.Empty);
                 }
             }
             return string.Empty;

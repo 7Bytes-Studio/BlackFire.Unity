@@ -5,7 +5,7 @@
 //----------------------------------------------------
 
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     using System;
     using UnityEditor;

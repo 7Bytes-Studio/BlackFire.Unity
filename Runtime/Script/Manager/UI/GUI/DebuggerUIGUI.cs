@@ -4,15 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
-
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     public sealed class DebuggerUIGUI : IDebuggerModuleGUI
     {
@@ -42,7 +34,7 @@ namespace BlackFireFramework.Unity
 
         public void OnModuleGUI()
         {
-            if (null==BlackFire.UI) return;
+            if (null==App.UI) return;
         }
         public void OnDestroy()
         {

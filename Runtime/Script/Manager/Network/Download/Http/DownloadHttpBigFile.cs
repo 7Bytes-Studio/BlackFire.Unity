@@ -4,11 +4,11 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Network;
+using BlackFire.Unity.Network;
 using System;
 using UnityEngine.Networking;
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 使用HTTP协议的大文件下载器（支持断点续传）。

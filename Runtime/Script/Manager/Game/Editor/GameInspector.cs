@@ -4,16 +4,14 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFireFramework.Unity;
+using BlackFire.Unity;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using BlackFire.Unity.Game;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
-using BlackFireFramework.Game;
 
-namespace BlackFireFramework.Editor
+namespace BlackFire.Editor
 {
     [CustomEditor(typeof(GameManager))]
     [DisallowMultipleComponent]
@@ -71,7 +69,7 @@ namespace BlackFireFramework.Editor
 
         private void ReflectProcessTypesInfo()
         {
-            m_ImplTypes = BlackFireFramework.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(ProcessBase));
+            m_ImplTypes = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp", typeof(ProcessBase));
             m_SP_AllProcesses.arraySize = m_ImplTypes.Length;
 
             for (int i = 0; i < m_ImplTypes.Length; i++)

@@ -4,27 +4,25 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-
-using BlackFireFramework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed partial class BlackFire
+public sealed partial class App
 {
-    private static BlackFireFramework.Event.IEventHandler[] GetEventHandlersCallback(object root)
+    private static BlackFire.Event.IEventHandler[] GetEventHandlersCallback(object root)
     {
         if (null != root)
         {
-            List<BlackFireFramework.Event.IEventHandler> list = new List<BlackFireFramework.Event.IEventHandler>();
+            List<BlackFire.Event.IEventHandler> list = new List<BlackFire.Event.IEventHandler>();
             Transform current = null;
 
             if (root is GameObject) current = (root as GameObject).transform;
             else if (root is Component) current = (root as Component).transform;
-            else return root is BlackFireFramework.Event.IEventHandler ? new BlackFireFramework.Event.IEventHandler[] { root as BlackFireFramework.Event.IEventHandler } : null;
+            else return root is BlackFire.Event.IEventHandler ? new BlackFire.Event.IEventHandler[] { root as BlackFire.Event.IEventHandler } : null;
              
             while (null != current)
             {
-                var cmp = current.GetComponent<BlackFireFramework.Event.IEventHandler>();
+                var cmp = current.GetComponent<BlackFire.Event.IEventHandler>();
                 if (null != cmp)
                     list.Add(cmp);
                 current = current.parent;

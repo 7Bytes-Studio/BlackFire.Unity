@@ -6,7 +6,7 @@
 
 
 
-namespace BlackFireFramework.Unity
+namespace BlackFire.Unity
 {
     /// <summary>
     /// BlackFire Framework 功能管家接口。
