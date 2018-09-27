@@ -45,15 +45,22 @@ public sealed partial class App : MonoBehaviour
     private void Awake()
     {
         if(m_DontDestroy)
-            DontDestroyOnLoad();
+            DontDestroyOnLoad();            
+    }
+
+    /// <summary>
+    /// 初始化（只执行一次）。
+    /// </summary>
+    private void Init()
+    {
         SetIterator(this);
         StartIoC();
         StartAssemblyManager(this);
         StartModuleManager(this);
         StartUnityManager(this);
-
     }
-
+    
+    
     /// <summary>
     /// 轮询事件。
     /// </summary>
@@ -67,6 +74,8 @@ public sealed partial class App : MonoBehaviour
     /// </summary>
     private void OnDestroy()
     {
+        if (!this.Equals(s_Instance)) return;
+        
         ShutdownAssemblyManager();
         ShutdownUnityManager(this);
 
@@ -78,6 +87,8 @@ public sealed partial class App : MonoBehaviour
         }
     }
 
+
+
     /// <summary>
     /// 过场景不销毁。
     /// </summary>
@@ -87,6 +98,7 @@ public sealed partial class App : MonoBehaviour
         {
             s_Instance = this;
             DontDestroyOnLoad(gameObject);
+            Init();
         }
         else
         {
