@@ -21,10 +21,19 @@ namespace BlackFire.Unity
 	{
         [SerializeField] private string m_IUIEventDataHelperTypeFullName = string.Empty;
 
+		private IUIEventModule m_UIEventModule = new UIEventModule();
+		
+		public IUIEventDataHelper UIEventDataHelper
+		{
+			get { return m_UIEventModule.UIEventDataHelper; }
+		}
+		
 		protected override void OnStart()
         {
             base.OnStart();
+	        m_UIEventModule.UIEventDataHelper = (IUIEventDataHelper)gameObject.AddComponent( Type.GetType(m_IUIEventDataHelperTypeFullName) );
         }
+
 
 	}
 }
