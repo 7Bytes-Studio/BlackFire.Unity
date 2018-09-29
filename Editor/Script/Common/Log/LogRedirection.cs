@@ -20,8 +20,8 @@ namespace BlackFire.Editor
     {
         private static readonly Regex s_LogRegex = new Regex(@" \(at (.+)\:(\d+)\)\r?\n");
 
-        private const string StackTraceContainsString = "BlackFire:LogCallback";
-        private const string TargetScriptsFileFullName = "BlackFire.Log.cs";
+        private const string StackTraceContainsString = "App:LogCallback";
+        private const string TargetScriptsFileFullName = "App.Log.cs";
         private const string CallbackScriptsFileFullName = "Log.cs";
 
         [OnOpenAsset(0)]
