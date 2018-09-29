@@ -4,6 +4,8 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
+using System.Net;
+
 namespace BlackFire.Unity
 {
     public class FormGroupMember : Organize.GroupMember
@@ -15,21 +17,41 @@ namespace BlackFire.Unity
         
         protected override bool HandleCommand<T>(Organize.CommandCallback<T> commandCallback)
         {
-            Log.Info(null!=Form && Form is T);
-            Log.Info(null!=Form && Form is LogicalForm && (Form as LogicalForm).Logic is T);
+
             
-            if (null!=Form && Form is T)
+            
+            if (null==Form)
             {
-                commandCallback.Invoke((T)(object)Form);
-                return true;
+                goto jump_return_false;
             }
 
-            if (null!=Form && Form is LogicalForm && (Form as LogicalForm).Logic is T)
-            {                
-                commandCallback.Invoke((T)(object)(Form as LogicalForm).Logic);
+            T @interface = default(T);
+            
+            if (Form is Asset)
+            {
+                var target = Form.GetComponent<LogicalForm>();
+                if (null!=target)
+                {
+                    @interface=(T)(object)target;
+                }
+            }
+            else if (Form is T)
+            {
+                @interface=(T)(object)Form;
+            }
+            else if (Form is LogicalForm && (Form as LogicalForm).Logic is T)
+            {     
+                @interface=(T)(object)(Form as LogicalForm).Logic;
+            }
+
+
+            if (null!=@interface)
+            {
+                commandCallback.Invoke(@interface);
                 return true;
             }
             
+jump_return_false:
             return false;
         }
     }

@@ -21,7 +21,7 @@ namespace BlackFire.Unity
                 var members = AcquirAllGroupMembers();
                 foreach (var member in members)
                 {
-                    Log.Info(member.Name+"  "+member.Id);
+//                    Log.Info(member.Name+"  "+member.Id);
 
                     var result = Organize.ExecuteCommand(this.Id, member.Id, commandCallback, false);
                     if (result)
