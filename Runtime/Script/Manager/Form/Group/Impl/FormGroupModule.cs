@@ -21,9 +21,25 @@ namespace BlackFire.Unity
             return Organize.GetGroupId(formGroupName);
         }
 
-        public bool JoinFormGroup(long groupId, FormGroupMember formGroupMember, int groupMemberWeight)
+        public bool CreateFormGroupMember(Form form,long id,string name)
         {
-            return Organize.Join(groupId, formGroupMember, groupMemberWeight);
+            try
+            {
+                Organize.CreateMember<FormGroupMember>(id,0,name);
+                var member = Organize.GetGroupMember<FormGroupMember>(id);
+                member.Form = form;
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
+        }
+
+        public bool JoinFormGroup(long groupId, long formGroupMemberId, int groupMemberWeight)
+        {
+            return Organize.Join(groupId, Organize.GetGroupMember(formGroupMemberId), groupMemberWeight);
         }
 
         public bool LeaveFormGroup(long groupId, long formGroupMemberId)

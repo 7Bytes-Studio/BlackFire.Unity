@@ -53,10 +53,14 @@ namespace BlackFire.Unity
 				ins.GroupName = groupName;
 				ins.GroupId = groupId;
 				ins.Id = id;
-				m_AssetDic.Add(guid,ins);
 
-				m_FormGroupModule.JoinFormGroup(groupId,new FormGroupMember(ins,id,name),weight);
-				
+				if (!m_FormGroupModule.CreateFormGroupMember(ins,id,name))
+				{
+					return null;
+				}
+
+				m_FormGroupModule.JoinFormGroup(groupId,id,weight);
+				m_AssetDic.Add(guid,ins);
 				return ins;
 			}
 			return m_AssetDic[guid];

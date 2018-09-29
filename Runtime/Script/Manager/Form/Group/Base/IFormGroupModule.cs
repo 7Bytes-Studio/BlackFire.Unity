@@ -28,6 +28,15 @@ namespace BlackFire.Unity
         bool CreateFormGroup<T>(long groupId,string groupName,int groupWeight) where T : FormGroup;
 
         /// <summary>
+        /// 创建组成员。
+        /// </summary>
+        /// <param name="form">形体。</param>
+        /// <param name="id">组成员Id。</param>
+        /// <param name="name">组成员名字。</param>
+        /// <returns>是否创建成功。</returns>
+        bool CreateFormGroupMember(Form form, long id, string name);
+        
+        /// <summary>
         /// 查询小组Id。
         /// </summary>
         /// <param name="formGroupName">小组名。</param>
@@ -38,10 +47,10 @@ namespace BlackFire.Unity
         /// 加入组。
         /// </summary>
         /// <param name="groupId">组Id。</param>
-        /// <param name="formGroupMember">组成员。</param>
+        /// <param name="formGroupMemberId">组成员Id。</param>
         /// <param name="groupMemberWeight">组成员权重。</param>
         /// <returns>是否加入成功。</returns>
-        bool JoinFormGroup(long groupId,FormGroupMember formGroupMember, int groupMemberWeight);
+        bool JoinFormGroup(long groupId,long formGroupMemberId, int groupMemberWeight);
         
         /// <summary>
         /// 离开组。

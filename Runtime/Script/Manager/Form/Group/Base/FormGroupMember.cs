@@ -8,16 +8,8 @@ namespace BlackFire.Unity
 {
     public class FormGroupMember : Organize.GroupMember
     {
-        public FormGroupMember(Form form,long id,string name)
-        {
-            Form = form;
-            Id = id;
-            Name = name;
-        }
         
-        
-        
-        public Form Form { get; private set; }
+        public Form Form { get; internal set; }
 
 
         
