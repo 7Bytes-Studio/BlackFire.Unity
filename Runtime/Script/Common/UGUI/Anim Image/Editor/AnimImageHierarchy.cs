@@ -43,6 +43,7 @@ namespace BlackFire.Unity.Editor
 		{
 		    var animImage = new GameObject("Anim Image",typeof(AnimImage));
 			animImage.transform.SetParent(pTf);
+			animImage.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
 		}
 
 	}

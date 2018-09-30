@@ -13,7 +13,7 @@ namespace BlackFire.Unity
     /// 资源管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Resource")]
+    [AddComponentMenu("BlackFire/Manager/Resource")]
     public sealed partial class ResourceManager : ManagerBase ,IResourceManager
 	{
         protected override void OnStart()

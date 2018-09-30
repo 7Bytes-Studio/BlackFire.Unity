@@ -16,7 +16,7 @@ namespace BlackFire.Unity
     /// UI管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/UI")]
+    [AddComponentMenu("BlackFire/Manager/UI")]
     public sealed partial class UIManager : ManagerBase,IUIManager
 	{
         [SerializeField] private string m_IUIEventDataHelperTypeFullName = string.Empty;

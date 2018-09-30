@@ -19,7 +19,7 @@ namespace BlackFire.Unity
     /// MVP模式管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/MVP")]
+    [AddComponentMenu("BlackFire/Manager/MVP")]
 	public sealed partial class MVPManager : ManagerBase, IMVPManager
     {
 

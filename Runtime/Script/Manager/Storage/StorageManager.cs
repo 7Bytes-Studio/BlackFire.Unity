@@ -13,7 +13,7 @@ namespace BlackFire.Unity
     /// 存储管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Storage")]
+    [AddComponentMenu("BlackFire/Manager/Storage")]
     public sealed partial class StorageManager : ManagerBase, IStorageManager
     {
         private ISqliteModule m_SqliteModule = null;

@@ -4,17 +4,18 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace BlackFire.Unity
 {
-    [AddComponentMenu("UI/Image", 11)]
+    [AddComponentMenu("BlackFire/UI/Anim Image", 11)]
     public sealed class AnimImage : MaskableGraphic
     {
-
         public AnimImage()
         {
             useLegacyMeshGeneration = false;
@@ -33,7 +34,35 @@ namespace BlackFire.Unity
             get { return m_Rows; }
             set { m_Rows = value; }
         }
+
+
+        public float Width
+        {
+            get
+            {
+                if (0==m_Cols)
+                {
+                    return 1f;
+                }
+                return 1f / m_Cols;
+            }
+        }
         
+        public float Height
+        {
+            get
+            {
+                if (0==m_Rows)
+                {
+                    return 1f;
+                }
+                return 1f / m_Rows;
+            }
+        }
+        
+        
+
+
         [SerializeField] private Vector2 m_UV0 = new Vector2(0.0f,0.0f);
         [SerializeField] private Vector2 m_UV1 = new Vector2(0.0f,1.0f);
         [SerializeField] private Vector2 m_UV2 = new Vector2(1.0f,1.0f);
@@ -60,8 +89,8 @@ namespace BlackFire.Unity
         {
             if (0==m_Rows || 0==m_Cols) return;
             
-            var x = 1f/m_Cols;
-            var y = 1f/m_Rows;
+            var x = Width;
+            var y = Height;
             
             m_UIUVList.Clear();
             for (int i = 0; i < m_Rows; i++)
@@ -145,8 +174,8 @@ namespace BlackFire.Unity
         public override void SetNativeSize()
         {
             if (null==m_Sprite) return;
-            float x = (m_Sprite.rect.width / pixelsPerUnit)*(1f/m_Cols);
-            float y = (m_Sprite.rect.height / pixelsPerUnit)*(1f/m_Rows);
+            float x = (m_Sprite.rect.width / pixelsPerUnit)*Width;
+            float y = (m_Sprite.rect.height / pixelsPerUnit)*Height;
             rectTransform.anchorMax = rectTransform.anchorMin;
             rectTransform.sizeDelta = new Vector2(x, y);
             SetAllDirty();
@@ -158,6 +187,22 @@ namespace BlackFire.Unity
         {
             get { return m_Skip; }
             set { m_Skip = value; }
+        }
+
+        [SerializeField] private bool m_Loop = true;
+        private bool m_HasFinishedFlag = false;
+        
+        [Serializable] public class HasFinishedUnityEvent:UnityEvent<object,object>
+        {
+            
+        }
+
+        [SerializeField] private HasFinishedUnityEvent m_HasFinished = null;
+
+        public HasFinishedUnityEvent HasFinished
+        {
+            get { return m_HasFinished; }
+            set { m_HasFinished = value; }
         }
 
         protected override void OnPopulateMesh(VertexHelper toFill)
@@ -184,9 +229,28 @@ namespace BlackFire.Unity
 
             if (null==uiuv)
             {
-                var i = m_Index++ % (m_UIUVList.Count-m_Skip);
-                if ( 1<m_Index && 0==i)m_Index = 0;
-                uiuv = m_UIUVList[i];
+
+                if (!m_HasFinishedFlag)
+                {
+                    var i = m_Index++ % (m_UIUVList.Count-m_Skip);
+                    if (1 < m_Index && 0 == i)
+                    {
+                        m_Index = 0;
+                        if (!m_Loop)
+                        {
+                            m_HasFinishedFlag = true;
+                            if (null!=m_HasFinished)
+                            {
+                                m_HasFinished.Invoke(this, null);
+                            }
+                        }
+                    }
+                    uiuv = m_UIUVList[i];
+                }
+                else
+                {
+                    uiuv = m_UIUVList[m_UIUVList.Count-m_Skip-1];
+                }
             }
             
             toFill.AddVert(new Vector3(vector4.x, vector4.y), color, uiuv.UV0);

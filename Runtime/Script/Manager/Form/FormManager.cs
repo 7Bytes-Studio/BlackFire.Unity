@@ -24,7 +24,7 @@ namespace BlackFire.Unity
     /// Form管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Form")]
+    [AddComponentMenu("BlackFire/Manager/Form")]
     public sealed partial class FormManager : ManagerBase, IFormManager
 	{
 

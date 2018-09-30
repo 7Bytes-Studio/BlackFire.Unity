@@ -13,7 +13,7 @@ namespace BlackFire.Unity
     /// 网络管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Network")]
+    [AddComponentMenu("BlackFire/Manager/Network")]
     public sealed partial class NetworkManager : ManagerBase,INetworkManager
     {
         private IDownloadModule m_DownloadModule = null;

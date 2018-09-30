@@ -15,7 +15,7 @@ namespace BlackFire.Unity
     /// 游戏轮询委托管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Loop")]
+    [AddComponentMenu("BlackFire/Manager/Loop")]
     public sealed class LoopManager : ManagerBase, ILoopManager
     {
         #region Editor

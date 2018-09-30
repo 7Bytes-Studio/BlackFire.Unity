@@ -18,7 +18,7 @@ namespace BlackFire.Unity
     /// 游戏管家。
     /// </summary>
     [DisallowMultipleComponent]
-    [AddComponentMenu("BlackFire/Game")]
+    [AddComponentMenu("BlackFire/Manager/Game")]
 	public sealed partial class GameManager : ManagerBase,IGameManager
     {
 

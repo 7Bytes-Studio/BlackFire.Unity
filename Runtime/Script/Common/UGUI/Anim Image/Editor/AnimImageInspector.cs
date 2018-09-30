@@ -19,6 +19,8 @@ namespace BlackFire.Unity.Editor
 		private SerializedProperty m_SP_Fps;
 		private SerializedProperty m_SP_Skip;
 		private SerializedProperty m_SP_RaycastTarget;
+		private SerializedProperty m_SP_Loop;
+		private SerializedProperty m_SP_HasFinished;
 
 		protected override void OnEnable()
 		{
@@ -29,13 +31,15 @@ namespace BlackFire.Unity.Editor
 			m_SP_Fps = serializedObject.FindProperty("m_Fps");
 			m_SP_Skip = serializedObject.FindProperty("m_Skip");
 			m_SP_RaycastTarget = serializedObject.FindProperty("m_RaycastTarget");
+			m_SP_Loop = serializedObject.FindProperty("m_Loop");
+			m_SP_HasFinished = serializedObject.FindProperty("m_HasFinished");
 		}
 
 		public override void OnInspectorGUI()
 		{
-			AnimImage t = (AnimImage) target;
+			var t = (AnimImage) target;
 			
-			EditorGUILayout.Space();
+			GUILayout.Space(10);
 
 			BlackFireEditorGUI.BoxVerticalLayout(()=>
 			{
@@ -46,7 +50,8 @@ namespace BlackFire.Unity.Editor
 					EditorGUILayout.PropertyField(m_SP_Rows);
 					EditorGUILayout.PropertyField(m_SP_Cols);
 					EditorGUILayout.PropertyField(m_SP_Skip);
-					EditorGUILayout.PropertyField(m_SP_Fps);
+					EditorGUILayout.PropertyField(m_SP_Fps);	
+					EditorGUILayout.PropertyField(m_SP_Loop);
 				}
 				
 				EditorGUILayout.PropertyField(m_SP_RaycastTarget);
@@ -63,18 +68,20 @@ namespace BlackFire.Unity.Editor
 							}
 						});
 				}
-
-				if (null == t.Sprite)
-				{
-					m_SP_Rows.intValue = 0;
-					m_SP_Cols.intValue = 0;
-					m_SP_Skip.intValue = 0;
-					m_SP_Fps.floatValue = 60f;
-				}
+//
+//				if (null == t.Sprite)
+//				{
+//					m_SP_Rows.intValue = 0;
+//					m_SP_Cols.intValue = 0;
+//					m_SP_Skip.intValue = 0;
+//					m_SP_Fps.floatValue = 60f;
+//				}
 				
 			});
 			
-
+				
+			GUILayout.Space(10);
+			EditorGUILayout.PropertyField(m_SP_HasFinished);
 			
 			serializedObject.ApplyModifiedProperties();
 		}
