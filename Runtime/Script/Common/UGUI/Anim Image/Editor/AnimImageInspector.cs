@@ -17,7 +17,8 @@ namespace BlackFire.Unity.Editor
 		private SerializedProperty m_SP_Cols;
 		private SerializedProperty m_SP_Sprite;
 		private SerializedProperty m_SP_Fps;
-		private SerializedProperty m_SP_Skip;
+		private SerializedProperty m_SP_Start;
+		private SerializedProperty m_SP_End;
 		private SerializedProperty m_SP_RaycastTarget;
 		private SerializedProperty m_SP_Loop;
 		private SerializedProperty m_SP_HasFinished;
@@ -29,7 +30,8 @@ namespace BlackFire.Unity.Editor
 			m_SP_Cols = serializedObject.FindProperty("m_Cols");
 			m_SP_Sprite = serializedObject.FindProperty("m_Sprite");
 			m_SP_Fps = serializedObject.FindProperty("m_Fps");
-			m_SP_Skip = serializedObject.FindProperty("m_Skip");
+			m_SP_Start = serializedObject.FindProperty("m_Start");
+			m_SP_End = serializedObject.FindProperty("m_End");
 			m_SP_RaycastTarget = serializedObject.FindProperty("m_RaycastTarget");
 			m_SP_Loop = serializedObject.FindProperty("m_Loop");
 			m_SP_HasFinished = serializedObject.FindProperty("m_HasFinished");
@@ -49,7 +51,8 @@ namespace BlackFire.Unity.Editor
 				{
 					EditorGUILayout.PropertyField(m_SP_Rows);
 					EditorGUILayout.PropertyField(m_SP_Cols);
-					EditorGUILayout.PropertyField(m_SP_Skip);
+					EditorGUILayout.PropertyField(m_SP_Start);
+					EditorGUILayout.PropertyField(m_SP_End);
 					EditorGUILayout.PropertyField(m_SP_Fps);	
 					EditorGUILayout.PropertyField(m_SP_Loop);
 				}
@@ -68,7 +71,7 @@ namespace BlackFire.Unity.Editor
 							}
 						});
 				}
-//
+
 //				if (null == t.Sprite)
 //				{
 //					m_SP_Rows.intValue = 0;

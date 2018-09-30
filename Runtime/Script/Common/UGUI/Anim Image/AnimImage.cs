@@ -14,6 +14,7 @@ using UnityEngine.UI;
 namespace BlackFire.Unity
 {
     [AddComponentMenu("BlackFire/UI/Anim Image", 11)]
+    [ExecuteInEditMode]
     public sealed class AnimImage : MaskableGraphic
     {
         public AnimImage()
@@ -77,12 +78,53 @@ namespace BlackFire.Unity
         {
             base.OnValidate();
             Init_UIUV();
+            Init_FramePosition();
         }
 
         protected override void Awake()
         {
             base.Awake();
             Init_UIUV();
+            Init_FramePosition();
+        }
+
+        private void Init_FramePosition()
+        {
+            m_Index = m_Start;
+
+            if (m_Start>=m_UIUVList.Count)
+            {
+                m_Start = m_UIUVList.Count - 1;
+            }
+
+            if (m_End>=m_UIUVList.Count)
+            {
+                m_End = m_UIUVList.Count - 1;
+            }
+            
+            if (m_End<=m_Start && 0<m_End && 0<m_Start)
+            {
+                m_End = m_Start;
+            }
+
+            if (0>m_End)
+            {
+                m_End = m_UIUVList.Count + m_End;
+                if (0>m_End)
+                {
+                    m_End = 0;
+                }
+            }
+            
+            if (0>m_Start)
+            {
+                m_Start = m_UIUVList.Count + m_Start;
+                if (0>m_Start)
+                {
+                    m_Start = 0;
+                }
+            }
+            
         }
 
         private void Init_UIUV()
@@ -118,7 +160,7 @@ namespace BlackFire.Unity
         
         private float m_Tmp = 0f;
         private void Update()
-        {
+        {            
             if (0!=m_UIUVList.Count && 0!=m_Fps)
             {
                 if ((m_Tmp+=Time.deltaTime)>=(1f/m_Fps))
@@ -182,11 +224,19 @@ namespace BlackFire.Unity
         }
 
         private int m_Index = 0;
-        [SerializeField] private int m_Skip = 0;
-        public int Skip
+        
+        [SerializeField] private int m_Start = 0;
+        public int Start
         {
-            get { return m_Skip; }
-            set { m_Skip = value; }
+            get { return m_Start; }
+            set { m_Start = value; }
+        }
+        
+        [SerializeField] private int m_End = 0;
+        public int End
+        {
+            get { return m_End; }
+            set { m_End = value; }
         }
 
         [SerializeField] private bool m_Loop = true;
@@ -205,6 +255,8 @@ namespace BlackFire.Unity
             set { m_HasFinished = value; }
         }
 
+        
+        
         protected override void OnPopulateMesh(VertexHelper toFill)
         {
 
@@ -224,18 +276,28 @@ namespace BlackFire.Unity
             if (!EditorApplication.isPlaying)
             {
                 uiuv = m_UIUVList[0];
-            }
+            }            
 #endif
 
-            if (null==uiuv)
+            if (null==uiuv) //在运行时 
             {
-
                 if (!m_HasFinishedFlag)
                 {
-                    var i = m_Index++ % (m_UIUVList.Count-m_Skip);
-                    if (1 < m_Index && 0 == i)
+                    if (m_Start==m_End) //如果帧开始和帧结束在同一个游标。
                     {
-                        m_Index = 0;
+                        m_HasFinishedFlag = true;
+                        if (null!=m_HasFinished)
+                        {
+                            m_HasFinished.Invoke(this, null);
+                        }
+                        uiuv = m_UIUVList[m_End];
+                    }
+                    
+                    var i = m_Index++ % (m_End+1);
+                    if (m_Start+1 < m_Index && 0 == i)
+                    {
+                        m_Index = m_Start;
+                        i = m_Start;
                         if (!m_Loop)
                         {
                             m_HasFinishedFlag = true;
@@ -245,11 +307,13 @@ namespace BlackFire.Unity
                             }
                         }
                     }
+
                     uiuv = m_UIUVList[i];
+//                    Debug.Log(i);
                 }
                 else
                 {
-                    uiuv = m_UIUVList[m_UIUVList.Count-m_Skip-1];
+                    uiuv = m_UIUVList[m_End];
                 }
             }
             
@@ -262,9 +326,21 @@ namespace BlackFire.Unity
             toFill.AddTriangle(2, 3, 0);
             
         }
+
     }
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public sealed class UIUV
     {
         public Vector2 UV0;
