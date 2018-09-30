@@ -11,7 +11,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     [CustomEditor(typeof(App))]
     public sealed class AppInspector : InspectorBase

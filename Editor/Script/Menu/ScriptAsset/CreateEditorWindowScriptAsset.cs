@@ -6,7 +6,7 @@
 
 using UnityEditor;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     class CreateEditorWindowScriptAsset : EndNameEditActionBase
     {

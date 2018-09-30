@@ -11,7 +11,7 @@ using UnityEditor.Callbacks;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     /// <summary>
     /// 日志重定向相关的实用函数。

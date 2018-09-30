@@ -4,7 +4,7 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     /// <summary>
     /// Inspector的设置类。

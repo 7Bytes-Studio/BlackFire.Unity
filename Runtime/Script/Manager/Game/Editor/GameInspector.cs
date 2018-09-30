@@ -4,14 +4,13 @@
 //Website: www.0x69h.com
 //----------------------------------------------------
 
-using BlackFire.Unity;
 using System;
 using System.Collections.Generic;
 using BlackFire.Unity.Game;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     [CustomEditor(typeof(GameManager))]
     [DisallowMultipleComponent]

@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     [InitializeOnLoad]
     public static class GameObjectIconHierachy 

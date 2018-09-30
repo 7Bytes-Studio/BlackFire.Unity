@@ -10,7 +10,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public static partial class Utility
     {

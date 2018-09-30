@@ -10,7 +10,7 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public sealed class DevelopmentSceneWindow : EditorWindowBase<DevelopmentSceneWindow>
     {

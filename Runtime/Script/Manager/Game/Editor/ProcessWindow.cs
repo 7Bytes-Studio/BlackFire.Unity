@@ -10,7 +10,7 @@ using BlackFire.Unity.Game;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public sealed class ProcessWindow : EditorWindowBase<ProcessWindow>
     {

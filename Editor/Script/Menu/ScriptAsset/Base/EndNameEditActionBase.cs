@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEditor.ProjectWindowCallback;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public abstract class EndNameEditActionBase: EndNameEditAction
     {

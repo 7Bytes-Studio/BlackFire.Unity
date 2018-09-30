@@ -8,7 +8,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public static class BlackFireEditor
 	{

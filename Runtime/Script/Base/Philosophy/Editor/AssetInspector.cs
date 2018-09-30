@@ -8,7 +8,7 @@ using BlackFire.Unity;
 using UnityEditor;
 using UnityEngine;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     [CustomEditor(typeof(Asset))]
     [DisallowMultipleComponent]

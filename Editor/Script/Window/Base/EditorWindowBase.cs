@@ -6,7 +6,7 @@
 
 using UnityEditor;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public abstract class EditorWindowBase<T>: EditorWindow where T: EditorWindow
     {

@@ -8,7 +8,7 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace BlackFire.Editor
+namespace BlackFire.Unity.Editor
 {
     public sealed class HttpDownloader
     {
