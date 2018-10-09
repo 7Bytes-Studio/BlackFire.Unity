@@ -56,7 +56,7 @@ namespace BlackFire.Unity
             
 #endif  
             /// <summary>
-            /// 打开Win32文件对话框。
+            /// 打开Win32文件对话框。(编辑器环境下切勿在运行对话框实例时切换编辑器状态，否则会报工作目录重定向异常并强制退出。)
             /// </summary>
             /// <param name="title">对话框标题。</param>
             /// <param name="filters">过滤文件扩展名。 用例 : new string[]{ "images","*.jpg;*.png" }</param>
@@ -73,7 +73,18 @@ namespace BlackFire.Unity
                 for (int i = 0; i < filters.Length; i++)
                 {
                     if (i==(filters.Length-1)) break;
-                    cfilter += string.Format("{0}\0{1}\0",filters[i],filters[i+1]);
+
+                    var pam = string.Empty;
+                    if (filters[i+1].Contains(","))
+                    {
+                        var s = filters[i + 1].Split(',');
+                        foreach (var item in s)
+                        {
+                            pam+=String.Format("*.{0};",item);
+                        }
+                    }
+                    
+                    cfilter += string.Format("{0}\0{1}\0",filters[i],pam);
                 }
                 
                 ofn.filter = cfilter??"All Files\0*.*\0\0";
