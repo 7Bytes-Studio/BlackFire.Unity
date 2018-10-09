@@ -51,6 +51,9 @@ namespace BlackFire.Unity.Editor
 				{
 					EditorGUILayout.PropertyField(m_SP_Rows);
 					EditorGUILayout.PropertyField(m_SP_Cols);
+					GUI.color = Color.cyan;
+					EditorGUILayout.HelpBox(string.Format("Total {0} frames",m_SP_Rows.intValue*m_SP_Cols.intValue),MessageType.None);
+					GUI.color = Color.white;
 					EditorGUILayout.PropertyField(m_SP_Start);
 					EditorGUILayout.PropertyField(m_SP_End);
 					EditorGUILayout.PropertyField(m_SP_Fps);	
