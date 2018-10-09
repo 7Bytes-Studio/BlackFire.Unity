@@ -73,14 +73,15 @@ namespace BlackFire.Unity
         private List<UIUV> m_UIUVList = new List<UIUV>();
 
         [SerializeField] private Texture m_Texture;
-        
+
+#if UNITY_EDITOR
         protected override void OnValidate()
         {
             base.OnValidate();
             Init_UIUV();
             Init_FramePosition();
         }
-
+#endif
         protected override void Awake()
         {
             base.Awake();
