@@ -93,6 +93,11 @@ namespace BlackFire.Unity
 				m_DisplayDialogMsg
 			);
 			photoPath = EditorUtility.OpenFilePanelWithFilters(m_OpenFileTitle, "", m_OpenFileFilters);
+
+			photoPath = Utility.Win32.OpenFileDialogWin32(m_OpenFileTitle);
+
+#elif UNITY_STANDALONE_WIN
+
 #elif UNITY_ANDROID
 //			AndroidImageSupplier imageSupplier = new AndroidImageSupplier();
 //			yield return imageSupplier.GetImageFromStorageAsync();
@@ -111,7 +116,7 @@ namespace BlackFire.Unity
 
 		private void FileDialogResult(string fileUrl)
 		{
-			Debug.Log(fileUrl);
+			//Debug.Log(fileUrl);
 			StartCoroutine(LoadFile(fileUrl));
 		}
 
