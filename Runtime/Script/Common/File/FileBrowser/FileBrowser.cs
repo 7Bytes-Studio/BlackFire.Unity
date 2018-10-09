@@ -14,7 +14,7 @@ namespace BlackFire.Unity
 {
 	public class FileBrowser : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 	{
-		public System.Func<byte[], IEnumerator> fileHandler;
+		public System.Func<byte[], IEnumerator> FileHandler;
 
 #if UNITY_WEBGL
 		[DllImport("__Internal")]
@@ -107,8 +107,8 @@ namespace BlackFire.Unity
 			if (string.IsNullOrEmpty(photoPath))
 				yield break;
 			byte[] bytes = File.ReadAllBytes(photoPath);
-			if (fileHandler != null)
-				yield return fileHandler(bytes);
+			if (FileHandler != null)
+				yield return FileHandler(bytes);
 		}
 
 		private void FileDialogResult(string fileUrl)
@@ -121,8 +121,8 @@ namespace BlackFire.Unity
 		{
 			var www = new WWW(url);
 			yield return www;
-			if (fileHandler != null)
-				StartCoroutine(fileHandler(www.bytes));
+			if (FileHandler != null)
+				StartCoroutine(FileHandler(www.bytes));
 		}
 	}
 }
