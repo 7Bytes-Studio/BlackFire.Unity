@@ -6,6 +6,7 @@
 
 using System;
 using System.Net;
+using UnityEngine.Networking;
 
 namespace BlackFire.Unity
 {
@@ -13,37 +14,79 @@ namespace BlackFire.Unity
     {
         public static class Date
         {
+
+            public static string NetDateAPI = @"https://www.baidu.com";
+            
             /// <summary>  
-            /// 获取网络日期时间  
+            /// 获取网络日期时间。 
             /// </summary>  
-            /// <returns>网络时间字符串。</returns>  
-            public static string AcquireNetDateTime()  
+            public static void AcquireNetDateTime(Action<string> netDateCallback,Action networkErrorCallback=null)  
             {  
-                WebRequest request = null;  
-                WebResponse response = null;  
-                WebHeaderCollection headerCollection = null;  
-                string datetime = string.Empty;  
-                try  
-                {  
-                    request = WebRequest.Create("https://www.baidu.com");  
-                    request.Timeout = 3000;  
-                    request.Credentials = CredentialCache.DefaultCredentials;  
-                    response = (WebResponse)request.GetResponse();  
-                    headerCollection = response.Headers;  
-                    foreach (var h in headerCollection.AllKeys)  
-                    { if (h == "Date") { datetime = headerCollection[h]; break; } }  
-                    return datetime;  
-                }  
-                catch (Exception) { return datetime; }  
-                finally  
-                {  
-                    if (request != null)  
-                    { request.Abort(); }  
-                    if (response != null)  
-                    { response.Close(); }  
-                    if (headerCollection != null)  
-                    { headerCollection.Clear(); }  
-                }  
+                
+                UnityWebRequest uwr = new UnityWebRequest(NetDateAPI);
+                var ao = uwr.SendWebRequest();
+                ao.completed += a =>
+                {
+                    if (null!=netDateCallback)
+                    {
+                        if (!uwr.isNetworkError && !uwr.isHttpError)
+                        {
+                            var headerDic = uwr.GetResponseHeaders();
+                            foreach (var kv in headerDic)  
+                            { 
+                                //Log.Info(kv.Key);
+                                if (kv.Key == "Date")
+                                {
+                                    netDateCallback.Invoke(kv.Value);
+                                    break;
+                                }
+                            } 
+                        }
+                        else
+                        {
+                            if (null!=networkErrorCallback)
+                            {
+                                networkErrorCallback.Invoke();
+                            }
+                        }
+                    }
+                };
+                
+            }
+            
+            /// <summary>
+            /// GMT转化为本地日期。
+            /// </summary>
+            /// ex "Thu, 29 Sep 2014 07:04:39 GMT"
+            public static DateTime GMT2Local(string gmt)
+            {
+                DateTime dt = DateTime.MinValue;
+                try
+                {
+                    string pattern = "";
+                    if (gmt.IndexOf("+0") != -1)
+                    {
+                        gmt = gmt.Replace("GMT", "");
+                        pattern = "ddd, dd MMM yyyy HH':'mm':'ss zzz";
+                    }
+                    if (gmt.ToUpper().IndexOf("GMT") != -1)
+                    {
+                        pattern = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
+                    }
+                    if (pattern != "")
+                    {
+                        dt = DateTime.ParseExact(gmt, pattern, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AdjustToUniversal);
+                        dt = dt.ToLocalTime();
+                    }
+                    else
+                    {
+                        dt = Convert.ToDateTime(gmt);
+                    }
+                }
+                catch
+                {
+                }
+                return dt;
             }
         }
 

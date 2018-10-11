@@ -56,3 +56,15 @@ public sealed partial class App
     
 }
 
+/// <summary>
+/// IoC注册接口。
+/// </summary>
+public interface IIoCRegister
+{
+    /// <summary>
+    /// 注册事件。
+    /// </summary>
+    /// <param name="ioc">IoC实例。</param>
+    void OnRegister(ISparrowIoC ioc);
+
+}
