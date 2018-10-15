@@ -1,70 +1,76 @@
-﻿//----------------------------------------------------
-//Copyright © 2008-2018 Mr-Alan. All rights reserved.
-//Mail: Mr.Alan.China@[outlook|gmail].com
-//Website: www.0x69h.com
-//----------------------------------------------------
-
+﻿/*
+--------------------------------------------------
+| Copyright © 2008 Mr-Alan. All rights reserved. |
+| Website: www.0x69h.com                         |
+| Mail: mr.alan.china@gmail.com                  |
+| QQ: 835988221                                  |
+--------------------------------------------------
+*/
 
 using System;
-using BlackFire;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
-public sealed partial class App
+namespace BlackFire.Unity
 {
-    [SerializeField] private string[] m_IoCRegisters;
-    [SerializeField] private string[] m_AvailableIoCRegisters;
-    
-    private static ISparrowIoC s_IoC;
-    public static ISparrowIoC IoC
+    public sealed partial class App
     {
-        get { return s_IoC??(s_IoC=Framework.CreateIoC()); }
-    }
+        [SerializeField] private string[] m_IoCRegisters;
+        [SerializeField] private string[] m_AvailableIoCRegisters;
 
-    private static void StartIoC()
-    {
-        var list = s_Instance.m_AvailableIoCRegisters;
-        var tpList = new List<Type>();
-                
-        var acs = Assembly.Load("Assembly-CSharp");
-        var acsfp = Assembly.Load("Assembly-CSharp-firstpass");
-        for (int i = 0; i < list.Length; i++)
+        private static ISparrowIoC s_IoC;
+
+        public static ISparrowIoC IoC
         {
-            var tp1 = acs.GetType(list[i]);
-            if (null!=tp1)
+            get { return s_IoC ?? (s_IoC = Framework.CreateIoC()); }
+        }
+
+        private static void StartIoC()
+        {
+            var list = s_Instance.m_AvailableIoCRegisters;
+            var tpList = new List<Type>();
+
+            var acs = Assembly.Load("Assembly-CSharp");
+            var acsfp = Assembly.Load("Assembly-CSharp-firstpass");
+            for (int i = 0; i < list.Length; i++)
             {
-                tpList.Add(tp1);
+                var tp1 = acs.GetType(list[i]);
+                if (null != tp1)
+                {
+                    tpList.Add(tp1);
+                }
+
+                var tp2 = acsfp.GetType(list[i]);
+                if (null != tp2)
+                {
+                    tpList.Add(tp2);
+                }
             }
-            var tp2 = acsfp.GetType(list[i]);
-            if (null!=tp2)
+
+
+            for (int i = 0; i < tpList.Count; i++)
             {
-                tpList.Add(tp2);
+                var ins = BlackFire.Utility.Reflection.New(tpList[i]) as IIoCRegister;
+                ins.OnRegister(IoC);
             }
         }
-        
-        
-        for (int i = 0; i < tpList.Count; i++)
-        {
-            var ins = BlackFire.Utility.Reflection.New(tpList[i]) as IIoCRegister;
-            ins.OnRegister(IoC);
-        }
-    }
-    
-    
-    
-    
-}
 
-/// <summary>
-/// IoC注册接口。
-/// </summary>
-public interface IIoCRegister
-{
+
+
+
+    }
+
     /// <summary>
-    /// 注册事件。
+    /// IoC注册接口。
     /// </summary>
-    /// <param name="ioc">IoC实例。</param>
-    void OnRegister(ISparrowIoC ioc);
+    public interface IIoCRegister
+    {
+        /// <summary>
+        /// 注册事件。
+        /// </summary>
+        /// <param name="ioc">IoC实例。</param>
+        void OnRegister(ISparrowIoC ioc);
 
+    }
 }
