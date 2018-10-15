@@ -70,6 +70,12 @@ namespace BlackFire.Unity.Editor
 		}
 		
 
+		[MenuItem(TopMenuName + "Security/File")]
+		private static void Security_File()
+		{
+			var window = EditorWindow.GetWindow(typeof(SecurityFileWindow), false, "Security File") as SecurityFileWindow;
+			window.position = new UnityEngine.Rect((1920f-730f)/2,(1080f-650f)/2,400f,150f);
+		}
 
 
     }
