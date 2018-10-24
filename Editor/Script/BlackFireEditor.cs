@@ -108,6 +108,7 @@ namespace BlackFire.Unity.Editor
                 AssetDatabase.Refresh();
             }
         }
+		
         private static void MakeUserTempFolder()
         {
             BlackFire.Utility.IO.ExistsOrCreateFolder(Application.dataPath + "/../Temp/BlackFireFramework.Temp");

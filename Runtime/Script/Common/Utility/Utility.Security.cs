@@ -11,6 +11,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using SuperSocket.ProtoBase;
 using UnityEngine;
 
 namespace BlackFire.Unity
@@ -77,8 +78,35 @@ namespace BlackFire.Unity
             
 
             #endregion
-            
 
+
+
+            #region Base64
+
+            public static string BASE64_Encrypt(string originalText,Encoding encoding = null)
+            {
+                if (null==encoding)
+                {
+                    encoding = Encoding.UTF8;
+                }
+                var bytes = encoding.GetBytes(originalText);
+                return Convert.ToBase64String(bytes,0,bytes.Length);
+            }
+
+            public static string BASE64_Decrypt(string cipherText,Encoding encoding = null)
+            {
+                if (null==encoding)
+                {
+                    encoding = Encoding.UTF8;
+                }
+
+                var bytes = Convert.FromBase64String(cipherText); 
+                return encoding.GetString(bytes,0,bytes.Length);
+            }
+            
+            
+            #endregion
+            
 
         }
         

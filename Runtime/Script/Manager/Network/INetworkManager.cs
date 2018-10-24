@@ -14,6 +14,7 @@ namespace BlackFire.Unity
 {
     public interface INetworkManager:IManager
     {
+        string GUID { get; }
         TransportBase CreateWebSocketClient(string transportAlias, string uri, Encoding encoding);
         TransportBase CreateWebSocketClient(string transportAlias, string uri);
         TransportBase CreateUnityWebSocketClient(string transportAlias,string uri,Encoding encoding);

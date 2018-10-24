@@ -14,12 +14,12 @@ namespace BlackFire.Unity
 {
     public static class TransportEventArgsExtension 
 	{
-        public static string MessageString(this TransportEventArgs transportEventArgs,Encoding encoding)
+        public static string GetMessageString(this TransportEventArgs transportEventArgs,Encoding encoding)
         {
             return encoding.GetString(transportEventArgs.Message,0,transportEventArgs.Length);
         }
 
-        public static string MessageString(this TransportEventArgs transportEventArgs)
+        public static string GetMessageString(this TransportEventArgs transportEventArgs)
         {
             return Encoding.UTF8.GetString(transportEventArgs.Message, 0, transportEventArgs.Length);
         }
