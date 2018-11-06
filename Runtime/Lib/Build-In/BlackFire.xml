@@ -1,0 +1,1441 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlackFire</name>
+    </assembly>
+    <members>
+        <member name="T:BlackFire.CRC">
+            <summary>
+            7Z CRC32
+            </summary>
+        </member>
+        <member name="T:BlackFire.EventArgs`1">
+            <summary>
+            只带传递一个参数的事件参数。
+            </summary>
+            <typeparam name="T">目标参数类型。</typeparam>
+        </member>
+        <member name="P:BlackFire.EventArgs`1.Arg">
+            <summary>
+            参数。
+            </summary>
+        </member>
+        <member name="T:BlackFire.RecyclableEventArgs">
+            <summary>
+            可被对象队列回收的事件参数类型。
+            </summary>
+        </member>
+        <member name="M:BlackFire.RecyclableEventArgs.OnSpawn">
+            <summary>
+            事件参数实例被产出事件。
+            </summary>
+        </member>
+        <member name="M:BlackFire.RecyclableEventArgs.OnRecycle">
+            <summary>
+            事件参数实例被回收事件。
+            </summary>
+        </member>
+        <member name="M:BlackFire.RecyclableEventArgs.Recycle(BlackFire.RecyclableEventArgs)">
+            <summary>
+            回收事件参数。
+            </summary>
+            <param name="instance">时间参数实例。</param>
+        </member>
+        <member name="M:BlackFire.RecyclableEventArgs.Spawn(System.Type)">
+            <summary>
+            产出事件参数。
+            </summary>
+            <returns>事件参数产出实例。</returns>
+        </member>
+        <member name="M:BlackFire.RecyclableEventArgs.Spawn``1">
+            <summary>
+            产出事件参数。
+            </summary>
+            <typeparam name="T">时间参数类型。</typeparam>
+            <returns>事件参数产出实例。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectExtension.Invoke(System.Object,System.String,System.Type[],System.Object[])">
+            <summary>
+            反射获取MethodInfo并缓存下来进行调用。
+            </summary>
+            <param name="instance">实例。</param>
+            <param name="methodName">实例的方法名。</param>
+            <param name="argTypes">参数类型列表。</param>
+            <param name="args">参数列表。</param>
+            <returns>返回值。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectExtension.Invoke(System.Object,System.String,System.Object[])">
+            <summary>
+            反射获取MethodInfo并缓存下来进行调用。
+            </summary>
+            <param name="instance">实例。</param>
+            <param name="methodName">实例的方法名。</param>
+            <param name="args">参数列表。</param>
+            <returns>返回值。</returns>
+        </member>
+        <member name="T:BlackFire.MultiwayTreeNode`1">
+            <summary>
+            多叉树节点。
+            </summary>
+        </member>
+        <member name="M:BlackFire.MultiwayTreeNode`1.AddChildNode(BlackFire.MultiwayTreeNode{`0})">
+            <summary>
+            添加孩子节点。
+            </summary>
+            <param name="childNode"></param>
+        </member>
+        <member name="M:BlackFire.MultiwayTreeNode`1.RemoveChildNode(BlackFire.MultiwayTreeNode{`0})">
+            <summary>
+            移除孩子节点。
+            </summary>
+            <param name="childNode"></param>
+        </member>
+        <member name="T:BlackFire.MultiwayTree`1">
+            <summary>
+            多叉树。
+            </summary>
+        </member>
+        <member name="P:BlackFire.MultiwayTree`1.Root">
+            <summary>
+            魔法树的根节点。
+            </summary>
+        </member>
+        <member name="M:BlackFire.MultiwayTree`1.Mount(BlackFire.MultiwayTreeNode{`0},BlackFire.MultiwayTreeNode{`0})">
+            <summary>
+            挂载节点。
+            </summary>
+            <param name="parrent">父亲节点。</param>
+            <param name="currentNode">当前节点。</param>
+        </member>
+        <member name="M:BlackFire.MultiwayTree`1.UnMount(BlackFire.MultiwayTreeNode{`0})">
+            <summary>
+            卸载节点。
+            </summary>
+            <param name="currentNode">当前节点。</param>
+            <param name="traversaType">遍历类型。</param>
+        </member>
+        <member name="P:BlackFire.MultiwayTree`1.TraversaType">
+            <summary>
+            设置遍历的类型。
+            </summary>
+        </member>
+        <member name="M:BlackFire.MultiwayTree`1.Traverse(System.Action{BlackFire.MultiwayTreeNode{`0}})">
+            <summary>
+            遍历。
+            </summary>
+            <param name="traversaCallback">遍历节点时的回调。</param>
+        </member>
+        <member name="M:BlackFire.MultiwayTree`1.DepthFirstTraversa(System.Action{BlackFire.MultiwayTreeNode{`0}})">
+            <summary>
+            深度优先遍历。
+            </summary>
+            <param name="traversaCallback">广度优先遍历回调。</param>
+        </member>
+        <member name="M:BlackFire.MultiwayTree`1.BreadthFirstTraverse(System.Action{BlackFire.MultiwayTreeNode{`0}})">
+            <summary>
+            广度优先遍历。
+            </summary>
+            <param name="breadthFirstTraverse">广度优先遍历回调。</param>
+        </member>
+        <member name="T:BlackFire.TraversaType">
+            <summary>
+            遍历的方式类型枚举。
+            </summary>
+        </member>
+        <member name="T:BlackFire.ObjectQueue`1">
+            <summary>
+            线程安全的对象池队列。
+            </summary>
+            <typeparam name="T">池对象类型。</typeparam>
+        </member>
+        <member name="M:BlackFire.ObjectQueue`1.#ctor">
+            <summary>
+            构造方法。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ObjectQueue`1.#ctor(BlackFire.ObjectQueue{`0}.ObjectQueueFactoryCallback)">
+            <summary>
+            构造方法。
+            </summary>
+            <param name="objectQueueFactoryCallback">设置构建对象时的回调。</param>
+        </member>
+        <member name="P:BlackFire.ObjectQueue`1.CanSpawn">
+            <summary>
+            能否产出。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ObjectQueue`1.Spawn">
+            <summary>
+            从池子或者设置的回调产出对象。
+            </summary>
+            <returns>产出的对象。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectQueue`1.Recycle(`0)">
+            <summary>
+            回收对象。
+            </summary>
+            <param name="@object">对象引用。</param>
+        </member>
+        <member name="T:BlackFire.Utility">
+            <summary>
+            Magic Utilities.
+            </summary>
+            <summary>
+            Magic Utilities.
+            </summary>
+            <summary>
+            Magic Utilities.
+            </summary>
+            <summary>
+            Magic Utilities.
+            </summary>
+            <summary>
+            Magic Utilities.
+            </summary>
+        </member>
+        <member name="T:BlackFire.Utility.Convertor">
+            <summary>
+            类型转换。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Utility.Enum">
+            <summary>
+            枚举助手。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.Enum.Foreach``1(System.Action{``0})">
+            <summary>
+            遍历枚举。
+            </summary>
+            <typeparam name="T">枚举类型。</typeparam>
+            <param name="foreachCallback">遍历枚举回调。</param>
+        </member>
+        <member name="T:BlackFire.Utility.Http">
+            <summary>
+            Http连接操作帮助类。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.Http.Post(System.String,System.String,System.Net.CookieContainer)">
+            <summary>
+            HTTP协议的POST方法。
+            </summary>
+            <param name="Url">POST的目标地址。</param>
+            <param name="postDataStr">提交的POST数据。</param>
+            <param name="cookieContainer">Cookie容器。</param>
+            <returns>同步返回的服务器响应字符串。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Http.Get(System.String,System.String)">
+            <summary>
+            HTTP协议的GET方法。
+            </summary>
+            <param name="Url">GET的目标地址</param>
+            <param name="gettDataStr">提交的GET数据。</param>
+            <returns>同步返回的服务器响应字符串。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Http.DownLoad(BlackFire.Utility.Http.HttpDownloadInfo)">
+            <summary>
+            HTTP协议支持断点续传的文件下载。
+            </summary>
+            <param name="httpDownloadInfo">下载器必需的参数。</param>
+            <returns>HTTP下载器。</returns>
+        </member>
+        <member name="T:BlackFire.Utility.Http.HttpDownloader">
+            <summary>
+            HTTP协议支持断点续传的文件下载器。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.Http.HttpDownloader.#ctor(BlackFire.Utility.Http.HttpDownloadInfo)">
+            <summary>
+            构造方法。
+            </summary>
+            <param name="httpDownloadInfo">HTTP下载信息。</param>
+        </member>
+        <member name="M:BlackFire.Utility.Http.HttpDownloader.StartDownload">
+            <summary>
+            开启下载。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.Http.HttpDownloader.StopDownload">
+            <summary>
+            停止下载。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Utility.Http.HttpDownloadInfo">
+            <summary>
+            HTTP下载信息。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.Http.HttpDownloadInfo.#ctor(System.String,System.String,System.String,System.Int32,System.EventHandler,System.EventHandler{BlackFire.Utility.Http.HttpDownloaderFailureEventArgs},System.EventHandler{BlackFire.Utility.Http.HttpDownloaderProgressEventArgs})">
+            <summary>
+            构造方法。
+            </summary>
+            <param name="url">下载地址。</param>
+            <param name="savePath">下载下来的文件保存的路径。</param>
+            <param name="tempFileExtension">下载过程中临时保存的文件扩展名。</param>
+            <param name="downloadBufferUnit">下载处理的缓冲区，一般与带宽有关。</param>
+            <param name="onDownloadSuccess">下载成功的回调。</param>
+            <param name="onDownloadFailure">下载失败的回调。</param>
+            <param name="onDownloadProgress">下载过程的回调。</param>
+        </member>
+        <member name="T:BlackFire.Utility.Http.HttpDownloaderProgressEventArgs">
+            <summary>
+            HTTP下载器的Progress事件参数。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Utility.Http.HttpDownloaderFailureEventArgs">
+            <summary>
+            HTTP下载器的Failure事件参数。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Utility.Http.HttpServer.m_HttpListener">
+            <summary>
+            监听器
+            </summary>
+        </member>
+        <member name="T:BlackFire.Utility.IP">
+            <summary>
+            IP地址助手
+            </summary>
+        </member>
+        <member name="M:BlackFire.Utility.IP.GetPublicIP">
+            <summary>
+            获取主机的公网IP
+            </summary>
+            <returns>公网IP</returns>
+        </member>
+        <member name="M:BlackFire.Utility.IP.GetRealPublicIP">
+            <summary>
+            实时获取主机的公网IP
+            </summary>
+            <returns>公网IP</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.GetImplTypes(System.String,System.Type)">
+            <summary>
+            获取指定程序集的所有的子类实现类型。
+            </summary>
+            <param name="assemblyName">指定的程序集。</param>
+            <param name="typeBase">基类类型。</param>
+            <returns>所有的子类实现类型数组。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.GetImplTypes(System.String[],System.Type)">
+            <summary>
+            获取指定程序集的所有的子类实现类型。
+            </summary>
+            <param name="assemblyName">指定的程序集。</param>
+            <param name="typeBase">基类类型。</param>
+            <returns>所有的子类实现类型数组。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.IsImplType(System.Type,System.Type)">
+            <summary>
+            是否是指定的基类类型的实现类。
+            </summary>
+            <param name="baseType">指定的基类类型。</param>
+            <param name="implType">实现类类型。</param>
+            <returns>结果。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.New``1">
+            <summary>
+            实例化一个对应类型的实例（构造方法必需是 ctor()）。
+            </summary>
+            <typeparam name="T">对应类型。</typeparam>
+            <returns>实例。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.New(System.Type,System.Object[])">
+            <summary>
+            实例化一个对应类型的实例。
+            </summary>
+            <param name="type">对应的类型。</param>
+            <param name="args">实例化构造方法的参数。</param>
+            <returns>实例。</returns>
+        </member>
+        <member name="M:BlackFire.Utility.Reflection.HasAssembly(System.String)">
+            <summary>
+            是否存在程序集。
+            </summary>
+            <param name="asmName">程序集名字。</param>
+            <returns>是否包含。</returns>
+        </member>
+        <member name="T:BlackFire.Utility.Unique">
+            <summary>
+            解决唯一性类问题的帮助类。
+            </summary>
+        </member>
+        <member name="T:BlackFire.EntityTree">
+            <summary>
+            实体树。
+            </summary>
+            <summary>
+            实体树。
+            </summary>
+            <summary>
+            实体树。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTree.Born">
+            <summary>
+            诞生。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTree.Act">
+            <summary>
+            活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTree.Die">
+            <summary>
+            灭亡。
+            </summary>
+        </member>
+        <member name="T:BlackFire.EntityTreeNode">
+            <summary>
+            实体树节点。
+            </summary>
+            <typeparam name="T">目标类型。</typeparam>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.#ctor(BlackFire.UserData)">
+            <summary>
+            构造方法。
+            </summary>
+            <param name="value">初始化目标类型的数值。</param>
+        </member>
+        <member name="F:BlackFire.EntityTreeNode.m_HasBorn">
+            <summary>
+            已经诞生。
+            </summary>
+        </member>
+        <member name="F:BlackFire.EntityTreeNode.m_HasDie">
+            <summary>
+            已经死亡。
+            </summary>
+        </member>
+        <member name="P:BlackFire.EntityTreeNode.Alive">
+            <summary>
+            是否活着。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.Born">
+            <summary>
+            诞生。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.Act">
+            <summary>
+            活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.Die">
+            <summary>
+            灭亡。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.OnBorn">
+            <summary>
+            诞生事件。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.OnAct">
+            <summary>
+            活动事件。
+            </summary>
+        </member>
+        <member name="M:BlackFire.EntityTreeNode.OnDie">
+            <summary>
+            灭亡事件。
+            </summary>
+        </member>
+        <member name="T:BlackFire.UserData">
+            <summary>
+            用户数据。
+            </summary>
+        </member>
+        <member name="P:BlackFire.UserData.Name">
+            <summary>
+            名字。
+            </summary>
+        </member>
+        <member name="P:BlackFire.UserData.InstantiatedTime">
+            <summary>
+            出生日期。
+            </summary>
+        </member>
+        <member name="P:BlackFire.UserData.Meta">
+            <summary>
+            附加信息。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Event">
+            <summary>
+            事件模块生命周期。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Event.EventTopic">
+            <summary>
+            事件主题。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.UniqueTopicName">
+            <summary>
+            主题。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.ThreadId">
+            <summary>
+            主题所在的线程Id。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.Creator">
+            <summary>
+            主题的创建者。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.CreateTime">
+            <summary>
+            主题创建时间。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.Content">
+            <summary>
+            发布的内容。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.NumberOfTopicsPublished">
+            <summary>
+            主题被发布的次数。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Event.EventTopic.Publisher">
+            <summary>
+            主题发布者。
+            </summary>
+        </member>
+        <member name="F:BlackFire.Event.EventTopic.Subscribers">
+            <summary>
+            主题订阅者们。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.EventTopic.OnPublish(BlackFire.Event.Publisher)">
+            <summary>
+            主题被发布事件。
+            </summary>
+            <param name="publisher">发布者。</param>
+        </member>
+        <member name="M:BlackFire.Event.EventTopic.OnSubscrib(BlackFire.Event.Subscriber)">
+            <summary>
+            主题被订阅事件。
+            </summary>
+            <param name="subscriber">订阅者。</param>
+        </member>
+        <member name="M:BlackFire.Event.EventTopic.OnUnsubscribe(BlackFire.Event.Subscriber)">
+            <summary>
+            主题被取消订阅事件。
+            </summary>
+            <param name="subscriber">订阅者。</param>
+        </member>
+        <member name="M:BlackFire.Event.EventTopic.Create(System.Object,System.String)">
+            <summary>
+            创建事件主题。
+            </summary>
+            <param name="creator">创建者。</param>
+            <param name="topicName">事件主题名字。</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.Event.EventTopic.GetEventTopic(System.String)">
+            <summary>
+            获取事件主题。
+            </summary>
+            <param name="topicName">事件主题的名字。</param>
+            <returns>事件主题。</returns>
+        </member>
+        <member name="M:BlackFire.Event.#cctor">
+            <summary>
+            Event静态类被使用。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Born">
+            <summary>
+            诞生。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Act">
+            <summary>
+            活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Die">
+            <summary>
+            灭亡。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Event.Publisher">
+            <summary>
+            主题发布者。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Publisher.JoinTopic(BlackFire.Event.EventTopic)">
+            <summary>
+            加入主题。
+            </summary>
+            <param name="topic">事件主题。</param>
+        </member>
+        <member name="M:BlackFire.Event.Publisher.Publish">
+            <summary>
+            发布主题。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Publisher.Spawn(System.Object)">
+            <summary>
+            产出。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Publisher.Recycle(BlackFire.Event.Publisher)">
+            <summary>
+            回收。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Subscriber.Spawn(System.Object,System.EventHandler)">
+            <summary>
+            产出。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Subscriber.Recycle(BlackFire.Event.Subscriber)">
+            <summary>
+            回收。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Event.Subscriber.GetSubscriber(System.Object)">
+            <summary>
+            获取订阅者。
+            </summary>
+            <param name="target">订阅者的绑定引用。</param>
+            <returns>订阅者。</returns>
+        </member>
+        <member name="T:BlackFire.IBinder">
+            <summary>
+            The Sparrow IoC Binder.
+            </summary>
+        </member>
+        <member name="M:BlackFire.IBinder.As(System.Type)">
+            <summary>
+            Bind implementation type to the specified type.
+            </summary>
+            <param name="type">Specified type.</param>
+            <returns>IBinder interface.</returns>
+        </member>
+        <member name="M:BlackFire.IBinder.AsSelf">
+            <summary>
+            Bind implementation type to self.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.IBinder.AsSingleton">
+            <summary>
+            As single instance.
+            </summary>
+        </member>
+        <member name="T:BlackFire.ISparrowIoC">
+            <summary>
+            Sparrow IoC interface.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoC.Build(System.Type)">
+            <summary>
+            Build the type instance you have previously bound.
+            </summary>
+            <param name="type">You need to bind the target type.</param>
+            <returns>Instance of the binding type.</returns>
+        </member>
+        <member name="M:BlackFire.ISparrowIoC.RegisterInstance(System.Object)">
+            <summary>
+            The instance of the registration implementation.
+            </summary>
+            <param name="instance">The instance of implementation</param>
+            <returns>IBinder interface.</returns>
+        </member>
+        <member name="M:BlackFire.ISparrowIoC.RegisterType(System.Type,System.Object[])">
+            <summary>
+            The Type of the registration implementation.
+            </summary>
+            <param name="type">The type of implementation.</param>
+            <param name="parameter">Implement the parameters of the class.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.ISparrowIoC.Release(System.Type)">
+            <summary>
+            Release.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoC.ReleaseAll">
+            <summary>
+            Release all.
+            </summary>
+        </member>
+        <member name="T:BlackFire.IBinderExtension">
+            <summary>
+            The IBinde Extension.
+            </summary>
+        </member>
+        <member name="M:BlackFire.IBinderExtension.As``1(BlackFire.IBinder)">
+            <summary>
+            Bind implementation type to the specified type.
+            </summary>
+        </member>
+        <member name="T:BlackFire.IoCBuildCallback">
+            <summary>
+            A callback to the sparrow ioc container when it is built.
+            </summary>
+            <param name="sparrowIoC">ISparrowIoC interface.</param>
+            <returns>Type instance.</returns>
+        </member>
+        <member name="T:BlackFire.ISparrowIoCExtension">
+            <summary>
+            The ISparrowIoC Extension.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoCExtension.RegisterType``1(BlackFire.ISparrowIoC,System.Object[])">
+            <summary>
+            The Type of the registration implementation.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoCExtension.Register``1(BlackFire.ISparrowIoC,BlackFire.IoCBuildCallback{``0})">
+            <summary>
+            The callback of the registration implementation.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoCExtension.Register(BlackFire.ISparrowIoC,BlackFire.IoCBuildCallback)">
+            <summary>
+            The callback of the registration implementation.
+            </summary>
+        </member>
+        <member name="M:BlackFire.ISparrowIoCExtension.Build``1(BlackFire.ISparrowIoC)">
+            <summary>
+            Build the type instance you have previously bound.
+            </summary>
+        </member>
+        <member name="T:BlackFire.Iterator">
+            <summary>
+            框架迭代程序管理静态类。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Iterator.AllIteratorNames">
+            <summary>
+            所有的迭代器名字集合。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Iterator.IteratorStartCallback">
+            <summary>
+            迭代器启动回调。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Iterator.IteratorCancelCallback">
+            <summary>
+            迭代器取消回调。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Iterator.HasIterator(System.String)">
+            <summary>
+            是否存在迭代器>
+            </summary>
+            <param name="name">迭代器名字。</param>
+            <returns>是否存在。</returns>
+        </member>
+        <member name="M:BlackFire.Iterator.Start(System.String,System.Collections.IEnumerator)">
+            <summary>
+            启动迭代器。
+            </summary>
+            <param name="name">迭代器名字。</param>
+            <param name="enumerator">迭代器接口。</param>
+            <returns>是否已经启动了此迭代器。</returns>
+        </member>
+        <member name="M:BlackFire.Iterator.Cancel(System.String)">
+            <summary>
+            取消迭代器。
+            </summary>
+            <param name="name">迭代器名字。</param>
+        </member>
+        <member name="M:BlackFire.Job.#cctor">
+            <summary>
+            Job静态类被使用。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Job.Born">
+            <summary>
+            诞生。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Job.Act">
+            <summary>
+            活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Job.Die">
+            <summary>
+            灭亡。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Job.JobState">
+            <summary>
+            Job的状态类。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Job.JobState.State">
+            <summary>
+            异步状态量。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Job.JobState.Token">
+            <summary>
+            Job运行的Token，用于代表线程信号量。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Job.JobState.SyncState">
+            <summary>
+            同步状态量。
+            </summary>
+        </member>
+        <member name="T:BlackFire.IKeyValueStorage">
+            <summary>
+            键值对数据存储接口。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IKeyValueStorage.HasKey(System.String)">
+            <summary>
+            是否存在键。
+            </summary>
+            <param name="key">键。</param>
+            <returns>查询结果。</returns>
+        </member>
+        <member name="M:BlackFire.IKeyValueStorage.GetValue(System.String)">
+            <summary>
+            通过键获取值。
+            </summary>
+            <param name="key">键。</param>
+            <returns>值。</returns>
+        </member>
+        <member name="M:BlackFire.IKeyValueStorage.SetValue(System.String,System.String)">
+            <summary>
+            通过键设置值。
+            </summary>
+            <param name="key">键。</param>
+            <param name="value">值。</param>
+        </member>
+        <member name="M:BlackFire.IKeyValueStorage.Del(System.String)">
+            <summary>
+            移除一条键值对记录。
+            </summary>
+            <param name="key">键。</param>
+        </member>
+        <member name="M:BlackFire.IKeyValueStorage.DelAll">
+            <summary>
+            移除存储器所有的键值对记录。
+            </summary>
+        </member>
+        <member name="T:BlackFire.KVS">
+            <summary>
+            KVS访问接口。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Log">
+            <summary>
+            日志类。
+            </summary>
+            <summary>
+            日志类。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Log.#cctor">
+            <summary>
+            Log静态类被使用。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Log.Born">
+            <summary>
+            诞生。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Log.Act">
+            <summary>
+            活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Log.Die">
+            <summary>
+            灭亡。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Log.EnLogFileQueue(System.String)">
+            <summary>
+            把日志消息排入日志文件代写队列（如果未设置日志文件模式则无效）。
+            </summary>
+            <param name="logMessage">日志消息。</param>
+        </member>
+        <member name="T:BlackFire.LogCallback">
+            <summary>
+            日志回调。
+            </summary>
+            <param name="logLevel">日志等级</param>
+            <param name="message">日志信息。</param>
+        </member>
+        <member name="T:BlackFire.LogLevel">
+            <summary>
+            日志等级。
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Trace">
+            <summary>
+            追踪
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Debug">
+            <summary>
+            调试
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Info">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Warn">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:BlackFire.LogLevel.Fatal">
+            <summary>
+            严重
+            </summary>
+        </member>
+        <member name="T:BlackFire.IModule">
+            <summary>
+            模块接口。(天梯式用法)
+            </summary>
+        </member>
+        <member name="P:BlackFire.IModule.IsWorking">
+            <summary>
+            模块是否在工作状态。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IModule.Resume">
+            <summary>
+            唤醒模块。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IModule.Suspend">
+            <summary>
+            挂起模块。
+            </summary>
+        </member>
+        <member name="T:BlackFire.IModuleManager">
+            <summary>
+            模块管家接口。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IModuleManager.GetModule(System.Type)">
+            <summary>
+            获取模块。
+            </summary>
+            <param name="moduleType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.IModuleManager.HasModule(System.Type)">
+            <summary>
+            是否存在模块。
+            </summary>
+            <param name="moduleType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.IModuleManager.Register(BlackFire.IModule)">
+            <summary>
+            注册模块。
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:BlackFire.IModuleManager.UnRegister(BlackFire.IModule)">
+            <summary>
+            注销模块。
+            </summary>
+            <param name="module"></param>
+        </member>
+        <member name="M:BlackFire.IModuleManager.UnRegister(System.Type)">
+            <summary>
+            注销模块。
+            </summary>
+            <param name="moduleType">模块的Type类型。</param>
+        </member>
+        <member name="P:BlackFire.ModuleBase.IsWorking">
+            <summary>
+            是否处于工作状态。
+            </summary>
+        </member>
+        <member name="F:BlackFire.ModuleBase.m_HasSuspended">
+            <summary>
+            模块是否有被挂起。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ModuleBase.Resume">
+            <summary>
+            唤醒模块。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ModuleBase.Suspend">
+            <summary>
+            挂起模块。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ModuleBase.OnResume">
+            <summary>
+            模块被唤醒事件。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ModuleBase.OnSuspend">
+            <summary>
+            模块被挂起事件。
+            </summary>
+        </member>
+        <member name="T:BlackFire.IModuleManagerExtension">
+            <summary>
+            IModuleManager的扩展类。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IModuleManagerExtension.Register``1(BlackFire.IModuleManager)">
+            <summary>
+            注册模块。
+            </summary>
+        </member>
+        <member name="M:BlackFire.IModuleManagerExtension.UnRegister``1(BlackFire.IModuleManager)">
+            <summary>
+            注销模块。
+            </summary>
+            <typeparam name="T">目标模块类型。</typeparam>
+            <param name="moduleManager">模块管家。</param>
+        </member>
+        <member name="M:BlackFire.IModuleManagerExtension.GetModule``1(BlackFire.IModuleManager)">
+            <summary>
+            获取模块。
+            </summary>
+            <typeparam name="T">目标模块类型</typeparam>
+            <param name="moduleManager">模块管家。</param>
+        </member>
+        <member name="T:BlackFire.ModuleManager">
+            <summary>
+            模块管家。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ModuleManager.CheckModuleImplOrThrow(System.Type)">
+            <summary>
+            检查模块的实现类型如果有异常则抛出。
+            </summary>
+            <param name="moduleType"></param>
+        </member>
+        <member name="T:BlackFire.ObjectPool">
+            <summary>
+            对象池。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ObjectPool.GetPools">
+            <summary>
+            返回所有的对象池。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BlackFire.ObjectPool.CreatePool(System.String,System.Int32,System.Type)">
+            <summary>
+            创建对象池。
+            </summary>
+            <param name="poolName">对象池的名字。</param>
+            <param name="poolCapacity">对象之的容量。</param>
+            <param name="poolCustomImpl">自定义对象池的实现。</param>
+        </member>
+        <member name="M:BlackFire.ObjectPool.GetPool(System.String)">
+            <summary>
+            获取对象池。
+            </summary>
+            <param name="poolName">对象池名字。</param>
+            <returns>对象池实例。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectPool.DestroyPool(System.String)">
+            <summary>
+            销毁对象池。
+            </summary>
+            <param name="poolName">对象池名字。</param>
+            <returns>是否销毁成功。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectPool.CheckPoolImplOrThrow(System.Type)">
+            <summary>
+            检查对象池的实现类型如果有异常则抛出。
+            </summary>
+            <param name="poolType">对象池的实现类型。</param>
+        </member>
+        <member name="T:BlackFire.ObjectPool.ObjectBase">
+            <summary>
+            被对象池管理的对象抽象基类。
+            </summary>
+        </member>
+        <member name="P:BlackFire.ObjectPool.ObjectBase.Lock">
+            <summary>
+            是否有被锁住。
+            </summary>
+        </member>
+        <member name="P:BlackFire.ObjectPool.ObjectBase.PoolName">
+            <summary>
+            对象所属对象池名字。
+            </summary>
+        </member>
+        <member name="T:BlackFire.ObjectPool.DefaultPool">
+            <summary>
+            提供线程安全的对象池（框架默认对象池）。
+            </summary>
+        </member>
+        <member name="T:BlackFire.ObjectPool.PoolFactory">
+            <summary>
+            工厂方法绑定者（负责给对象池工厂绑定实例化回调委托）。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ObjectPool.PoolFactory.Bind(System.Type,BlackFire.ObjectPool.PoolFactoryCallback)">
+            <summary>
+            添加绑定条目。
+            </summary>
+            <param name="objectType">对象类型。</param>
+            <param name="poolFactoryCallback">对象池工厂委托。</param>
+        </member>
+        <member name="M:BlackFire.ObjectPool.PoolFactory.GetBinding(System.Type)">
+            <summary>
+            获取绑定的条目。
+            </summary>
+            <param name="objectType">对象类型。</param>
+            <returns>对象池工厂委托。</returns>
+        </member>
+        <member name="M:BlackFire.ObjectPool.PoolFactory.GetBindingTypes">
+            <summary>
+            获取所有的绑定类型。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BlackFire.Organize">
+            <summary>
+            组织。
+            </summary>
+            <summary>
+            组织。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Organize.GroupMember.Id">
+            <summary>
+            成员Id。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Organize.GroupMember.Name">
+            <summary>
+            成员名字。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Organize.GroupMember.Ability">
+            <summary>
+            成员能力值。（这个数值决定了处理任务的优先级）
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.GroupMember.HandleCommand``1(BlackFire.Organize.CommandCallback{``0})">
+            <summary>
+            处理命令。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.Foreach(System.Action{BlackFire.Organize.Group})">
+            <summary>
+            遍历小组。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.GetGroupId(System.String)">
+            <summary>
+            获取小组Id。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.CreateGroup(System.Type,System.Int64,System.String,System.Int32)">
+            <summary>
+            创建小组。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.CreateGroup``1(System.Int64,System.String,System.Int32)">
+            <summary>
+            创建小组。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.CreateMember(System.Type,System.Int64,System.Int32,System.String)">
+            <summary>
+            创建成员。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.CreateMember``1(System.Int64,System.Int32,System.String)">
+            <summary>
+            创建成员。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.GetGroupMember(System.Int64)">
+            <summary>
+            获取小组成员实例。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.GetGroupMember``1(System.Int64)">
+            <summary>
+            获取小组成员实例。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.Join(System.Int64,BlackFire.Organize.GroupMember,System.Int32)">
+            <summary>
+            成员加入小组。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.Leave(System.Int64,System.Int64)">
+            <summary>
+            成员离开小组。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.QueryPermission(System.Int64,System.Int64)">
+            <summary>
+            查询成员的权限。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.QueryRelationship(System.Int64)">
+            <summary>
+            查询成员与小组的关系。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.SetCommandPermission``1(System.Int32)">
+            <summary>
+            设置命令接口权限。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.ExecuteCommand``1(System.Int64,System.Int64,BlackFire.Organize.CommandCallback{``0},System.Boolean)">
+            <summary>
+            执行成员命令。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.ExecuteCommand``1(System.Int64,BlackFire.Organize.CommandCallback{``0},System.Boolean,System.Boolean)">
+            <summary>
+            执行成员命令。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Organize.ExecuteCommand``1(System.Int64,BlackFire.Organize.CommandCallback{``0},System.Boolean)">
+            <summary>
+            执行组命令。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Timer">
+            <summary>
+            Sparrow Timer.
+            </summary>
+        </member>
+        <member name="T:BlackFire.TimeTask">
+            <summary>
+            时间任务类
+            </summary>
+        </member>
+        <member name="M:BlackFire.TimeTask.Suspend">
+            <summary>
+            中断
+            </summary>
+        </member>
+        <member name="M:BlackFire.TimeTask.Resume">
+            <summary>
+            恢复
+            </summary>
+        </member>
+        <member name="M:BlackFire.TimeTask.Cancel">
+            <summary>
+            取消
+            </summary>
+        </member>
+        <member name="T:BlackFire.ExportedAssemblyBase">
+            <summary>
+            导出的程序集节点抽象类。
+            </summary>
+        </member>
+        <member name="P:BlackFire.ExportedAssemblyBase.AssemblyName">
+            <summary>
+            目标加载的程序集名字。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ExportedAssemblyBase.OnExport(BlackFire.ISparrowIoC)">
+            <summary>
+            导出接口事件(该事件会被BlackFire核心程序集反射执行)。
+            </summary>
+            <param name="ioc">BlackFire内部的IOC容器。</param>
+        </member>
+        <member name="T:BlackFire.ExportedAssemblyManager">
+            <summary>
+            导出的程序集管家。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ExportedAssemblyManager.#ctor">
+            <summary>
+            构造方法。
+            </summary>
+        </member>
+        <member name="M:BlackFire.ExportedAssemblyManager.GetExportedAssembly(System.String)">
+            <summary>
+            获取导出程序集的节点的引用实例。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+            <returns>导出程序集节点。</returns>
+        </member>
+        <member name="M:BlackFire.ExportedAssemblyManager.LoadExportedAssembly(System.String)">
+            <summary>
+            加载导出程序集的节点。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+        </member>
+        <member name="M:BlackFire.ExportedAssemblyManager.UnLoadExportAssembly(System.String)">
+            <summary>
+            卸载导出程序集的节点。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+        </member>
+        <member name="M:BlackFire.IExportedAssemblyManager.GetExportedAssembly(System.String)">
+            <summary>
+            获取导出程序集的节点的引用实例。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+            <returns>导出程序集节点。</returns>
+        </member>
+        <member name="M:BlackFire.IExportedAssemblyManager.LoadExportedAssembly(System.String)">
+            <summary>
+            加载导出程序集的节点。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+        </member>
+        <member name="M:BlackFire.IExportedAssemblyManager.UnLoadExportAssembly(System.String)">
+            <summary>
+            卸载导出程序集的节点。
+            </summary>
+            <param name="exportedAssemblyName">导出程序集系节点的名字。</param>
+        </member>
+        <member name="T:BlackFire.Framework">
+            <summary>
+            框架。
+            </summary>
+            <summary>
+            框架全局数据。
+            </summary>
+            <summary>
+            框架信息。
+            </summary>
+            <summary>
+            框架依赖倒置容器。
+            </summary>
+            <summary>
+            框架生命周期。
+            </summary>
+            <summary>
+            框架状态。
+            </summary>
+            <summary>
+            框架时间轴。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Framework.GlobalData">
+            <summary>
+            框架内部的全局数据。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Framework.FrameworkGlobalData">
+            <summary>
+            时间类。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.FrameworkInfo.#ctor(System.String,System.Int32,System.Object)">
+            <summary>
+            构造方法。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Framework.FrameworkInfo.Version">
+            <summary>
+            框架版本。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Framework.FrameworkInfo.ThreadId">
+            <summary>
+            框架线程Id;
+            </summary>
+        </member>
+        <member name="P:BlackFire.Framework.FrameworkInfo.Creator">
+            <summary>
+            框架创建者。
+            </summary>
+        </member>
+        <member name="P:BlackFire.Framework.IoC">
+            <summary>
+            框架IoC服务接口。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.CreateIoC">
+            <summary>
+            创建一个IoC服务接口。
+            </summary>
+            <returns>IoC服务接口实例。</returns>
+        </member>
+        <member name="F:BlackFire.Framework.s_Who">
+            <summary>
+            框架活动主体。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.CheckWhoOrThrow(System.Object)">
+            <summary>
+            检查框架活动主体或者抛出异常。
+            </summary>
+            <param name="who">框架活动主体。</param>
+        </member>
+        <member name="M:BlackFire.Framework.#cctor">
+            <summary>
+            Framework静态类被使用。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.Born(System.Object,System.Single,System.Single)">
+            <summary>
+            诞生框架。
+            </summary>
+            <param name="who">让框架诞生者(也指使用框架这件事情的活动主体是谁)。</param>
+            <param name="realElapsedDeltaTime">真实世界流逝的时间。</param>
+            <param name="virsulElapsedDeltaTime">虚拟世界流逝的时间。</param>
+        </member>
+        <member name="M:BlackFire.Framework.Act(System.Object,System.Single,System.Single)">
+            <summary>
+            活动框架。
+            </summary>
+            <param name="who">让框架诞生者(也指使用框架这件事情的活动主体是谁)。</param>
+            <param name="realElapsedDeltaTime">真实世界流逝的时间。</param>
+            <param name="virsulElapsedDeltaTime">虚拟世界流逝的时间。</param>
+        </member>
+        <member name="M:BlackFire.Framework.Die(System.Object,System.Single,System.Single)">
+            <summary>
+            销毁框架。
+            </summary>
+            <param name="who">让框架诞生者(也指使用框架这件事情的活动主体是谁)。</param>
+            <param name="realElapsedDeltaTime">真实世界流逝的时间。</param>
+            <param name="virsulElapsedDeltaTime">虚拟世界流逝的时间。</param>
+        </member>
+        <member name="M:BlackFire.Framework.LifeCircle.OnLifeCircleOrigin">
+            <summary>
+            生命周期的始点。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.LifeCircle.OnLifeCircleAct">
+            <summary>
+            生命周期中的活动。
+            </summary>
+        </member>
+        <member name="M:BlackFire.Framework.LifeCircle.OnLifeCircleEnd">
+            <summary>
+            生命周期的终点。
+            </summary>
+        </member>
+        <member name="T:BlackFire.Framework.Time">
+            <summary>
+            时间类。
+            </summary>
+        </member>
+    </members>
+</doc>
