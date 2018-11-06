@@ -7,6 +7,7 @@
 --------------------------------------------------
 */
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,5 +42,36 @@ namespace BlackFire.Unity
 
             return null;
         }
+
+
+        public static class Event
+        {
+
+            public static void Fire(string topicName, object sender, EventArgs eventArgs, bool fireNow = true)
+            {
+                BlackFire.Event.Fire(topicName,sender,eventArgs,fireNow);
+            }
+
+
+            public static void On(string topicName, object listener, EventHandler eventHandler)
+            {
+                BlackFire.Event.On(topicName,listener,eventHandler);
+            }
+
+            
+            public static void Off(string topicName, object listener)
+            {
+                BlackFire.Event.Off(topicName,listener);
+            }
+
+            
+            public static void On<T>(string topicName, object listener,EventHandler<T> eventHandler) where T:EventArgs
+            {
+                BlackFire.Event.On<T>(topicName,listener,eventHandler);
+            }
+            
+        }
+
+
     }
 }

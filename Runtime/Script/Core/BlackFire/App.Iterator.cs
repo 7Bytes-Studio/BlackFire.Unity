@@ -8,6 +8,7 @@
 */
 
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlackFire.Unity
@@ -35,6 +36,62 @@ namespace BlackFire.Unity
         {
             m_Mono.StopCoroutine(enumerator);
         }
+        
+        
+        /// <summary>
+        /// 框架迭代程序管理静态类。
+        /// </summary>
+        public static class Iterator
+        {
+            /// <summary>
+            /// 所有的迭代器名字集合。
+            /// </summary>
+            public static IEnumerable<string> AllIteratorNames
+            {
+                get { return BlackFire.Iterator.AllIteratorNames; }
+            }
+
+            /// <summary>
+            /// 是否存在迭代器>
+            /// </summary>
+            /// <param name="name">迭代器名字。</param>
+            /// <returns>是否存在。</returns>
+            public static bool HasIterator(string name)
+            {
+                return BlackFire.Iterator.HasIterator(name);
+            }
+    
+    
+            /// <summary>
+            /// 启动迭代器。
+            /// </summary>
+            /// <param name="name">迭代器名字。</param>
+            /// <param name="enumerator">迭代器接口。</param>
+            /// <returns>是否已经启动了此迭代器。</returns>
+            public static bool Start(string name, IEnumerator enumerator)
+            {
+                return BlackFire.Iterator.Start(name,enumerator);
+            }
+    
+            
+            /// <summary>
+            /// 取消迭代器。
+            /// </summary>
+            /// <param name="name">迭代器名字。</param>
+            public static void Cancel(string name)
+            {
+                BlackFire.Iterator.Cancel(name);
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
     }
 }

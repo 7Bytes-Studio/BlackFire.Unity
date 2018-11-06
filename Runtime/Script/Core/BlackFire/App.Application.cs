@@ -20,7 +20,6 @@ namespace BlackFire.Unity
         /// </summary>
         public static event Action ApplicationQuit;
 
-
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void ApplicationInit()
         {
