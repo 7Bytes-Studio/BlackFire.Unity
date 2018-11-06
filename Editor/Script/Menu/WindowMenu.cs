@@ -13,7 +13,7 @@ namespace BlackFire.Unity.Editor
 {
     public static class WindowMenu 
 	{
-        public const string TopMenuName = "BlackFire/";
+        public const string TopMenuName = "BlackFire/Basic/";
 
         public const string Window = "Window/";
 
@@ -34,35 +34,35 @@ namespace BlackFire.Unity.Editor
 		}
 	    
 		
-		[MenuItem(TopMenuName + "Project/Open Data Path")]
+		[MenuItem(TopMenuName + "Path/Open Data Path")]
 		private static void OpenDataPath()
 		{
 			Utility.Project.OpenDataPath();
 		}
 
 		
-		[MenuItem(TopMenuName + "Project/Open Persistent Data Path")]
+		[MenuItem(TopMenuName + "Path/Open Persistent Data Path")]
 		private static void OpenPersistentDataPath()
 		{
 			Utility.Project.OpenPersistentDataPath();
 		}
 
 
-		[MenuItem(TopMenuName + "Project/Open Streaming Assets Path")]
+		[MenuItem(TopMenuName + "Path/Open Streaming Assets Path")]
 		private static void OpenStreamingAssetsPath()
 		{
 			Utility.Project.OpenStreamingAssetsPath();
 		}
 
 		
-		[MenuItem(TopMenuName + "Project/Open Temporary Cache Path")]
+		[MenuItem(TopMenuName + "Path/Open Temporary Cache Path")]
 		private static void OpenTemporaryCachePath()
 		{
 			Utility.Project.OpenTemporaryCachePath();
 		}
 		
 		
-		[MenuItem(TopMenuName + "Project/Development Scene &d")]
+		[MenuItem(TopMenuName + "/Development Scene &d")]
 		private static void OpenDevelopmentScene()
 		{
 			var window = EditorWindow.GetWindow(typeof(DevelopmentSceneWindow), false, "DevelopmentScene") as DevelopmentSceneWindow;
@@ -70,7 +70,7 @@ namespace BlackFire.Unity.Editor
 		}
 		
 
-		[MenuItem(TopMenuName + "Security/File")]
+		[MenuItem(TopMenuName + "Security/AES File")]
 		private static void Security_File()
 		{
 			var window = EditorWindow.GetWindow(typeof(SecurityFileWindow), false, "Security File") as SecurityFileWindow;
