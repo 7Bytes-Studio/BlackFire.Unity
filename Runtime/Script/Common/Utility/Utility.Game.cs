@@ -27,7 +27,7 @@ namespace BlackFire.Unity
             public static float Fps()
             {
                 s_FrameCount = s_FrameCount + 1;
-                s_TimePassed = s_TimePassed + Time.unscaledDeltaTime;
+                s_TimePassed = s_TimePassed + UnityEngine.Time.unscaledDeltaTime;
 
                 if (s_TimePassed > s_FpsMeasuringDelta)
                 {

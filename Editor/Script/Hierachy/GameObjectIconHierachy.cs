@@ -25,7 +25,10 @@ namespace BlackFire.Unity.Editor
             InitHierachyCallBack();
 
             var implTyps = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp",typeof(Component));
+            var implTyps_firstpass = BlackFire.Utility.Reflection.GetImplTypes("Assembly-CSharp-firstpass",typeof(Component));
 
+            implTyps = BlackFire.Utility.Array.Merge(implTyps, implTyps_firstpass);
+            
             for (int i = 0; i < implTyps.Length; i++)
             {
                 var attrs = implTyps[i].GetCustomAttributes(typeof(GameObjectIconAttribute),true);
