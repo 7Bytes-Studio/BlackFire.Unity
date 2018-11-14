@@ -7,6 +7,7 @@
 --------------------------------------------------
 */
 
+using System.Collections;
 using UnityEngine;
 
 namespace BlackFire.Unity
@@ -32,7 +33,8 @@ namespace BlackFire.Unity
             RequestedHeight = requestedHeight;
             RequestedFPS = requestedFPS;
             var waitAO = Application.RequestUserAuthorization(UserAuthorization.WebCam);
-            waitAO.completed += ao =>
+#if UNITY_2017_1_OR_NEWER
+	        waitAO.completed += ao =>
             {
                 WebCamDevice[] device = WebCamTexture.devices;
                 if (null != device && 0 < device.Length)
@@ -44,7 +46,33 @@ namespace BlackFire.Unity
                 }
                 m_KeepWaiting = false;
             };
+#elif UNITY_5
+            var dmb = new GameObject("ForUnity5YieldBehavior.CustomYieldInstruction",typeof(ForUnity5YieldBehavior)).GetComponent<ForUnity5YieldBehavior>();
+            dmb.StartCoroutine(WebCamYield(dmb,waitAO,requestedWidth,requestedHeight,requestedFPS));
+#endif
         }
+
+#if UNITY_5
+        public sealed class ForUnity5YieldBehavior:MonoBehaviour{}
+        private IEnumerator WebCamYield(ForUnity5YieldBehavior dmb,AsyncOperation waitAO,int requestedWidth, int requestedHeight, int requestedFPS=30)
+        {
+            yield return waitAO;
+            WebCamDevice[] device = WebCamTexture.devices;
+            if (null != device && 0 < device.Length)
+            {
+                WebCamDevice = device[0];
+                var deviceName = device[0].name;
+                WebCamTexture = new WebCamTexture(deviceName, requestedWidth, requestedHeight, requestedFPS);
+                WebCamTexture.Play();
+            }
+            m_KeepWaiting = false;
+            GameObject.DestroyImmediate(dmb.gameObject);
+        }
+#endif
+        
+       
+
+
 
 
         public override bool keepWaiting

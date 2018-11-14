@@ -9,6 +9,7 @@
 
 using BlackFire.Unity.Network;
 using System;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace BlackFire.Unity
@@ -23,7 +24,12 @@ namespace BlackFire.Unity
         public override event EventHandler<DownloadProgressEventArgs> OnDownloadProgress;
 
         private DownloadHandlerBigFile m_DownloadHandlerBigFile = null;
-        private UnityWebRequestAsyncOperation m_UnityWebRequestAsyncOperation = null;
+        private UnityWebRequest m_UnityWebRequest;
+#if UNITY_2017_1_OR_NEWER
+	        private UnityWebRequestAsyncOperation m_UnityWebRequestAsyncOperation = null;
+#elif UNITY_5
+            private AsyncOperation m_UnityWebRequestAsyncOperation = null;
+#endif
 
 
         public override float DownloadProgress
@@ -70,7 +76,7 @@ namespace BlackFire.Unity
         {
             get
             {
-                return null!=m_UnityWebRequestAsyncOperation ? m_UnityWebRequestAsyncOperation.webRequest.isDone:false;
+                return null!=m_UnityWebRequestAsyncOperation ? m_UnityWebRequest.isDone:false;
             }
         }
 
@@ -78,10 +84,17 @@ namespace BlackFire.Unity
         {
             base.OnAct();
 
+
             //轮询检测错误通知。
-            if (!m_HasStop && null != m_UnityWebRequestAsyncOperation && !m_UnityWebRequestAsyncOperation.isDone && m_UnityWebRequestAsyncOperation.webRequest.isNetworkError)
+#if UNITY_2017_1_OR_NEWER
+	            if (!m_HasStop && null != m_UnityWebRequestAsyncOperation && !m_UnityWebRequestAsyncOperation.isDone && m_UnityWebRequestAsyncOperation.webRequest.isNetworkError)
+
+#elif UNITY_5
+            if (!m_HasStop && null != m_UnityWebRequestAsyncOperation && !m_UnityWebRequestAsyncOperation.isDone && m_UnityWebRequest.isError)
+
+#endif
             {
-                FireDownloadFailureEvent(DownloadErrorCode.ServerResponse, m_UnityWebRequestAsyncOperation.webRequest.error);
+                FireDownloadFailureEvent(DownloadErrorCode.ServerResponse, m_UnityWebRequest.error);
             }
 
             if (!m_HasStop && m_UnityWebRequestAsyncOperation.isDone) //轮询检测下载完毕事件。
@@ -142,12 +155,17 @@ namespace BlackFire.Unity
                     return;
                 }
 
-                var uwr = new UnityWebRequest(url);
-                uwr.method = UnityWebRequest.kHttpVerbGET;
-                uwr.downloadHandler = m_DownloadHandlerBigFile;
-                uwr.disposeDownloadHandlerOnDispose = true;
-                uwr.SetRequestHeader("range", "bytes=" + m_DownloadHandlerBigFile.Position + "-");
-                m_UnityWebRequestAsyncOperation = uwr.SendWebRequest();
+                m_UnityWebRequest = new UnityWebRequest(url);
+                m_UnityWebRequest.method = UnityWebRequest.kHttpVerbGET;
+                m_UnityWebRequest.downloadHandler = m_DownloadHandlerBigFile;
+                m_UnityWebRequest.disposeDownloadHandlerOnDispose = true;
+                m_UnityWebRequest.SetRequestHeader("range", "bytes=" + m_DownloadHandlerBigFile.Position + "-");
+#if UNITY_2017_1_OR_NEWER
+	                m_UnityWebRequestAsyncOperation = m_UnityWebRequest.SendWebRequest();
+#elif UNITY_5
+                m_UnityWebRequestAsyncOperation = m_UnityWebRequest.Send();
+#endif
+                
 
                 m_HasStop = false;
             }
@@ -167,10 +185,14 @@ namespace BlackFire.Unity
                 m_DownloadHandlerBigFile.Close();
                 m_DownloadHandlerBigFile = null;
 
-                if (!m_UnityWebRequestAsyncOperation.webRequest.isDone && !m_UnityWebRequestAsyncOperation.webRequest.isNetworkError)
-                    FireDownloadFailureEvent(DownloadErrorCode.Stopped);
+#if UNITY_2017_1_OR_NEWER
+	                if (!m_UnityWebRequestAsyncOperation.webRequest.isDone && !m_UnityWebRequestAsyncOperation.webRequest.isNetworkError)
+#elif UNITY_5
+                    if (!m_UnityWebRequest.isDone && !m_UnityWebRequest.isError)
+#endif
+                        FireDownloadFailureEvent(DownloadErrorCode.Stopped);
 
-                m_UnityWebRequestAsyncOperation.webRequest.Dispose();
+                m_UnityWebRequest.Dispose();
                 m_UnityWebRequestAsyncOperation = null;
 
                 m_HasStop = true;
