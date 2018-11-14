@@ -8,7 +8,6 @@
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -75,9 +74,7 @@ namespace BlackFire.Unity
                     AssetBundleCreateRequest assetBundleCreateRequest = Base_LoadFromFileAsync(assetsBundleAssetInfo.AssetsBundlePath);
                     Action action = () => { if (null != loadAssetProgress) loadAssetProgress.Invoke(new LoadAssetProgressEventArgs(assetsBundleAssetInfo.AssetPath, assetBundleCreateRequest.progress)); };
                     m_UpdateAssetsBundle_Delegate += action;
-                    
-#if UNITY_2017_1_OR_NEWER
-	                assetBundleCreateRequest.completed += ao =>
+                    assetBundleCreateRequest.completed += ao =>
                     {
 
                         m_UpdateAssetsBundle_Delegate -= action;
@@ -110,9 +107,6 @@ namespace BlackFire.Unity
                         }
 
                     };
-#elif UNITY_5
-                    StartCoroutine(LoadAssetsBundleAsyncYield(action,assetBundleCreateRequest,assetsBundleAssetInfo,loadAssetComplete,loadAssetProgress,loadAssetFailure));
-#endif
                 }
 
             }
@@ -123,47 +117,6 @@ namespace BlackFire.Unity
             }
 
         }
-	    
-#if UNITY_5
-
-	    private IEnumerator LoadAssetsBundleAsyncYield(Action action,AssetBundleCreateRequest assetBundleCreateRequest,AssetsBundleAssetInfo assetsBundleAssetInfo, LoadAssetComplete loadAssetComplete, LoadAssetProgress loadAssetProgress = null, LoadAssetFailure loadAssetFailure = null)
-	    {
-	        yield return assetBundleCreateRequest;
-	        
-	        m_UpdateAssetsBundle_Delegate -= action;
-
-	        if (null == assetBundleCreateRequest.assetBundle)
-	        {
-	            if (null != loadAssetFailure)
-	            {
-	                loadAssetFailure.Invoke(new LoadAssetFailureEventArgs(assetsBundleAssetInfo.AssetPath));
-	            }
-	        }
-	        else
-	        {
-	            m_AssetBundleDic.Add(assetsBundleAssetInfo.AssetsBundlePath, assetBundleCreateRequest.assetBundle);//加入AB字典集合。
-
-	            var asset = assetBundleCreateRequest.assetBundle.LoadAsset(assetsBundleAssetInfo.AssetPath);
-
-	            if (null == asset)
-	            {
-	                if (null != loadAssetFailure)
-	                {
-	                    loadAssetFailure.Invoke(new LoadAssetFailureEventArgs(assetsBundleAssetInfo.AssetPath));
-	                }
-	                yield break;
-	            }
-
-	            AssetAgency assetAgency = m_AssetObjectLinkList.AddLast(new AssetAgency(assetsBundleAssetInfo.AssetPath, asset, assetsBundleAssetInfo.ShortdatedAsset)).Value;
-	            if (null != loadAssetComplete)
-	                loadAssetComplete.Invoke(new LoadAssetCompleteEventArgs(assetsBundleAssetInfo.AssetPath, assetAgency));
-	        }
-	    }
-
-#endif
-	    
-	    
-	    
 
         /// <summary>
         /// 卸载AssetsBundle实例。

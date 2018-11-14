@@ -9,7 +9,6 @@
 
 using System.Collections;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -52,7 +51,7 @@ namespace BlackFire.Unity
 		{
 			//Debug.LogFormat ("{0}: {1}", title, msg);
 #if UNITY_EDITOR
-			EditorUtility.DisplayDialog (title, msg, "Ok");
+			UnityEditor.EditorUtility.DisplayDialog (title, msg, "Ok");
 #endif
 		}
 
@@ -95,7 +94,7 @@ namespace BlackFire.Unity
 				m_DisplayDialogTitle,
 				m_DisplayDialogMsg
 			);
-			photoPath = EditorUtility.OpenFilePanelWithFilters(m_OpenFileTitle, "", m_OpenFileFilters);
+			photoPath = UnityEditor.EditorUtility.OpenFilePanelWithFilters(m_OpenFileTitle, "", m_OpenFileFilters);
 #elif UNITY_STANDALONE_WIN
 			photoPath = Utility.Win32.OpenFileDialogWin32(m_OpenFileTitle);
 #elif UNITY_ANDROID

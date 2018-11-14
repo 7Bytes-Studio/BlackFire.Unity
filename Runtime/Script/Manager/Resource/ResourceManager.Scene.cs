@@ -8,7 +8,6 @@
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace BlackFire.Unity
@@ -87,8 +86,7 @@ namespace BlackFire.Unity
                 var asyncOperation = SceneManager.LoadSceneAsync(sceneInfo.SceneName,sceneInfo.LoadSceneModle);
                 Action action = () => { if (null != loadSceneProgress) loadSceneProgress.Invoke(new LoadSceneProgressEventArgs(sceneInfo.SceneName, targetScene, asyncOperation.progress)); };
                 m_UpdateResource_Scene += action;
-#if UNITY_2017_1_OR_NEWER
-	            asyncOperation.completed += ao => {
+                asyncOperation.completed += ao => {
                     m_UpdateResource_Scene -= action;
                     //加载成功。
                     if (null!= loadSceneComplete)
@@ -96,9 +94,6 @@ namespace BlackFire.Unity
                         loadSceneComplete.Invoke(new LoadSceneCompleteEventArgs(sceneInfo.SceneName,targetScene));
                     }
                 };
-#elif UNITY_5
-                StartCoroutine(LoadSceneAsyncYield(action,targetScene,asyncOperation,sceneInfo,loadSceneComplete));
-#endif
             }
             else
             {
@@ -109,20 +104,6 @@ namespace BlackFire.Unity
                 }
             }
         }
-
-        
-#if UNITY_5
-        private IEnumerator LoadSceneAsyncYield(Action action,Scene targetScene,AsyncOperation asyncOperation,SceneInfo sceneInfo,LoadSceneComplete loadSceneComplete=null)
-        {
-            yield return asyncOperation;
-            m_UpdateResource_Scene -= action;
-            //加载成功。
-            if (null!= loadSceneComplete)
-            {
-                loadSceneComplete.Invoke(new LoadSceneCompleteEventArgs(sceneInfo.SceneName,targetScene));
-            }
-        }
-#endif
 
         /// <summary>
         /// 卸载场景。
@@ -142,28 +123,14 @@ namespace BlackFire.Unity
                 AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(targetScene);
                 Action action = () => { if (null != UnloadSceneProgress) UnloadSceneProgress.Invoke(new UnloadSceneProgressEventArgs(sceneName,targetScene,asyncOperation.progress)); };
                 m_UpdateResource_Scene += action;
-#if UNITY_2017_1_OR_NEWER
-	            asyncOperation.completed += ao => {
+                asyncOperation.completed += ao => {
                     m_UpdateResource_Scene -= action;
                     if (null != UnloadSceneComplete)
                         UnloadSceneComplete(new UnloadSceneCompleteEventArgs(sceneName, targetScene));
                 };
-#elif UNITY_5
-                StartCoroutine(UnloadSceneAsyncYield(action,asyncOperation,sceneName,targetScene,UnloadSceneComplete));
-#endif
             }
         }
-        
-#if UNITY_5
-        private IEnumerator UnloadSceneAsyncYield(Action action,AsyncOperation asyncOperation,string sceneName,Scene targetScene,UnloadSceneComplete UnloadSceneComplete = null)
-        {
-            yield return asyncOperation;
-            m_UpdateResource_Scene -= action;
-            if (null != UnloadSceneComplete)
-                UnloadSceneComplete(new UnloadSceneCompleteEventArgs(sceneName, targetScene));
-        }
-#endif
-        
+
 
         /// <summary>
         /// 移动场景。
