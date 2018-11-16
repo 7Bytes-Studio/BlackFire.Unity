@@ -19,11 +19,30 @@ namespace BlackFire.UI
         /// 元素的样式。
         /// </summary>
         public Style Style;
-        
+
+        private Template m_Template = null;
         /// <summary>
         /// 元素的模板。
         /// </summary>
-        public Template Template;
+        public virtual Template Template 
+        {
+            get { return m_Template; }
+            set
+            {
+                if (m_Template != value)
+                {
+                    OnTemplateChange(m_Template,value);
+                    m_Template = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 模板被更改事件。
+        /// </summary>
+        /// <param name="oldTemplate">旧模板。</param>
+        /// <param name="newTemplate">新模板。</param>
+        protected virtual void OnTemplateChange(Template oldTemplate,Template newTemplate){}
         
         /// <summary>
         /// 显示元素。
@@ -40,8 +59,6 @@ namespace BlackFire.UI
         /// </summary>
         public abstract bool Interactable { get; set; }
 
-
-
         /// <summary>
         /// 应用元素。
         /// </summary>
@@ -49,7 +66,6 @@ namespace BlackFire.UI
         {
             OnApply(Style,Template);
         }
-
 
         /// <summary>
         /// 根据样式和模板进行UI调整的事件。
