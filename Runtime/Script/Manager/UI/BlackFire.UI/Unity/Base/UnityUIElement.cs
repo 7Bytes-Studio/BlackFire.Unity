@@ -15,11 +15,31 @@ namespace BlackFire.UI
     public abstract class UnityUIElement : UIElement
     {
 
+        private Style m_Style = null;
+
         /// <summary>
         /// 元素的样式。
         /// </summary>
-        public Style Style;
+        public Style Style
+        {
+            get { return m_Style; }
+            set
+            {
+                if (m_Style != value)
+                {
+                    OnStyleChange(m_Style,value);
+                    m_Style = value;
+                } 
+            }
+        }
 
+        /// <summary>
+        /// 样式被更改事件。
+        /// </summary>
+        /// <param name="oldStyle">旧样式。</param>
+        /// <param name="newStyle">新样式。</param>
+        protected virtual void OnStyleChange(Style oldStyle,Style newStyle){}
+        
         private Template m_Template = null;
         /// <summary>
         /// 元素的模板。
@@ -31,6 +51,7 @@ namespace BlackFire.UI
             {
                 if (m_Template != value)
                 {
+                    value.Owner = this;
                     OnTemplateChange(m_Template,value);
                     m_Template = value;
                 }
@@ -43,16 +64,22 @@ namespace BlackFire.UI
         /// <param name="oldTemplate">旧模板。</param>
         /// <param name="newTemplate">新模板。</param>
         protected virtual void OnTemplateChange(Template oldTemplate,Template newTemplate){}
-        
+
         /// <summary>
         /// 显示元素。
         /// </summary>
-        public abstract void Show();
+        public virtual void Show()
+        {
+            Template.gameObject.SetActive(true);
+        }
 
         /// <summary>
         /// 隐藏元素。
         /// </summary>
-        public abstract void Hide();
+        public virtual void Hide()
+        {
+            Template.gameObject.SetActive(false);
+        }
 
         /// <summary>
         /// 是否可交互。
@@ -72,7 +99,7 @@ namespace BlackFire.UI
         /// </summary>
         /// <param name="style">样式。</param>
         /// <param name="template">模板。</param>
-        protected abstract void OnApply(Style style,Template template);
+        protected virtual void OnApply(Style style, Template template){}
 
     }
 }

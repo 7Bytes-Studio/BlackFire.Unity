@@ -17,6 +17,14 @@ namespace BlackFire.UI
     /// </summary>
     public abstract class Template : MonoBehaviour
     {
-        
+        private UnityUIElement m_Owner = null;
+        /// <summary>
+        /// 模板的持有者。
+        /// </summary>
+        public UnityUIElement Owner
+        {
+            get { return m_Owner; }
+            set { m_Owner = value; }
+        }
     }
 }
