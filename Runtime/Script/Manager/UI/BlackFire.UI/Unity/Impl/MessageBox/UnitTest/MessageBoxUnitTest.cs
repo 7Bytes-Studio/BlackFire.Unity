@@ -20,7 +20,7 @@ namespace BlackFire.UI
             m_MessageBox.Template = GetComponentInChildren<MessageBoxTemplate>(true);
             m_MessageBox.Hide();
         }
-
+  
         private void OnGUI()
         {
             if (GUILayout.Button("Show MessageBox"))

@@ -97,7 +97,7 @@ namespace BlackFire.Unity
             
 #endregion
             
-#region 上传        
+#region 下载        
 
             /// <summary>
             /// 下载速度。

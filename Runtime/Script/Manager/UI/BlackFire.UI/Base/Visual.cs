@@ -7,6 +7,7 @@
 --------------------------------------------------
 */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,11 @@ namespace BlackFire.UI
         
         public IEnumerator GetEnumerator()
         {
-            return Visualchildren as IEnumerator;
+            if(null!=m_Visualchildren)
+                for (int i = 0; i < m_Visualchildren.Count; i++)
+                {
+                    yield return m_Visualchildren[i];
+                }
         }
 
         /// <summary>
@@ -59,6 +64,7 @@ namespace BlackFire.UI
             if (!m_Visualchildren.Contains(child))
             {
                 m_Visualchildren.Add(child);
+                child.VisualParent = this;
                 OnVisualChildrenChanged(child,null);
             }
         }
@@ -72,6 +78,7 @@ namespace BlackFire.UI
             if (m_Visualchildren.Contains(child))
             {
                 m_Visualchildren.Remove(child);
+                child.VisualParent = null;
                 OnVisualChildrenChanged(null,child);
             }
         }
@@ -110,5 +117,182 @@ namespace BlackFire.UI
         {
             
         }
+
+
+        #region RoutedEvents
+
+        /// <summary>
+        /// 路由事件处理函数。
+        /// </summary>
+        /// <param name="sender">发送者。</param>
+        /// <param name="args">事件参数。</param>
+        protected internal virtual void OnRoutedEvents(object sender,RoutedEventArgs args)
+        {
+            
+        }
+
+
+        #endregion
+        
+        
+        
+        
+        /// <summary>
+        /// 遍历策略。
+        /// </summary>
+        public enum TraverseStrategy
+        {
+            /// <summary>
+            /// 广度遍历。
+            /// </summary>
+            Breadth,
+            /// <summary>
+            /// 深度遍历。
+            /// </summary>
+            Depth
+        }
+            
+        
+        #region ReverseTraverse Action<Visual> callback
+
+        /// <summary>
+        /// 反向遍历可视化节点。
+        /// </summary>
+        /// <param name="node">可视化节点。</param>
+        /// <param name="callback">反向遍历回调。</param>
+        public static void ReverseTraverse(Visual node,Action<Visual> callback)
+        {
+            if(null==callback || null==node) return;
+            
+            var current = node;
+            while (null!=current)
+            {
+                callback.Invoke(current);
+                current = current.VisualParent;
+            }
+        }
+
+        #endregion
+        
+        #region ReverseTraverse Predicate<Visual> callback
+
+        /// <summary>
+        /// 反向遍历可视化节点。
+        /// </summary>
+        /// <param name="node">可视化节点。</param>
+        /// <param name="callback">反向遍历回调。</param>
+        public static void ReverseTraverse(Visual node,Predicate<Visual> callback)
+        {
+            if(null==callback || null==node) return;
+            
+            var current = node;
+            while (null!=current)
+            {
+                if (callback.Invoke(current))
+                    return;
+                current = current.VisualParent;
+            }
+        }
+
+        #endregion
+        
+ 
+        #region Action<Visual> callback
+
+        /// <summary>
+        /// 遍历可视化节点。
+        /// </summary>
+        /// <param name="node">可视化节点。</param>
+        /// <param name="callback">遍历回调。</param>
+        /// <param name="traverseStrategy">遍历策略。</param>
+        public static void Traverse(Visual node,Action<Visual> callback,TraverseStrategy traverseStrategy = TraverseStrategy.Breadth)
+        {
+            if(null==callback || null==node) return;
+
+            callback.Invoke(node);
+            switch (traverseStrategy)
+            {
+                case TraverseStrategy.Breadth : Breadth(node,callback);
+                    break;
+                case TraverseStrategy.Depth : Depth(node,callback);
+                    break;
+                default: return;
+            }   
+        }
+        
+        private static void Breadth(Visual node,Action<Visual> callback)
+        {
+            foreach (Visual child in node)
+            {
+                callback.Invoke(child);
+            }
+            foreach (Visual child in node)
+            {
+                Breadth(child,callback);
+            }
+        }
+        
+        private static void Depth(Visual node,Action<Visual> callback)
+        {
+            foreach (Visual child in node)
+            {
+                Depth(child,callback);
+                callback.Invoke(child);
+            }
+        }
+
+        #endregion
+        
+
+        #region Predicate<Visual> callback
+
+        /// <summary>
+        /// 遍历可视化节点。
+        /// </summary>
+        /// <param name="node">可视化节点。</param>
+        /// <param name="callback">遍历回调。</param>
+        /// <param name="traverseStrategy">遍历策略。</param>
+        public static void Traverse(Visual node,Predicate<Visual> callback,TraverseStrategy traverseStrategy = TraverseStrategy.Breadth)
+        {
+            if(null==callback || null==node) return;
+
+            callback.Invoke(node);
+            switch (traverseStrategy)
+            {
+                case TraverseStrategy.Breadth : Breadth(node,callback);
+                    break;
+                case TraverseStrategy.Depth : Depth(node,callback);
+                    break;
+                default: return;
+            }   
+        }
+
+        
+        private static void Breadth(Visual node,Predicate<Visual> callback)
+        {
+            foreach (Visual child in node)
+            {
+                if(callback.Invoke(child))
+                    return;
+            }
+            foreach (Visual child in node)
+            {
+                Breadth(child,callback);
+            }
+        }
+        
+        private static void Depth(Visual node,Predicate<Visual> callback)
+        {
+            foreach (Visual child in node)
+            {
+                Depth(child,callback);
+                if(callback.Invoke(child))
+                    return;
+            }
+        }
+
+        #endregion
+
+        
     }
 }

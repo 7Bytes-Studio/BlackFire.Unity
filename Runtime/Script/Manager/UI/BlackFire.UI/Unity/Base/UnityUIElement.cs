@@ -15,6 +15,32 @@ namespace BlackFire.UI
     public abstract class UnityUIElement : UIElement
     {
 
+#region RoutedEvent
+
+        public static readonly RoutedEvent BeginDragEvent = new RoutedEvent("BeginDragEvent");
+        public static readonly RoutedEvent DragEvent = new RoutedEvent("DragEvent");
+        public static readonly RoutedEvent EndDragEvent = new RoutedEvent("EndDragEvent");
+        public static readonly RoutedEvent DeselectEvent = new RoutedEvent("DeselectEvent");
+        public static readonly RoutedEvent PointerClickEvent = new RoutedEvent("PointerClickEvent");
+        public static readonly RoutedEvent PointerDownEvent = new RoutedEvent("PointerDownEvent");
+        public static readonly RoutedEvent PointerUpEvent = new RoutedEvent("PointerUpEvent");
+        public static readonly RoutedEvent PointerEnterEvent = new RoutedEvent("PointerEnterEvent");
+        public static readonly RoutedEvent PointerExitEvent = new RoutedEvent("PointerExitEvent");
+
+#endregion
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
         private Style m_Style = null;
 
         /// <summary>

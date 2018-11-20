@@ -7,39 +7,26 @@
 --------------------------------------------------
 */
 
-using System;
-
 namespace BlackFire.UI
 {
     /// <summary>
-    /// 路由事件。
+    /// 路由事件策略。
     /// </summary>
-    public sealed class RoutedEvent
+    public enum RoutingStrategy
     {
-        public RoutedEvent(string name)
-        {
-            this.Name = name;
-        }
-
         /// <summary>
-        /// 路由名字。
+        /// 路由事件使用隧道策略，以便事件实例通过树向下路由（从根到源元素）。
         /// </summary>
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// 路由策略。
-        /// </summary>
-        public RoutingStrategy RoutingStrategy;
-
-        /// <summary>
-        /// 处理者类型。
-        /// </summary>
-        public Type HandlerType;
+        Tunnel = 0,
         
         /// <summary>
-        /// 所属者类型。
+        /// 路由事件使用冒泡策略，以便事件实例通过树向上路由（从事件元素到根）。
         /// </summary>
-        public Type OwnerType;
-
+        Bubble = 1,
+        
+        /// <summary>
+        /// 路由事件不通过元素树路由。
+        /// </summary>
+        Direct = 2
     }
 }
