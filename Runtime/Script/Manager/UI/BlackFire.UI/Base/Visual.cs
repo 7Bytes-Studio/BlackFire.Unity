@@ -19,19 +19,28 @@ namespace BlackFire.UI
     public abstract class Visual : IEnumerable
     {
         private Visual m_Parent;
+        /// <summary>
+        /// 可视化结点。
+        /// </summary>
         public virtual Visual VisualParent
         {
             get { return m_Parent; }
             set { SetVisualParent(value); }
         } 
         
-        protected virtual int VisualChildrenCount
+        /// <summary>
+        /// 可视化结点的数量。
+        /// </summary>
+        public virtual int VisualChildrenCount
         {
             get { return Visualchildren.Count(); }
         }
 
         private List<Visual> m_Visualchildren = new List<Visual>();
-        protected virtual IEnumerable<Visual> Visualchildren
+        /// <summary>
+        /// 可视化结点的孩子集合。
+        /// </summary>
+        public virtual IEnumerable<Visual> Visualchildren
         {
             get { return m_Visualchildren; }
         }
@@ -41,6 +50,10 @@ namespace BlackFire.UI
             return Visualchildren as IEnumerator;
         }
 
+        /// <summary>
+        /// 添加可视化结点的孩子结点。
+        /// </summary>
+        /// <param name="child">孩子。</param>
         public virtual void AddVisualChild(Visual child)
         {
             if (!m_Visualchildren.Contains(child))
@@ -50,6 +63,10 @@ namespace BlackFire.UI
             }
         }
 
+        /// <summary>
+        /// 移除可视化结点的孩子结点。
+        /// </summary>
+        /// <param name="child">孩子。</param>
         public virtual void RemoveVisualChild(Visual child)
         {
             if (m_Visualchildren.Contains(child))
@@ -59,6 +76,11 @@ namespace BlackFire.UI
             }
         }
 
+        /// <summary>
+        /// 获取可视化结点的孩子。
+        /// </summary>
+        /// <param name="index">索引。</param>
+        /// <returns>目标孩子结点。</returns>
         public virtual Visual GetVisualChild(int index)
         {
             if (0<=index&&index<m_Visualchildren.Count)
@@ -68,6 +90,10 @@ namespace BlackFire.UI
             return default(Visual);
         }
 
+        /// <summary>
+        /// 设置可视化结点的父亲结点。。
+        /// </summary>
+        /// <param name="parent">父亲节点。</param>
         public virtual void SetVisualParent(Visual parent)
         {
             if(m_Parent!=parent)

@@ -9,6 +9,7 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -276,7 +277,7 @@ namespace BlackFire.Unity
             toFill.Clear();
 
 #if UNITY_EDITOR
-            if (!UnityEditor.EditorApplication.isPlaying)
+            if (!EditorApplication.isPlaying)
             {
                 uiuv = m_UIUVList[0];
             }            

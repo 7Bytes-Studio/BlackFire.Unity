@@ -8,6 +8,9 @@
 */
 
 using System;
+using System.Collections;
+using System.Net;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace BlackFire.Unity
@@ -16,6 +19,9 @@ namespace BlackFire.Unity
     {
         public static class Date
         {
+#if UNITY_5
+            public sealed class ForUnity5YieldBehavior:MonoBehaviour{}
+#endif
 
             public static string NetDateAPI = @"https://www.baidu.com";
             
@@ -26,35 +32,75 @@ namespace BlackFire.Unity
             {  
                 
                 UnityWebRequest uwr = new UnityWebRequest(NetDateAPI);
-                var ao = uwr.SendWebRequest();
-                ao.completed += a =>
-                {
-                    if (null!=netDateCallback)
-                    {
-                        if (!uwr.isNetworkError && !uwr.isHttpError)
-                        {
-                            var headerDic = uwr.GetResponseHeaders();
-                            foreach (var kv in headerDic)  
-                            { 
-                                //Log.Info(kv.Key);
-                                if (kv.Key == "Date")
+#if UNITY_2017_1_OR_NEWER
+	                var ao = uwr.SendWebRequest();
+                    ao.completed += a =>
                                 {
-                                    netDateCallback.Invoke(kv.Value);
-                                    break;
-                                }
-                            } 
-                        }
-                        else
+                                    if (null!=netDateCallback)
+                                    {
+                                        if (!uwr.isNetworkError && !uwr.isHttpError)
+                                        {
+                                            var headerDic = uwr.GetResponseHeaders();
+                                            foreach (var kv in headerDic)  
+                                            { 
+                                                //Log.Info(kv.Key);
+                                                if (kv.Key == "Date")
+                                                {
+                                                    netDateCallback.Invoke(kv.Value);
+                                                    break;
+                                                }
+                                            } 
+                                        }
+                                        else
+                                        {
+                                            if (null!=networkErrorCallback)
+                                            {
+                                                networkErrorCallback.Invoke();
+                                            }
+                                        }
+                                    }
+                                };
+#elif UNITY_5
+
+                var dmb = new GameObject("ForUnity5YieldBehavior.Utility.Date",typeof(ForUnity5YieldBehavior)).GetComponent<ForUnity5YieldBehavior>();
+                dmb.StartCoroutine(AcquireNetDateTimeYiled(dmb,uwr,netDateCallback,networkErrorCallback));
+#endif
+
+            }
+            
+#if UNITY_5
+            private static IEnumerator AcquireNetDateTimeYiled(ForUnity5YieldBehavior dmb,UnityWebRequest uwr,Action<string> netDateCallback,Action networkErrorCallback=null)
+            {
+                var ao = uwr.Send();
+                yield return ao;
+                if (null != netDateCallback)
+                {
+                    if (!uwr.isError)
+                    {
+                        var headerDic = uwr.GetResponseHeaders();
+                        foreach (var kv in headerDic)
                         {
-                            if (null!=networkErrorCallback)
+                            //Log.Info(kv.Key);
+                            if (kv.Key == "Date")
                             {
-                                networkErrorCallback.Invoke();
+                                netDateCallback.Invoke(kv.Value);
+                                break;
                             }
                         }
                     }
-                };
-                
+                    else
+                    {
+                        if (null != networkErrorCallback)
+                        {
+                            networkErrorCallback.Invoke();
+                        }
+                    }
+                }
+                GameObject.DestroyImmediate(dmb.gameObject);
             }
+#endif
+            
+            
             
             /// <summary>
             /// GMT转化为本地日期。

@@ -8,6 +8,8 @@
 */
 
 using System;
+using System.Collections;
+using UnityEngine;
 
 namespace BlackFire.Unity
 {
@@ -59,7 +61,9 @@ namespace BlackFire.Unity
                 var rr = null!=assetInfo.AssetType?Base_LoadAsync(assetInfo.AssetPath,assetInfo.AssetType):Base_LoadAsync(assetInfo.AssetPath);
                 Action action = () => { if (null != loadAssetProgress) loadAssetProgress.Invoke(new LoadAssetProgressEventArgs(assetInfo.AssetPath, rr.progress));  };
                 m_UpdateResource_Delegate += action;
-                rr.completed += ao =>
+                
+#if UNITY_2017_1_OR_NEWER
+	            rr.completed += ao =>
                 {
                     m_UpdateResource_Delegate -= action;
                     if (null == rr.asset)
@@ -76,6 +80,9 @@ namespace BlackFire.Unity
                             loadAssetComplete.Invoke(new LoadAssetCompleteEventArgs(assetInfo.AssetPath,assetAgency));
                     }
                 };
+#elif UNITY_5
+                StartCoroutine(LoadResourceAsyncYield(action,rr,assetInfo,loadAssetComplete,loadAssetProgress,loadAssetFailure));
+#endif
             }
             else
             {
@@ -84,9 +91,31 @@ namespace BlackFire.Unity
 
             }
         }
+        
+#if UNITY_5
+        
+        private IEnumerator LoadResourceAsyncYield(Action action,ResourceRequest rr,ResourceAssetInfo assetInfo,LoadAssetComplete loadAssetComplete,LoadAssetProgress loadAssetProgress = null, LoadAssetFailure loadAssetFailure=null)
+        {
+            yield return rr;
+            
+            m_UpdateResource_Delegate -= action;
+            if (null == rr.asset)
+            {
+                if (null != loadAssetFailure)
+                {
+                    loadAssetFailure.Invoke(new LoadAssetFailureEventArgs(assetInfo.AssetPath));
+                }
+            }
+            else
+            {
+                AssetAgency assetAgency = m_AssetObjectLinkList.AddLast(new AssetAgency(assetInfo.AssetPath, rr.asset, assetInfo.ShortdatedAsset)).Value;
+                if (null != loadAssetComplete)
+                    loadAssetComplete.Invoke(new LoadAssetCompleteEventArgs(assetInfo.AssetPath,assetAgency));
+            }
+            
+        }
 
-
-      
+#endif
 
     }
 }

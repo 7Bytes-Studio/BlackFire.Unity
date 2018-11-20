@@ -48,7 +48,11 @@ namespace BlackFire.Unity
                 form.AddBinaryData(field, data, name, mime);
                 using (UnityWebRequest www = UnityWebRequest.Post(url, form))
                 {
+#if UNITY_2017_1_OR_NEWER
+	                    yield return www.SendWebRequest();
+#elif UNITY_5
                     yield return www.Send();
+#endif
                     if (www.isDone)
                     {
                         if (null != callback)
@@ -56,7 +60,12 @@ namespace BlackFire.Unity
                             callback.Invoke(www.downloadHandler.text);
                         }
                     }
-                    else if(www.isNetworkError)
+#if UNITY_2017_1_OR_NEWER
+	                    else if(www.isNetworkError)
+
+#elif UNITY_5
+                    else if(www.isError)
+#endif
                     {
                         if (null != callback)
                         {
