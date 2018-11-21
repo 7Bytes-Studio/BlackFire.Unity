@@ -7,7 +7,7 @@
 --------------------------------------------------
 */
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 布局控件。

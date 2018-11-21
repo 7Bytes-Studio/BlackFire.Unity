@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     public class MessageBoxUnitTest : MonoBehaviour
     {

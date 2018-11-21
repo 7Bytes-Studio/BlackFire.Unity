@@ -9,7 +9,7 @@
 
 using System;
 
-namespace BlackFire.UI
+namespace BlackFire
 {
     /// <summary>
     /// 路由事件。

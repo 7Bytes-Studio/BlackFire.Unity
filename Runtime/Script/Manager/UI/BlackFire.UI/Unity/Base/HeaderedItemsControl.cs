@@ -7,7 +7,7 @@
 --------------------------------------------------
 */
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// 带标题的条目控件。

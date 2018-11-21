@@ -9,7 +9,7 @@
 
 using System;
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// MessageBox。

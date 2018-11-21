@@ -70,6 +70,91 @@ namespace BlackFire.Unity
                 BlackFire.Event.On<T>(topicName,listener,eventHandler);
             }
             
+            
+            public static void Fire(object node,object sender,RoutedEventArgs args)
+            {
+                if (node is Visual)
+                {
+                    Fire(node as Visual,sender,args);
+                }
+                else if (node is Transform)
+                {
+                    Fire(node as Transform,sender,args);
+                }
+                else if (node is MonoBehaviour)
+                {
+                    Fire((node as MonoBehaviour).transform,sender,args);
+                }
+            }
+            
+
+            private static void Fire(Visual node,object sender,RoutedEventArgs args)
+            {
+                EventRouter.Fire(node,sender,args);
+            }
+            
+            private static void Fire(Transform node,object sender,RoutedEventArgs args)
+            {
+                if(null!=args && null!=args.RoutedEvent)
+                    switch (args.RoutedEvent.RoutingStrategy)
+                    {
+                        case RoutingStrategy.Tunnel :
+                            FireTunnelEvent(node,sender,args);
+                            break;
+                        case RoutingStrategy.Bubble :
+                            FireBubbleEvent(node,sender,args);
+                            break;
+                        default: FireDirectEvent(node,sender,args);
+                            break;
+                    }  
+            }
+
+            private static void CallRoutedObjectMethodByTransform(Transform node,object sender,RoutedEventArgs args)
+            {
+                var rmbcs = node.GetComponents<RoutedMonoBehaviour>();
+                if (null!=rmbcs)
+                {
+                    for (int i = 0; i < rmbcs.Length; i++)
+                    {
+                        rmbcs[i].OnRoutedEvents(sender,args);
+                    }
+                }
+                
+                var ruibcs = node.GetComponents<RoutedUIBehaviour>();
+                if (null!=ruibcs)
+                {
+                    for (int i = 0; i < ruibcs.Length; i++)
+                    {
+                        ruibcs[i].OnRoutedEvents(sender,args);
+                    }
+                }
+                
+            }
+
+            private static void FireTunnelEvent(Transform node,object sender,RoutedEventArgs args)
+            {
+                node.Traverse(n =>
+                {
+                    CallRoutedObjectMethodByTransform(n,sender,args);
+                    return args.Handled;
+                });
+            }
+        
+            private static void FireBubbleEvent(Transform node,object sender,RoutedEventArgs args)
+            {
+                node.ReverseTraverse(n =>
+                {
+                    CallRoutedObjectMethodByTransform(n,sender,args);
+                    return args.Handled;
+                });
+            }
+        
+            private static void FireDirectEvent(Transform node,object sender,RoutedEventArgs args)
+            {
+                CallRoutedObjectMethodByTransform(node,sender,args);
+            }
+            
+            
         }
 
 

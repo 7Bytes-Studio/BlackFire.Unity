@@ -7,7 +7,7 @@
 --------------------------------------------------
 */
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// RawImage模板。

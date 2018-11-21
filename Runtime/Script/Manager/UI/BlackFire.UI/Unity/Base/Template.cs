@@ -10,7 +10,7 @@
 using BlackFire.Unity;
 using UnityEngine;
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// UI模板。

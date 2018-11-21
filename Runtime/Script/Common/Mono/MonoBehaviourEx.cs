@@ -7,11 +7,7 @@
 --------------------------------------------------
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 namespace BlackFire.Unity 
 {
@@ -92,7 +88,6 @@ namespace BlackFire.Unity
 
 
         #endregion
-
 
     }
 }

@@ -9,7 +9,7 @@
 
 using UnityEngine;
 
-namespace BlackFire.UI
+namespace BlackFire.Unity
 {
     /// <summary>
     /// UI元素的样式。

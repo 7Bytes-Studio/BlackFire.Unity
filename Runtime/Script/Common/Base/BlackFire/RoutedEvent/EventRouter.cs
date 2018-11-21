@@ -9,12 +9,12 @@
 
 using System;
 
-namespace BlackFire.UI
+namespace BlackFire
 {
     /// <summary>
     /// 事件路由。
     /// </summary>
-    public static class EventRouter
+    internal static class EventRouter
     {
 
         /// <summary>
@@ -38,7 +38,6 @@ namespace BlackFire.UI
                         break;
                 }   
         }
-
 
         private static void FireTunnelEvent(Visual node,object sender,RoutedEventArgs args)
         {

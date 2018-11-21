@@ -12,7 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlackFire.UI
+namespace BlackFire
 {
     /// <summary>
     /// 可视化的对象。
@@ -243,7 +243,6 @@ namespace BlackFire.UI
 
         #endregion
         
-
         #region Predicate<Visual> callback
 
         /// <summary>

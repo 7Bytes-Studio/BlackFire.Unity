@@ -7,34 +7,26 @@
 --------------------------------------------------
 */
 
-using System;
-
-namespace BlackFire.UI
+namespace BlackFire
 {
     /// <summary>
-    /// 路由事件参数。
+    /// 路由事件策略。
     /// </summary>
-    public class RoutedEventArgs : EventArgs
+    public enum RoutingStrategy
     {
         /// <summary>
-        /// 路由事件。
+        /// 路由事件使用隧道策略，以便事件实例通过树向下路由（从根到源元素）。
         /// </summary>
-        public RoutedEvent RoutedEvent;
+        Tunnel = 0,
         
         /// <summary>
-        /// 标志事件是否被处理。
+        /// 路由事件使用冒泡策略，以便事件实例通过树向上路由（从事件元素到根）。
         /// </summary>
-        public bool Handled;
-
-        /// <summary>
-        /// 触发事件的源对象。
-        /// </summary>
-        public object Source;
-
-        /// <summary>
-        /// 触发事件最初始的源对象。
-        /// </summary>
-        public object OriginalSource;
+        Bubble = 1,
         
+        /// <summary>
+        /// 路由事件不通过元素树路由。
+        /// </summary>
+        Direct = 2
     }
 }
