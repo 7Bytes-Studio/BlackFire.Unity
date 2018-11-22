@@ -1,4 +1,4 @@
-﻿/*
+/*
 --------------------------------------------------
 | Copyright © 2008 Mr-Alan. All rights reserved. |
 | Website: www.0x69h.com                         |
@@ -7,38 +7,32 @@
 --------------------------------------------------
 */
 
-using System.Collections;
+using BlackFire.Unity;
 using UnityEngine;
 
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// 逻辑化形体(本质是资产和逻辑结合)。
+    /// UI模板。
     /// </summary>
-    [RequireComponent(typeof(Asset))]
-    public abstract class LogicalForm : VirtualWorldForm 
+    public abstract class UITemplate : LogicalForm,IUITemplate
     {
-
         /// <summary>
         /// 虚拟世界形体的逻辑接口。
         /// </summary>
-        public abstract ILogic Logic { get;  }
-
-        /// <summary>
-        /// 显示虚拟世界形体。
-        /// </summary>
-        public virtual void Show()
+        public override ILogic Logic
         {
-            OnShow();
+            get { return this; }
         }
         
+        private UnityUIElement m_Owner = null;
         /// <summary>
-        /// 隐藏虚拟世界形体。
+        /// 模板的持有者。
         /// </summary>
-        public virtual void Hide()
+        public UnityUIElement Owner
         {
-            OnHide();
+            get { return m_Owner; }
+            set { m_Owner = value; }
         }
-        
     }
 }

@@ -12,7 +12,7 @@ namespace BlackFire.Unity
     /// <summary>
     /// Button模板。
     /// </summary>
-    public class ButtonTemplate : Template
+    public class ButtonTemplate : UITemplate, IButtonTemplate
     {
         public UnityEngine.UI.Button Button;
 
@@ -40,6 +40,15 @@ namespace BlackFire.Unity
                     text.text = value;
                 }
             }
+        }
+
+        /// <summary>
+        /// 是否可交互。
+        /// </summary>
+        public bool Interactable
+        {
+            get { return Button.interactable;}
+            set { Button.interactable = value; }
         }
 
         protected virtual void Awake()

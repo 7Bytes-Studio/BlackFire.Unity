@@ -15,7 +15,7 @@ namespace BlackFire.Unity
     /// MessageBox模板。
     /// </summary>
     [RequireComponent(typeof(CanvasGroup))]
-    public class MessageBoxTemplate : Template
+    public class MessageBoxTemplate : UITemplate
     {
         public UnityEngine.UI.Button Confirm;
         public UnityEngine.UI.Button Cancel;

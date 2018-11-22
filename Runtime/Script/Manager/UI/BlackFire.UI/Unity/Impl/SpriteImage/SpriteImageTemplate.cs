@@ -12,19 +12,19 @@ using UnityEngine;
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// RawImage模板。
+    /// SpriteImage模板。
     /// </summary>
-    public class RawImageTemplate : UITemplate,IRawImageTemplate
+    public class SpriteImageTemplate : UITemplate,ISpriteImageTemplate
     {
-        public UnityEngine.UI.RawImage RawImage;
+        public UnityEngine.UI.Image SpriteImage;
 
         /// <summary>
-        /// 贴图。
+        /// 精灵。
         /// </summary>
-        public Texture Texture
+        public Sprite Sprite
         {
-            get { return RawImage.texture;}
-            set { RawImage.texture = value; }
+            get { return SpriteImage.sprite;}
+            set { SpriteImage.sprite = value; }
         }
 
         /// <summary>
@@ -34,11 +34,11 @@ namespace BlackFire.Unity
         {
             get
             {
-                return RawImage.raycastTarget; 
+                return SpriteImage.raycastTarget; 
             }
             set
             {
-                RawImage.raycastTarget = value;
+                SpriteImage.raycastTarget = value;
             }
         }
 
@@ -47,8 +47,8 @@ namespace BlackFire.Unity
         /// </summary>
         public Color Color
         {
-            get { return RawImage.color;}
-            set { RawImage.color = value; }
+            get { return SpriteImage.color;}
+            set { SpriteImage.color = value; }
         }
     }
 }

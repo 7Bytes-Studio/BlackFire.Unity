@@ -10,10 +10,23 @@
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// SpriteImage模板。
+    /// UI模板。
     /// </summary>
-    public class SpriteImageTemplate : Template
+    public interface IUITemplate : ILogic
     {
-        public UnityEngine.UI.Image SpriteImage;
+        /// <summary>
+        /// 模板的持有者。
+        /// </summary>
+        UnityUIElement Owner { get; set; }
+
+        /// <summary>
+        /// 显示模板。
+        /// </summary>
+        void Show();
+
+        /// <summary>
+        /// 隐藏模板。
+        /// </summary>
+        void Hide();
     }
 }

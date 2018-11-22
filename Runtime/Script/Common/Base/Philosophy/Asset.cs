@@ -69,7 +69,6 @@ namespace BlackFire.Unity
             TunnelingEvent<IAssetEventHandler>(i=>i.OnHide());
         }
 
-
         /// <summary>
         /// 资产被销毁事件。
         /// </summary>
@@ -77,7 +76,6 @@ namespace BlackFire.Unity
         {
             TunnelingEvent<IAssetEventHandler>(i=>i.OnDestroyed());
         }
-
 
         /// <summary>
         /// 隧道事件。

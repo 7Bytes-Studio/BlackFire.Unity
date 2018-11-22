@@ -14,7 +14,7 @@ namespace BlackFire.Unity
     /// <summary>
     /// 形体。
     /// </summary>
-    public abstract class Form : MonoBehaviour
+    public abstract class Form : RoutedMonoBehaviour
     {
         
     }

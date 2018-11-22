@@ -1,4 +1,4 @@
-﻿/*
+/*
 --------------------------------------------------
 | Copyright © 2008 Mr-Alan. All rights reserved. |
 | Website: www.0x69h.com                         |
@@ -7,38 +7,28 @@
 --------------------------------------------------
 */
 
-using System.Collections;
 using UnityEngine;
 
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// 逻辑化形体(本质是资产和逻辑结合)。
+    /// SpriteImage模板接口。
     /// </summary>
-    [RequireComponent(typeof(Asset))]
-    public abstract class LogicalForm : VirtualWorldForm 
+    public interface ISpriteImageTemplate:IUITemplate
     {
+        /// <summary>
+        /// 精灵。
+        /// </summary>
+        Sprite Sprite { get; set; }
 
         /// <summary>
-        /// 虚拟世界形体的逻辑接口。
+        /// 是否可交互。
         /// </summary>
-        public abstract ILogic Logic { get;  }
+        bool Interactable { get; set; }
 
         /// <summary>
-        /// 显示虚拟世界形体。
+        /// 图片颜色。
         /// </summary>
-        public virtual void Show()
-        {
-            OnShow();
-        }
-        
-        /// <summary>
-        /// 隐藏虚拟世界形体。
-        /// </summary>
-        public virtual void Hide()
-        {
-            OnHide();
-        }
-        
+        Color Color { get; set; }
     }
 }

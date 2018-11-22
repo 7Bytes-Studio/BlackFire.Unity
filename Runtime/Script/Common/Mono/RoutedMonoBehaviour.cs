@@ -11,6 +11,9 @@ using UnityEngine;
 
 namespace BlackFire.Unity 
 {
+	/// <summary>
+	/// 可路由的MonoBehaviour。
+	/// </summary>
 	public class RoutedMonoBehaviour : MonoBehaviourEx
 	{
 
@@ -21,7 +24,6 @@ namespace BlackFire.Unity
 		/// <param name="args">事件参数。</param>
 		protected internal virtual void OnRoutedEvents(object sender,RoutedEventArgs args)
 		{
-            
 			
 		}
 

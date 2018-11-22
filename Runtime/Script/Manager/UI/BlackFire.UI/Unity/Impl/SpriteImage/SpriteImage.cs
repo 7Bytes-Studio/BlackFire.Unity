@@ -16,42 +16,42 @@ namespace BlackFire.Unity
     /// </summary>
     public class SpriteImage : Image
     {
-        private SpriteImageTemplate SpriteImageTemplate
+        private ISpriteImageTemplate SpriteImageTemplate
         {
-            get { return Template as SpriteImageTemplate; }
+            get { return Template as ISpriteImageTemplate; }
         }
 
         public virtual Sprite Sprite 
         {
-            get { return SpriteImageTemplate.SpriteImage.sprite; }
-            set { SpriteImageTemplate.SpriteImage.sprite = value; }
+            get { return SpriteImageTemplate.Sprite; }
+            set { SpriteImageTemplate.Sprite = value; }
         }
 
         public override void Show()
         {
-            SpriteImageTemplate.SpriteImage.gameObject.SetActive(true);
+            SpriteImageTemplate.Show();
         }
 
         public override void Hide()
         {
-            SpriteImageTemplate.SpriteImage.gameObject.SetActive(false);
+            SpriteImageTemplate.Hide();
         }
 
         public override bool Interactable
         {
             get
             {
-                return SpriteImageTemplate.SpriteImage.raycastTarget;
+                return SpriteImageTemplate.Interactable;
             }
             set
             {
-                SpriteImageTemplate.SpriteImage.raycastTarget = value;
+                SpriteImageTemplate.Interactable = value;
             }
         }
 
-        protected override void OnApply(Style style, Template template)
+        protected override void OnApply(Style style, IUITemplate template)
         {
-            SpriteImageTemplate.SpriteImage.color = style.Color;
+            SpriteImageTemplate.Color = style.Color;
         }
     }
 }

@@ -66,11 +66,11 @@ namespace BlackFire.Unity
         /// <param name="newStyle">新样式。</param>
         protected virtual void OnStyleChange(Style oldStyle,Style newStyle){}
         
-        private Template m_Template = null;
+        private IUITemplate m_Template = null;
         /// <summary>
         /// 元素的模板。
         /// </summary>
-        public virtual Template Template 
+        public virtual IUITemplate Template 
         {
             get { return m_Template; }
             set
@@ -89,14 +89,14 @@ namespace BlackFire.Unity
         /// </summary>
         /// <param name="oldTemplate">旧模板。</param>
         /// <param name="newTemplate">新模板。</param>
-        protected virtual void OnTemplateChange(Template oldTemplate,Template newTemplate){}
+        protected virtual void OnTemplateChange(IUITemplate oldTemplate,IUITemplate newTemplate){}
 
         /// <summary>
         /// 显示元素。
         /// </summary>
         public virtual void Show()
         {
-            Template.gameObject.SetActive(true);
+            Template.Show();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace BlackFire.Unity
         /// </summary>
         public virtual void Hide()
         {
-            Template.gameObject.SetActive(false);
+            Template.Hide();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace BlackFire.Unity
         /// </summary>
         /// <param name="style">样式。</param>
         /// <param name="template">模板。</param>
-        protected virtual void OnApply(Style style, Template template){}
+        protected virtual void OnApply(Style style, IUITemplate template){}
 
     }
 }

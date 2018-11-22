@@ -16,42 +16,42 @@ namespace BlackFire.Unity
     /// </summary>
     public class RawImage : Image
     {
-        private RawImageTemplate RawImageTemplate
+        private IRawImageTemplate RawImageTemplate
         {
-            get { return Template as RawImageTemplate; }
+            get { return Template as IRawImageTemplate; }
         }
 
         public virtual Texture Texture 
         {
-            get { return RawImageTemplate.RawImage.texture; }
-            set { RawImageTemplate.RawImage.texture = value; }
+            get { return RawImageTemplate.Texture; }
+            set { RawImageTemplate.Texture = value; }
         }
 
         public override void Show()
         {
-            RawImageTemplate.RawImage.gameObject.SetActive(true);
+            RawImageTemplate.Show();
         }
 
         public override void Hide()
         {
-            RawImageTemplate.RawImage.gameObject.SetActive(false);
+            RawImageTemplate.Hide();
         }
 
         public override bool Interactable
         {
             get
             {
-               return RawImageTemplate.RawImage.raycastTarget;
+               return RawImageTemplate.Interactable;
             }
             set
             {
-                RawImageTemplate.RawImage.raycastTarget = value;
+                RawImageTemplate.Interactable = value;
             }
         }
 
-        protected override void OnApply(Style style, Template template)
+        protected override void OnApply(Style style, IUITemplate template)
         {
-            RawImageTemplate.RawImage.color = style.Color;
+            RawImageTemplate.Color = style.Color;
         }
     }
 }

@@ -16,9 +16,9 @@ namespace BlackFire.Unity
     /// </summary>
     public class Button : ContentControl
     {
-        private ButtonTemplate ButtonTemplate
+        private IButtonTemplate ButtonTemplate
         {
-            get { return Template as ButtonTemplate; }
+            get { return Template as IButtonTemplate; }
         }
 
         /// <summary>
@@ -26,8 +26,8 @@ namespace BlackFire.Unity
         /// </summary>
         public override bool Interactable
         {
-            get { return ButtonTemplate.Button.interactable; }
-            set { ButtonTemplate.Button.interactable = value; }
+            get { return ButtonTemplate.Interactable; }
+            set { ButtonTemplate.Interactable = value; }
         }
 
         /// <summary>

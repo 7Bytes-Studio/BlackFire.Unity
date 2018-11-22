@@ -10,29 +10,18 @@
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// Label模板。
+    /// Button模板接口。
     /// </summary>
-    public class LabelTemplate : UITemplate,ILabelTemplate
+    public interface IButtonTemplate:IUITemplate
     {
-        public UnityEngine.UI.Text Label;
-
         /// <summary>
         /// 按钮的内容。
         /// </summary>
-        public string Content
-        {
-            get { return Label.text; }
-
-            set { Label.text = value; }
-        }
+        string Content { get; set; }
 
         /// <summary>
         /// 是否可交互。
         /// </summary>
-        public bool Interactable
-        {
-            get { return Label.raycastTarget;}
-            set { Label.raycastTarget = value; }
-        }
+        bool Interactable { get; set; }
     }
 }

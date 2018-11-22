@@ -47,7 +47,7 @@ namespace BlackFire.Unity
             set { LabelTemplate.Label.raycastTarget = value; }
         }
 
-        protected override void OnApply(Style style, Template template)
+        protected override void OnApply(Style style, IUITemplate template)
         {
             LabelTemplate.Label.color = style.Color;
         }

@@ -7,24 +7,28 @@
 --------------------------------------------------
 */
 
-using BlackFire.Unity;
 using UnityEngine;
 
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// UI模板。
+    /// SpriteImage模板接口。
     /// </summary>
-    public abstract class Template : MonoBehaviour
+    public interface IRawImageTemplate:IUITemplate
     {
-        private UnityUIElement m_Owner = null;
         /// <summary>
-        /// 模板的持有者。
+        /// 贴图。
         /// </summary>
-        public UnityUIElement Owner
-        {
-            get { return m_Owner; }
-            set { m_Owner = value; }
-        }
+        Texture Texture  { get; set; }
+
+        /// <summary>
+        /// 是否可交互。
+        /// </summary>
+        bool Interactable { get; set; }
+
+        /// <summary>
+        /// 图片颜色。
+        /// </summary>
+        Color Color { get; set; }
     }
 }
