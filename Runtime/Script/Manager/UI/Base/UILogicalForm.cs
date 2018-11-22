@@ -12,9 +12,9 @@ using UnityEngine;
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// UI形体。
+    /// UI逻辑形体。
     /// </summary>
-    public abstract class UIForm : LogicalForm
+    public abstract class UILogicalForm : LogicalForm
     {
         public abstract void Open();
 

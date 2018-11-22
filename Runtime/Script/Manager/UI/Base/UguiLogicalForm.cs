@@ -13,9 +13,9 @@ using UnityEngine.UI;
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// UI形体。
+    /// Ugui逻辑形体。
     /// </summary>
-    public abstract class UGUIForm : UIForm
+    public abstract class UguiLogicalForm : UILogicalForm
     {
         
         public override void Open()
