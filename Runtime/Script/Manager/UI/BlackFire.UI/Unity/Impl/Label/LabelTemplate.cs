@@ -29,7 +29,7 @@ namespace BlackFire.Unity
         /// <summary>
         /// 是否可交互。
         /// </summary>
-        public bool Interactable
+        public override bool Interactable
         {
             get { return Label.raycastTarget;}
             set { Label.raycastTarget = value; }

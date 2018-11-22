@@ -28,5 +28,10 @@ namespace BlackFire.Unity
         /// 隐藏模板。
         /// </summary>
         void Hide();
+        
+        /// <summary>
+        /// 是否可交互。
+        /// </summary>
+        bool Interactable { get; set; }
     }
 }

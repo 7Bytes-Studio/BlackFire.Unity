@@ -45,7 +45,7 @@ namespace BlackFire.Unity
         /// <summary>
         /// 是否可交互。
         /// </summary>
-        public bool Interactable
+        public override bool Interactable
         {
             get { return Button.interactable;}
             set { Button.interactable = value; }

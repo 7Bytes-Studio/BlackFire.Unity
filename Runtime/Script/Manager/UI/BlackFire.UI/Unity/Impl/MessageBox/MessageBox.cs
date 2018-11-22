@@ -16,9 +16,9 @@ namespace BlackFire.Unity
     /// </summary>
     public class MessageBox : HeaderedContentControl
     {
-        private MessageBoxTemplate MessageBoxTemplate
+        private IMessageBoxTemplate MessageBoxTemplate
         {
-            get { return Template as MessageBoxTemplate; }
+            get { return Template as IMessageBoxTemplate; }
         }
 
         /// <summary>
@@ -36,14 +36,13 @@ namespace BlackFire.Unity
         /// </summary>
         public override bool Interactable
         {
-            get { return MessageBoxTemplate.CanvasGroup.interactable;}
-            set { MessageBoxTemplate.CanvasGroup.interactable = value; }
+            get { return MessageBoxTemplate.Interactable;}
+            set { MessageBoxTemplate.Interactable = value; }
         }
 
         public override void Show()
         {
-            MessageBoxTemplate.HeaderText.text = string.Empty;
-            MessageBoxTemplate.ContentText.text = string.Empty;
+            MessageBoxTemplate.Show(string.Empty,string.Empty);
             base.Show();
         }
 
@@ -54,8 +53,7 @@ namespace BlackFire.Unity
         /// <param name="content">内容文本。</param>
         public void Show(string header,string content)
         {
-            MessageBoxTemplate.HeaderText.text = header;
-            MessageBoxTemplate.ContentText.text = content;
+            MessageBoxTemplate.Show(header,content);
             base.Show();
         }
 

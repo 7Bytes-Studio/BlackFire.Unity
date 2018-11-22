@@ -19,9 +19,6 @@ namespace BlackFire.Unity
         /// </summary>
         string Content { get; set; }
 
-        /// <summary>
-        /// 是否可交互。
-        /// </summary>
-        bool Interactable { get; set; }
+
     }
 }

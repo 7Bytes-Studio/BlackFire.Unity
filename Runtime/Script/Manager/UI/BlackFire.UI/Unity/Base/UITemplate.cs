@@ -34,5 +34,28 @@ namespace BlackFire.Unity
             get { return m_Owner; }
             set { m_Owner = value; }
         }
+
+        /// <summary>
+        /// 是否可交互。
+        /// </summary>
+        public virtual bool Interactable { get; set; }
+
+        /// <summary>
+        /// 显示。
+        /// </summary>
+        public override void Show()
+        {
+            base.Show();
+            gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// 隐藏。
+        /// </summary>
+        protected override void OnHide()
+        {
+            base.OnHide();
+            gameObject.SetActive(false);
+        }
     }
 }
