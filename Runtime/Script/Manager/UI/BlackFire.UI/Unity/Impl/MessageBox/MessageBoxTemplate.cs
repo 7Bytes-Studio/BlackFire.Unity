@@ -64,5 +64,14 @@ namespace BlackFire.Unity
             HeaderText.text = header;
             ContentText.text = content;
         }
+
+        /// <summary>
+        /// Message Box的头部标题。
+        /// </summary>
+        public string Header
+        {
+            get { return HeaderText.text;}
+            set { HeaderText.text = value; }
+        }
     }
 }

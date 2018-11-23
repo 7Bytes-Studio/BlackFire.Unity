@@ -14,6 +14,14 @@ namespace BlackFire.Unity
     /// </summary>
     public abstract class ItemsControl : Control
     {
-        
+        private ItemCollection m_Items = new ItemCollection();
+       
+        /// <summary>
+        /// 条目集合。
+        /// </summary>
+        public ItemCollection Items
+        {
+            get { return m_Items; }
+        }
     }
 }

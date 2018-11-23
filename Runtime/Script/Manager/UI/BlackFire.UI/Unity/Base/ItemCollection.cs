@@ -10,13 +10,10 @@
 namespace BlackFire.Unity
 {
     /// <summary>
-    /// 带标题的内容控件。
+    /// Item的集合。
     /// </summary>
-    public abstract class HeaderedContentControl : ContentControl
+    public class ItemCollection : CollectionView 
     {
-        /// <summary>
-        /// 头标题。
-        /// </summary>
-        public abstract string Header { get; set; }
+        
     }
 }

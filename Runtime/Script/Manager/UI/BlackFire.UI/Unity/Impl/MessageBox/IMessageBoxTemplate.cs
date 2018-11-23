@@ -10,5 +10,11 @@ namespace BlackFire.Unity
         /// <param name="header">头部文本。</param>
         /// <param name="content">内容文本。</param>
         void Show(string header, string content);
+
+        /// <summary>
+        /// Message Box 的头部标题。
+        /// </summary>
+        string Header { get; set; }
+
     }
 }

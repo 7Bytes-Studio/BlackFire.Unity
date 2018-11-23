@@ -15,9 +15,13 @@ namespace BlackFire.Unity
     /// <summary>
     /// Ugui逻辑形体。
     /// </summary>
-    public abstract class UguiLogicalForm : UILogicalForm
+    public abstract class UguiLogicalForm : UILogicalForm,ILogic
     {
-        
+        public override ILogic Logic
+        {
+            get { return this; }
+        }
+
         public override void Open()
         {
             

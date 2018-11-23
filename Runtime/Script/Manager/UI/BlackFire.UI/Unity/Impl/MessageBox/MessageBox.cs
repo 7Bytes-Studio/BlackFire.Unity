@@ -47,6 +47,21 @@ namespace BlackFire.Unity
         }
 
         /// <summary>
+        /// Message Box 的头部标题。
+        /// </summary>
+        public override string Header
+        {
+            get
+            {
+               return MessageBoxTemplate.Header;
+            }
+            set
+            {
+               MessageBoxTemplate.Header = value;
+            }
+        }
+        
+        /// <summary>
         /// 显示消息框。
         /// </summary>
         /// <param name="header">头部文本。</param>
@@ -72,5 +87,7 @@ namespace BlackFire.Unity
                 OnCancel.Invoke(this,null);
             }
         }
+
+
     }
 }

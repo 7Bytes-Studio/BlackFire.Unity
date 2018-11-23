@@ -14,6 +14,9 @@ namespace BlackFire.Unity
     /// </summary>
     public abstract class HeaderedItemsControl : ItemsControl
     {
-        
+        /// <summary>
+        /// 头标题。
+        /// </summary>
+        public abstract string Header { get; set; }
     }
 }
