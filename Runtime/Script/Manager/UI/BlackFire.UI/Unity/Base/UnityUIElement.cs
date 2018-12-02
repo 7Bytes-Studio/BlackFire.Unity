@@ -110,7 +110,11 @@ namespace BlackFire.Unity
         /// <summary>
         /// 是否可交互。
         /// </summary>
-        public abstract bool Interactable { get; set; }
+        public virtual bool Interactable
+        {
+            get { return Template.Interactable;}
+            set { Template.Interactable = value; }
+        }
 
         /// <summary>
         /// 应用元素。
