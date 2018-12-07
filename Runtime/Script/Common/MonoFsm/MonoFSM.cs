@@ -54,11 +54,15 @@ namespace BlackFire.Unity
                 stateLookup.Add(mapping.state, mapping);
             }
 
-            var methods = component.GetType().GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public |
-                                      BindingFlags.NonPublic);
-
+            var currentType = component.GetType();
+            List<MethodInfo> methods = new List<MethodInfo>();
+            while (null!=currentType)
+            {
+                methods.AddRange(currentType.GetMethods(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic));
+                currentType = currentType.BaseType;
+            }
             var separator = "_".ToCharArray();
-            for (int i = 0; i < methods.Length; i++)
+            for (int i = 0; i < methods.Count; i++)
             {
                 if (methods[i].GetCustomAttributes(typeof(CompilerGeneratedAttribute), true).Length != 0)
                 {

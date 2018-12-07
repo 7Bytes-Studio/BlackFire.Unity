@@ -16,7 +16,7 @@ namespace BlackFire.Unity
     /// <summary>
     /// 资产(形体)。
     /// </summary>
-    public sealed class Asset : Nature
+    public sealed partial class Asset : Nature
     {
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace BlackFire.Unity
     /// <summary>
     /// 资产扩展类。
     /// </summary>
-    public static class AssetExtension
+    public static partial class AssetExtension
     {
 
         /// <summary>

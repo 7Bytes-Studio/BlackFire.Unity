@@ -14,7 +14,6 @@ using UnityEngine;
 namespace BlackFire.Unity.Editor
 {
     [CustomEditor(typeof(Asset))]
-    [DisallowMultipleComponent]
     public sealed class AssetInspector : InspectorBase
     {
         public override InspectorSetting Setting

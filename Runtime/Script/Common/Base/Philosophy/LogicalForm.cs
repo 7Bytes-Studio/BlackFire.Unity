@@ -15,7 +15,7 @@ namespace BlackFire.Unity
     /// <summary>
     /// 逻辑化形体(本质是资产和逻辑结合)。
     /// </summary>
-    [RequireComponent(typeof(Asset))]
+    //[RequireComponent(typeof(Asset))]
     public abstract class LogicalForm : VirtualWorldForm 
     {
 
