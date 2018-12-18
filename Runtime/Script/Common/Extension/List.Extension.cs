@@ -33,12 +33,12 @@ namespace BlackFire.Unity
             }
         }
         
-        public static void SafeRemove<T>(this List<T> list, T value,Predicate<T> predicate)
+        public static void SafeRemove<T>(this List<T> list,Predicate<T> predicate)
         {
             var target = list.Find(predicate);
             if (null!=target)
             {
-                list.Remove(value);
+                list.Remove(target);
             }
         }
         
