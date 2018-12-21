@@ -13,7 +13,7 @@ using UnityEngine;
 namespace BlackFire.Unity
 {
     [Serializable]
-    public sealed class SVector3
+    public struct SVector3
     {
         public SVector3(Vector3 value)
         {
@@ -28,7 +28,10 @@ namespace BlackFire.Unity
 
         public float z;
 
-       
+        public override string ToString()
+        {
+            return string.Format("({0},{1},{2})",x,y,z);
+        }
     }
 
 
@@ -37,6 +40,11 @@ namespace BlackFire.Unity
         public static Vector3 ToVector3(this SVector3 sVector3)
         {
             return new Vector3(sVector3.x,sVector3.y,sVector3.z);
+        }
+        
+        public static SVector3 ToSVector3(this Vector3 sVector3)
+        {
+            return new SVector3(sVector3);
         }
     }
 
