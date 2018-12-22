@@ -8,7 +8,6 @@
 */
 
 using System.Text;
-using CatEngine.SpaceSystem;
 using UnityEngine;
 
 namespace BlackFire.Unity
