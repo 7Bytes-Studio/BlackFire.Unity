@@ -18,16 +18,16 @@ namespace BlackFire.Unity.Editor
 {
     public static class AssetsMenu 
     {
-        [MenuItem("Assets/BlackFire/EditorWindowScript",false,0)]
-        public static void OnMenuItemClick()
-        {
-           ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0,
-           ScriptableObject.CreateInstance<CreateEditorWindowScriptAsset>(),
-           "/New EditorWindowScript.cs",
-           null,
-           BlackFireEditor.ScriptTemplatePath+ "EditorWindowScriptTemplate.cs");
-           
-        }
+//        [MenuItem("Assets/BlackFire/EditorWindowScript",false,0)]
+//        public static void OnMenuItemClick()
+//        {
+//           ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0,
+//           ScriptableObject.CreateInstance<CreateEditorWindowScriptAsset>(),
+//           "/New EditorWindowScript.cs",
+//           null,
+//           BlackFireEditor.ScriptTemplatePath+ "EditorWindowScriptTemplate.cs");
+//           
+//        }
 
         public static string GetSelectionAssetsPath()
         {

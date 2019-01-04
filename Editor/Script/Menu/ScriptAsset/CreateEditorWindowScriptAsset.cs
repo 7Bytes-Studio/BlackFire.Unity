@@ -11,14 +11,12 @@ using UnityEditor;
 
 namespace BlackFire.Unity.Editor
 {
-    class CreateEditorWindowScriptAsset : EndNameEditActionBase
+    public class CreateEditorWindowScriptAsset : EndNameEditActionBase
     {
         public override void Action(int instanceId, string pathName, string resourceFile)
         {
             UnityEngine.Object obj = CreateScriptAssetFromTemplate(pathName, resourceFile);
             ProjectWindowUtil.ShowCreatedAsset(obj);
         }
-
-
     }
 }

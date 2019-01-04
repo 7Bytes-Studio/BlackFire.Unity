@@ -324,6 +324,15 @@ namespace BlackFire.Unity
         {
             get { return component; }
         }
+        
+        public static MonoFsm<T> Init(GameObject go,MonoBehaviour component)
+        {
+            var engine = go.GetComponent<MonoFsmRunner>();
+            if (engine == null) engine = go.AddComponent<MonoFsmRunner>();
+
+            return engine.Initialize<T>(component);
+        }
+        
         public static MonoFsm<T> Init(MonoBehaviour component)
         {
             var engine = component.GetComponent<MonoFsmRunner>();
