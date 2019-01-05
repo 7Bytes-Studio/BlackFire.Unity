@@ -54,6 +54,11 @@ namespace BlackFire.Unity.Editor
 			Utility.Project.OpenStreamingAssetsPath();
 		}
 
+		[MenuItem(TopMenuName + "Path/Open ScriptAssemblies Path")]
+		private static void OpenScriptAssembliesPath()
+		{
+			Utility.Project.OpenScriptAssemblies();
+		}
 		
 		[MenuItem(TopMenuName + "Path/Open Temporary Cache Path")]
 		private static void OpenTemporaryCachePath()

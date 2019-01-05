@@ -70,7 +70,17 @@ namespace BlackFire.Unity.Editor
             }
 //Scriptwriter : https://github.com/GarfieldJiang
 #endregion
-            
+
+
+#region Alan
+
+            public static void OpenScriptAssemblies()
+            {
+                OpenFolder(Application.dataPath+"/../Library/ScriptAssemblies");
+            }
+
+#endregion
+
         }
     }
 }

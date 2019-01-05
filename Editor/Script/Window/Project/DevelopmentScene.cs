@@ -17,7 +17,7 @@ namespace BlackFire.Unity.Editor
 
 	public sealed class DevelopmentScene : ScriptableObject
 	{				
-		[SerializeField] private List<Object> m_Scenes;
+		[SerializeField] private List<Object> m_Scenes = new List<Object>();
 
 		public List<Object> Scenes
 		{
