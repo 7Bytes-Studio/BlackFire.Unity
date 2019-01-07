@@ -60,6 +60,12 @@ namespace BlackFire.Unity.Editor
 			Utility.Project.OpenScriptAssemblies();
 		}
 		
+		[MenuItem(TopMenuName + "Path/Open ApplicationContents Path")]
+		private static void OpenApplicationContentsPath()
+		{
+			Utility.Project.OpenApplicationContentsPath();
+		}
+		
 		[MenuItem(TopMenuName + "Path/Open Temporary Cache Path")]
 		private static void OpenTemporaryCachePath()
 		{

@@ -9,6 +9,7 @@
 
 using System.Collections;
 using System.IO;
+using System.Runtime.InteropServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -37,8 +38,6 @@ namespace BlackFire.Unity
 		public void OnPointerDown(PointerEventData eventData)
 		{
 #if UNITY_WEBGL
-			if (button != null && !button.interactable)
-				return;
 			fileBrowserSetFocus();
 #endif
 		}

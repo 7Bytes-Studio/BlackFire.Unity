@@ -78,6 +78,11 @@ namespace BlackFire.Unity.Editor
             {
                 OpenFolder(Application.dataPath+"/../Library/ScriptAssemblies");
             }
+            
+            public static void OpenApplicationContentsPath()
+            {
+                OpenFolder(EditorApplication.applicationContentsPath);
+            }
 
 #endregion
 
