@@ -7,6 +7,10 @@
 --------------------------------------------------
 */
 
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
 namespace BlackFire.Unity.Editor
 {
     public static partial class Utility
@@ -14,6 +18,17 @@ namespace BlackFire.Unity.Editor
         public static class Assets
         {
 
+            public static IEnumerable<T> FindScriptableObject<T>() where T:ScriptableObject
+            {
+               var results = AssetDatabase.FindAssets("t:"+typeof(T).FullName);
+               var list = new List<T>();
+               foreach (var result in results)
+               {
+                   var ins = AssetDatabase.LoadAssetAtPath<T>(AssetDatabase.GUIDToAssetPath(result));
+                   list.Add(ins);
+               }
+               return list;
+            }
 
         }
     }
