@@ -72,6 +72,7 @@ namespace BlackFire.Unity
                 ofn.structSize = Marshal.SizeOf(ofn);
 
                 var cfilter = string.Empty;
+                if(null!=filters)
                 for (int i = 0; i < filters.Length; i++)
                 {
                     if (i==(filters.Length-1)) break;
