@@ -24,7 +24,7 @@ namespace BlackFire.Unity
                 set { s_JsonHelper = value; }
             }
 
-            public static string ToJson(object jsonObject)
+            public static string ToJson(object jsonObject,bool pretty = false)
             {
                 return JsonHelper.ToJson(jsonObject);
             }
@@ -45,9 +45,16 @@ namespace BlackFire.Unity
 
     public class DefaultJsonHelper : IJsonHelper
     {
-        public string ToJson(object jsonObject)
+        public string ToJson(object jsonObject,bool pretty = false)
         {
-            return JsonConvert.SerializeObject(jsonObject);
+            if (pretty)
+            {
+                return JsonConvert.SerializeObject(jsonObject,Formatting.Indented);
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(jsonObject,Formatting.None);
+            }
         }
 
         public object FromJson(string json,Type type)
@@ -59,7 +66,7 @@ namespace BlackFire.Unity
 
     public interface IJsonHelper
     {
-        string ToJson(object jsonObject);
+        string ToJson(object jsonObject,bool pretty = false);
 
         object FromJson(string json,Type type);
     }
