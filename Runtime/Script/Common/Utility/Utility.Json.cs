@@ -26,7 +26,7 @@ namespace BlackFire.Unity
 
             public static string ToJson(object jsonObject,bool pretty = false)
             {
-                return JsonHelper.ToJson(jsonObject);
+                return JsonHelper.ToJson(jsonObject,pretty);
             }
             
             public static object FromJson(string json,System.Type type)
